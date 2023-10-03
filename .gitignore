@@ -1,0 +1,5 @@
+# ignore all dwg
+*.dwg
+
+# ignore secret files
+**\90_old\TunnelDynamo\Исходные данные/
