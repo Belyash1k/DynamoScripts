@@ -1,0 +1,860 @@
+{
+  "Uuid": "777c0d6f-643f-4e1b-9506-a6b3b284e886",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "18_КСИ-Местоположение в таблицу элементов",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSOffice.Data.ImportExcel@var,string,bool,bool",
+      "Id": "3cfd2365fdd04bc29f359616548c2844",
+      "Inputs": [
+        {
+          "Id": "574e195706864cf18aebbbed1eee129f",
+          "Name": "file",
+          "Description": "Файл электронной таблицы Microsoft Excel.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2834e70190684febb69606855a91a26c",
+          "Name": "sheetName",
+          "Description": "Имя рабочего листа, содержащего данные.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1282e0a032db46b3b7d06fac1ee05281",
+          "Name": "readAsStrings",
+          "Description": "Включение/выключение режима чтения файла Excel по строкам.\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f9bf037db5ae48f9bd06b3d9b578ea5e",
+          "Name": "showExcel",
+          "Description": "Включение/выключение режима отображения и скрытия главного окна Excel.\n\nbool\nЗначение по умолчанию : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3b935b971b0e40ff92ecc4f40e088a37",
+          "Name": "data",
+          "Description": "Строки с данными из таблицы Excel.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Чтение данных из электронной таблицы Microsoft Excel. Данные считываются по строкам и возвращаются в виде наборов списков по строкам. Для индексов строк и столбцов предусмотрено нулевое значение. Например, значение в ячейке A1 будет отображаться в списке данных как [0; 0]. Для работы с данным узлом потребуется установленное приложение Microsoft Excel.\n\nData.ImportExcel (file: var, sheetName: string, readAsStrings: bool = false, showExcel: bool = true): var[][]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSOffice.Data.ImportExcel@var,string,bool,bool",
+      "Id": "4c4d9abc44164e44815dc4bca574b5d8",
+      "Inputs": [
+        {
+          "Id": "f876b60b1c26470298bd915c27729839",
+          "Name": "file",
+          "Description": "Файл электронной таблицы Microsoft Excel.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "648d00ad81d14807b5f815dcc192e2b5",
+          "Name": "sheetName",
+          "Description": "Имя рабочего листа, содержащего данные.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "73eddf81d34f4edda102688d5f5de5f0",
+          "Name": "readAsStrings",
+          "Description": "Включение/выключение режима чтения файла Excel по строкам.\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "11843f306eaf480c904339d66c9d6789",
+          "Name": "showExcel",
+          "Description": "Включение/выключение режима отображения и скрытия главного окна Excel.\n\nbool\nЗначение по умолчанию : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c4797313acab434ca2e90638959f7026",
+          "Name": "data",
+          "Description": "Строки с данными из таблицы Excel.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Чтение данных из электронной таблицы Microsoft Excel. Данные считываются по строкам и возвращаются в виде наборов списков по строкам. Для индексов строк и столбцов предусмотрено нулевое значение. Например, значение в ячейке A1 будет отображаться в списке данных как [0; 0]. Для работы с данным узлом потребуется установленное приложение Microsoft Excel.\n\nData.ImportExcel (file: var, sheetName: string, readAsStrings: bool = false, showExcel: bool = true): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\01_Проекты\\01_Шали-Бавлы\\01_Рабочая\\2 этап\\xls\\Шали-Бавлы_2 этап_Элементы_23062023.xlsx",
+      "InputValue": "C:\\01_Проекты\\01_Шали-Бавлы\\01_Рабочая\\2 этап\\xls\\Шали-Бавлы_2 этап_Элементы_23062023.xlsx",
+      "NodeType": "ExtensionNode",
+      "Id": "89516cc293014dee9ec91fc7c3803381",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "81f05366e67a44098ebf424b2078338d",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Позволяет выбрать файл в системе и получить его имя"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "019b5ce8b41a4589978ae1fd0c6c4291",
+      "Inputs": [
+        {
+          "Id": "0d13c03711544820bdf113323c619b3d",
+          "Name": "path",
+          "Description": "Путь к файлу.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ed8c23428289477bb54502915a32c484",
+          "Name": "file",
+          "Description": "Файловый объект",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание нового объекта на основе пути."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Шали-Бавлы_2 этап_Элементы_2306",
+      "Id": "2176fa85f2a04f6e82d6023922de4526",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ca3f7b474adc4c8789735136c065e94d",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "C:\\01_Проекты\\01_Шали-Бавлы\\01_Рабочая\\2 этап\\xls\\Шали-Бавлы_2 этап_КСИ.xlsm",
+      "InputValue": "C:\\01_Проекты\\01_Шали-Бавлы\\01_Рабочая\\2 этап\\xls\\Шали-Бавлы_2 этап_КСИ.xlsm",
+      "NodeType": "ExtensionNode",
+      "Id": "e555b13d2c254798a7f9e3190cb868fe",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b9128d79b83e4c7fa8e39130aec26183",
+          "Name": "",
+          "Description": "Filename",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Позволяет выбрать файл в системе и получить его имя"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "3376fba87a3445f9abc009ffc04ea5e1",
+      "Inputs": [
+        {
+          "Id": "71505927002b49e3838a5af2869c3d4b",
+          "Name": "path",
+          "Description": "Путь к файлу.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4fef610b7bc245f68596ba69e83597cd",
+          "Name": "file",
+          "Description": "Файловый объект",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание нового объекта на основе пути."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "КСИ - местоположения",
+      "Id": "66c7c2e162254fb5a33b3a30fd279c63",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8a54e8141ab648149fa9b1b0af3c3abf",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "9c44f98a24804876be162df748d604b0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e1d728534de94258ae11a74621392c13",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "e2918025ed0b4af4a698bfa7120a1beb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b9e7700d1930437591892cff83245bac",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "6a8a6b5820c141a6969e08ee708e99e5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2edfe33263a74e7db05e52c20f2df887",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "6f8ca10341fa4dfcbb356468fcedc346",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8295c18171444732896226d178f5f1e1",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.GetItemAtIndex@var[]..[],int",
+      "Id": "8e0e7a5cbeae406ab66978aca84d8b9f",
+      "Inputs": [
+        {
+          "Id": "aa7fe1fb586a4ee7af11d0185d304e7a",
+          "Name": "list",
+          "Description": "Список, из которого требуется извлечь элемент.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5aa9fdf6161d4022af21bc3b216c3cb7",
+          "Name": "index",
+          "Description": "Индекс элемента для включения в выборку.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "af9be60262e947348ff4d6044ee63add",
+          "Name": "item",
+          "Description": "Элемент в списке по заданному индексу.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение элемента из данного списка, расположенного по указанному индексу.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "4;",
+      "Id": "7588e55df1d341ff8143ebdf27ee4da5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "24b91998f4b8460f8e56cd9a0f0bc3ab",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.DropItems@var[]..[],int",
+      "Id": "280a278e71194a5097cebb0dc99a332e",
+      "Inputs": [
+        {
+          "Id": "55ea24a3ac39434db15bab0406a453f4",
+          "Name": "list",
+          "Description": "Список, из которого требуется удалить элементы.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "505fc2003d9b4d82ab9e2ec8c424b6cd",
+          "Name": "amount",
+          "Description": "Количество элементов для удаления. Если значение отрицательное, элементы удаляются с конца списка.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fe0f8db1cac745d4bb8f3d5d24800c54",
+          "Name": "list",
+          "Description": "Список остальных элементов.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Удаление определенного количества элементов в начале списка. Если количество представляет собой отрицательное значение, элементы удаляются с конца списка.\n\nList.DropItems (list: var[]..[], amount: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "1;",
+      "Id": "f8e8c8bd0ea44043a5e61fbd6a9357f0",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d731bc015c514052b6924fe3d569c9e5",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.GetItemAtIndex@var[]..[],int",
+      "Id": "c45050e33fed419b9210f7d79b3d48c6",
+      "Inputs": [
+        {
+          "Id": "649368a2a7364b51aa960ac4366ffa00",
+          "Name": "list",
+          "Description": "Список, из которого требуется извлечь элемент.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3799ffdf8a3a47d681cff42a447ae055",
+          "Name": "index",
+          "Description": "Индекс элемента для включения в выборку.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f7e0bda866a04e40965b6b413a4f34d5",
+          "Name": "item",
+          "Description": "Элемент в списке по заданному индексу.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение элемента из данного списка, расположенного по указанному индексу.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "4;",
+      "Id": "f3817a48be4b44a9a1ce57da8d09017e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "377d66507fa84c5c81e6acf70a92886e",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "c4797313acab434ca2e90638959f7026",
+      "End": "55ea24a3ac39434db15bab0406a453f4",
+      "Id": "c36ce22f1d6748ceaf5f9fe3476eb1c5"
+    },
+    {
+      "Start": "81f05366e67a44098ebf424b2078338d",
+      "End": "0d13c03711544820bdf113323c619b3d",
+      "Id": "28a954d092d842878c290983325d8a57"
+    },
+    {
+      "Start": "ed8c23428289477bb54502915a32c484",
+      "End": "574e195706864cf18aebbbed1eee129f",
+      "Id": "c73d6f29bd4f4643b3b7abf4355962d5"
+    },
+    {
+      "Start": "ca3f7b474adc4c8789735136c065e94d",
+      "End": "2834e70190684febb69606855a91a26c",
+      "Id": "fd6764a7a7c941f7808140d050c4ba58"
+    },
+    {
+      "Start": "b9128d79b83e4c7fa8e39130aec26183",
+      "End": "71505927002b49e3838a5af2869c3d4b",
+      "Id": "b594ef1babfe4e3995cf1f8af665771e"
+    },
+    {
+      "Start": "4fef610b7bc245f68596ba69e83597cd",
+      "End": "f876b60b1c26470298bd915c27729839",
+      "Id": "04da7656046a46c49b87315659b0a556"
+    },
+    {
+      "Start": "8a54e8141ab648149fa9b1b0af3c3abf",
+      "End": "648d00ad81d14807b5f815dcc192e2b5",
+      "Id": "d17bbba886e04062bd5a369942a76374"
+    },
+    {
+      "Start": "e1d728534de94258ae11a74621392c13",
+      "End": "1282e0a032db46b3b7d06fac1ee05281",
+      "Id": "0eb21f4971c24beb8fd6ae2adecc16b7"
+    },
+    {
+      "Start": "b9e7700d1930437591892cff83245bac",
+      "End": "73eddf81d34f4edda102688d5f5de5f0",
+      "Id": "33a6741edb6c41c9b29c99123c18cde4"
+    },
+    {
+      "Start": "2edfe33263a74e7db05e52c20f2df887",
+      "End": "f9bf037db5ae48f9bd06b3d9b578ea5e",
+      "Id": "ff3c988a65cf401a957917ea4c29697b"
+    },
+    {
+      "Start": "8295c18171444732896226d178f5f1e1",
+      "End": "11843f306eaf480c904339d66c9d6789",
+      "Id": "e60ae751b72548e089c8b737f8d69439"
+    },
+    {
+      "Start": "24b91998f4b8460f8e56cd9a0f0bc3ab",
+      "End": "5aa9fdf6161d4022af21bc3b216c3cb7",
+      "Id": "720cb1effbb44a54a43b177564b91689"
+    },
+    {
+      "Start": "fe0f8db1cac745d4bb8f3d5d24800c54",
+      "End": "aa7fe1fb586a4ee7af11d0185d304e7a",
+      "Id": "b43eb9694b4b4460b68bb0dec37e1d5c"
+    },
+    {
+      "Start": "fe0f8db1cac745d4bb8f3d5d24800c54",
+      "End": "649368a2a7364b51aa960ac4366ffa00",
+      "Id": "b1ac35ba9757434b80b3173f360fd096"
+    },
+    {
+      "Start": "d731bc015c514052b6924fe3d569c9e5",
+      "End": "505fc2003d9b4d82ab9e2ec8c424b6cd",
+      "Id": "67a3c96db2894adc8e97001ab7717926"
+    },
+    {
+      "Start": "377d66507fa84c5c81e6acf70a92886e",
+      "End": "3799ffdf8a3a47d681cff42a447ae055",
+      "Id": "d609f3c10ecf43ffad184923318869af"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.6.2.15705",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Data.ImportExcel",
+        "Id": "3cfd2365fdd04bc29f359616548c2844",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 334.14571862606306,
+        "Y": 127.94286689599966
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Data.ImportExcel",
+        "Id": "4c4d9abc44164e44815dc4bca574b5d8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 347.56820996434044,
+        "Y": 620.17037765767179
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "89516cc293014dee9ec91fc7c3803381",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -339.03699403529424,
+        "Y": 71.305780342324283
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File From Path",
+        "Id": "019b5ce8b41a4589978ae1fd0c6c4291",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 107.5,
+        "Y": 72.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "2176fa85f2a04f6e82d6023922de4526",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -118.8327038645017,
+        "Y": 155.2396917358202
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File Path",
+        "Id": "e555b13d2c254798a7f9e3190cb868fe",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -350.24047726447873,
+        "Y": 559.20261867836257
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File From Path",
+        "Id": "3376fba87a3445f9abc009ffc04ea5e1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 96.296516770815288,
+        "Y": 559.89683833603817
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "66c7c2e162254fb5a33b3a30fd279c63",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 40.451989193366614,
+        "Y": 641.283397720912
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "9c44f98a24804876be162df748d604b0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 85.6956855168005,
+        "Y": 214.05402852702028
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "e2918025ed0b4af4a698bfa7120a1beb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 62.531531129972564,
+        "Y": 701.681756943221
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "6a8a6b5820c141a6969e08ee708e99e5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 85.6956855168005,
+        "Y": 280.50301873697379
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "6f8ca10341fa4dfcbb356468fcedc346",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 62.531531129972564,
+        "Y": 758.4654394862722
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.GetItemAtIndex",
+        "Id": "8e0e7a5cbeae406ab66978aca84d8b9f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1073.9971721553336,
+        "Y": 794.35975227687345
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "7588e55df1d341ff8143ebdf27ee4da5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 920.27002205522808,
+        "Y": 858.4828712264291
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.DropItems",
+        "Id": "280a278e71194a5097cebb0dc99a332e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 726.236263897382,
+        "Y": 622.29224520957393
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "f8e8c8bd0ea44043a5e61fbd6a9357f0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 606.30427960237,
+        "Y": 680.32966411567418
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.GetItemAtIndex",
+        "Id": "c45050e33fed419b9210f7d79b3d48c6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1058.3687322637747,
+        "Y": 420.3190908723127
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "f3817a48be4b44a9a1ce57da8d09017e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 904.64158216367264,
+        "Y": 484.44220982186869
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "684063db970944428e775ff3299a6a61",
+        "Title": "Общая таблица элементов",
+        "Nodes": [
+          "3cfd2365fdd04bc29f359616548c2844",
+          "89516cc293014dee9ec91fc7c3803381",
+          "019b5ce8b41a4589978ae1fd0c6c4291",
+          "2176fa85f2a04f6e82d6023922de4526",
+          "9c44f98a24804876be162df748d604b0",
+          "6a8a6b5820c141a6969e08ee708e99e5"
+        ],
+        "Left": -349.03699403529424,
+        "Top": 18.305780342324283,
+        "Width": 917.1827126613573,
+        "Height": 330.1972383946495,
+        "FontSize": 36.0,
+        "InitialTop": 71.305780342324283,
+        "InitialHeight": 240.748248184696,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "523664f86f14465ebac1177f0a8e655b",
+        "Title": "Таблица местоположений",
+        "Nodes": [
+          "4c4d9abc44164e44815dc4bca574b5d8",
+          "e555b13d2c254798a7f9e3190cb868fe",
+          "3376fba87a3445f9abc009ffc04ea5e1",
+          "66c7c2e162254fb5a33b3a30fd279c63",
+          "e2918025ed0b4af4a698bfa7120a1beb",
+          "6f8ca10341fa4dfcbb356468fcedc346"
+        ],
+        "Left": -360.24047726447873,
+        "Top": 506.20261867836257,
+        "Width": 941.80868722881917,
+        "Height": 320.26282080790963,
+        "FontSize": 36.0,
+        "InitialTop": 559.20261867836257,
+        "InitialHeight": 261.96775897930922,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": -342.03335931482525,
+    "Y": -196.26906478920341,
+    "Zoom": 0.959788699581266
+  }
+}
