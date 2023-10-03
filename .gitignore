@@ -1,5 +1,7 @@
-# ignore all dwg
+# ignore all base data
 *.dwg
-
-# ignore secret files
-*данные/**
+*.dxe
+*.bak
+*.xls
+*.csv
+*.log
