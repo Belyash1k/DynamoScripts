@@ -1,0 +1,250 @@
+{
+  "Uuid": "e0dfbd2b-92a9-4236-a79d-21a35e1f0f81",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "Общее_Отсоединить все элементы геометрии",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "5d6169e01d934d31bef96c9477e4938f",
+      "Name": "Запихни в меня нужные элементы...",
+      "Type": "hostSelection",
+      "Value": "5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d35c3,5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d35cd,5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d35d6,5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d35df,5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d35e8,5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d365a",
+      "Description": "Выберите несколько элементов в документе Revit.",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [
+    {
+      "Id": "dcb0f1c6639b431d8948da320dd9394c",
+      "Name": "Watch",
+      "Type": "string",
+      "InitialValue": "О да, я всё отсоединил",
+      "Description": "Визуализация выходных данных узла"
+    }
+  ],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.UnjoinAllGeometry@Revit.Elements.Element[]",
+      "Id": "4f0fd99b06bb44498e763dc39811ecda",
+      "Inputs": [
+        {
+          "Id": "7600bec599c749bab474e1fff06d51ff",
+          "Name": "elements",
+          "Description": "Список элементов для отсоединения\n\nElement[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2358936197a449dbab300c2315190568",
+          "Name": "Element[]",
+          "Description": "Все входные элементы и их геометрия теперь отсоединены.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Отсоединение геометрии всех соединенных элементов. В Revit выполняется только одна транзакция.\n\nElement.UnjoinAllGeometry (elements: Element[]): Element[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementsSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d35c3",
+        "5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d35cd",
+        "5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d35d6",
+        "5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d35df",
+        "5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d35e8",
+        "5bffa878-404a-4dd6-b2f1-cedc680b47ff-000d365a"
+      ],
+      "Id": "5d6169e01d934d31bef96c9477e4938f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "61d554321221444a91dac8af82f9b618",
+          "Name": "Elements",
+          "Description": "Выбранные элементы.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a[0] != null?\"О да, я всё отсоединил\":\"Что-то пошло не так, проверь геометрию...\";",
+      "Id": "00161d788d1d427492536e4860b1df2f",
+      "Inputs": [
+        {
+          "Id": "0d3a6c53e6754bac8030eeeab9e78141",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a8029a2c758a46688a9064fa39df980e",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "dcb0f1c6639b431d8948da320dd9394c",
+      "Inputs": [
+        {
+          "Id": "7750752ceb464e6f912e704bb947ab19",
+          "Name": "",
+          "Description": "Узел для отображения выходных данных",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "df7b7126774f4eb9af541ffb636425ba",
+          "Name": "",
+          "Description": "Выходные данные узла",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация выходных данных узла"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "2358936197a449dbab300c2315190568",
+      "End": "0d3a6c53e6754bac8030eeeab9e78141",
+      "Id": "74720e9340b147cbbae4d79dc667e348"
+    },
+    {
+      "Start": "61d554321221444a91dac8af82f9b618",
+      "End": "7600bec599c749bab474e1fff06d51ff",
+      "Id": "f3da038d1877407ea924430e2cee3092"
+    },
+    {
+      "Start": "a8029a2c758a46688a9064fa39df980e",
+      "End": "7750752ceb464e6f912e704bb947ab19",
+      "Id": "f999f1a6ba044da2a3c2655082a28f21"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Нет",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.0.5650",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Element.UnjoinAllGeometry",
+        "Id": "4f0fd99b06bb44498e763dc39811ecda",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 533.03988724510532,
+        "Y": 493.90018234256706
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Запихни в меня нужные элементы...",
+        "Id": "5d6169e01d934d31bef96c9477e4938f",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 93.0,
+        "Y": 493.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "00161d788d1d427492536e4860b1df2f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 848.0,
+        "Y": 528.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "dcb0f1c6639b431d8948da320dd9394c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 1817.3048428761108,
+        "Y": 576.23195957209737
+      }
+    ],
+    "Annotations": [],
+    "X": 13.006876365668774,
+    "Y": 61.340746751584618,
+    "Zoom": 0.49327555867287409
+  }
+}

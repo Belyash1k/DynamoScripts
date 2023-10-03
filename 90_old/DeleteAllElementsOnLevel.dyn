@@ -1,0 +1,361 @@
+{
+  "Uuid": "8070de48-55cd-4d40-8aa4-e5ea7db2c478",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "DeleteAllElementsOnLevel",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsAtLevel, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "8e9424d00de641cda92fda4da01030d2",
+      "Inputs": [
+        {
+          "Id": "166edc6d508c45a695129c72c67f3628",
+          "Name": "Level",
+          "Description": "Уровень",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1e177adb4a6e4bd797aaab7b1b620037",
+          "Name": "Elements",
+          "Description": "Элементы на заданной отметке.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Получение всех элементов, расположенных в модели на указанной отметке."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Levels, DSRevitNodesUI",
+      "SelectedIndex": -1,
+      "NodeType": "ExtensionNode",
+      "Id": "b29994d8a9f24c60aab0cb3cf0749dc2",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "13a14a72c93b4f51add0fbf4de9f84b6",
+          "Name": "Levels",
+          "Description": "Выбрано Levels",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выберите уровень в активном документе"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "a8709c69-aa1d-4e0d-b2f1-182332d5b6b9",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "4982faa6590041b293afdfe0dd460c18",
+      "Inputs": [
+        {
+          "Id": "e60d30cb47d144fdb830d76640ba8aff",
+          "Name": "element",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f4eb96a1291d4b85acb1cfa7e046351c",
+          "Name": "confirm",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "aabcb072ae1d451cb89e10fe7023c515",
+          "Name": "count",
+          "Description": "возвращаемое значение",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c8875da979ed4f2a9642bda52fbcc073",
+          "Name": "deletedIds(str)",
+          "Description": "возвращаемое значение",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "87b951e3ad2040789e2f2a55bc7a0a5e",
+          "Name": "failedIds(str)",
+          "Description": "возвращаемое значение",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Attempts to delete the input list of elements from the active Revit document.The node returns the number of successfully deleted elements and their Ids as a string. Carefully observe the deleted elements count. It may be greater than the input list because hosted elements or tags will be deleted as well. If an element in the list can not be deleted (for example last revision or last view), the whole list will fail to be deleted."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "18ee72ac37f040c5a37f0dd540696c2f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e4f8905b76354126b212ea9e5c6e2ea2",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "d5f67d2b063f4b81899fd97c11fea817",
+      "Inputs": [
+        {
+          "Id": "9349086c191a4b61bcf94f8d279b2060",
+          "Name": "",
+          "Description": "Узел для оценки.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e6f33e0bacef4ddb9e9355d852c24baa",
+          "Name": "",
+          "Description": "Просмотр содержимого.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "317e0636b431428790bcdab0d48d2605",
+      "Inputs": [
+        {
+          "Id": "a01513fa7c4a43ca814b427bb9527390",
+          "Name": "",
+          "Description": "Узел для оценки.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "45002b59a4b74906a42126e33203126b",
+          "Name": "",
+          "Description": "Просмотр содержимого.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "71a781a089c54d97911413904ff0afd3",
+      "Inputs": [
+        {
+          "Id": "ba618e18371142a88e3865e95af6f29c",
+          "Name": "",
+          "Description": "Узел для оценки.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "269102b3704044aa941b7f171daa5f03",
+          "Name": "",
+          "Description": "Просмотр содержимого.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "1e177adb4a6e4bd797aaab7b1b620037",
+      "End": "e60d30cb47d144fdb830d76640ba8aff",
+      "Id": "61e43fe7ba284fd09b11d2a55dde7177"
+    },
+    {
+      "Start": "13a14a72c93b4f51add0fbf4de9f84b6",
+      "End": "166edc6d508c45a695129c72c67f3628",
+      "Id": "74dc80ab7ea74f65ba04cc033db65fce"
+    },
+    {
+      "Start": "aabcb072ae1d451cb89e10fe7023c515",
+      "End": "9349086c191a4b61bcf94f8d279b2060",
+      "Id": "eb6c0e72112647ee9314f9bd0e124d09"
+    },
+    {
+      "Start": "c8875da979ed4f2a9642bda52fbcc073",
+      "End": "a01513fa7c4a43ca814b427bb9527390",
+      "Id": "f2c6de0fc28f49e696e019ba3f409f8c"
+    },
+    {
+      "Start": "87b951e3ad2040789e2f2a55bc7a0a5e",
+      "End": "ba618e18371142a88e3865e95af6f29c",
+      "Id": "c7260e00c23a4f7d895ec069335102f9"
+    },
+    {
+      "Start": "e4f8905b76354126b212ea9e5c6e2ea2",
+      "End": "f4eb96a1291d4b85acb1cfa7e046351c",
+      "Id": "ff2c47a488364f9ab85ef47c23459a1e"
+    }
+  ],
+  "Dependencies": [
+    "a8709c69-aa1d-4e0d-b2f1-182332d5b6b9"
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.2.6826",
+      "RunType": "Automatic",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements at Level",
+        "Id": "8e9424d00de641cda92fda4da01030d2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 513.0,
+        "Y": 331.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Levels",
+        "Id": "b29994d8a9f24c60aab0cb3cf0749dc2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 317.0,
+        "Y": 331.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "ꟿ Document.DeleteElements",
+        "Id": "4982faa6590041b293afdfe0dd460c18",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 886.0,
+        "Y": 331.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "18ee72ac37f040c5a37f0dd540696c2f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 701.0,
+        "Y": 399.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "d5f67d2b063f4b81899fd97c11fea817",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1259.0,
+        "Y": 209.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "317e0636b431428790bcdab0d48d2605",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1253.0,
+        "Y": 354.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "71a781a089c54d97911413904ff0afd3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1262.0,
+        "Y": 462.0
+      }
+    ],
+    "Annotations": [],
+    "X": -71.802788247641445,
+    "Y": 216.19896882982533,
+    "Zoom": 0.6913477938671877
+  }
+}

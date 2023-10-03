@@ -1,0 +1,420 @@
+{
+  "Uuid": "f0735360-1635-414c-8b09-aed0b1249ce8",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "IFC_Correct_Revit",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.IO.FileSystem.ReadText@var",
+      "Id": "16902f03832443108ecee189a55ef3bb",
+      "Inputs": [
+        {
+          "Id": "09cacb012ca647529683192dbb886fb1",
+          "Name": "file",
+          "Description": "Файловый объект с текстом для чтения\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e1a69b57f8834385a71da5c45463ac37",
+          "Name": "string",
+          "Description": "Содержимое текстового файла.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Чтение текстового файла с выводом содержимого в виде строки.\n\nFileSystem.ReadText (file: var): string"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Загрузить стандартную библиотеку Python и библиотеку DesignScript\r\nimport sys\r\nimport clr\r\nimport re\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n\r\ndef findind(split_txt, fstr):\r\n        ind = 0\r\n        if fstr == \"\":\r\n                fstr = \"IFCSITE\"\r\n        for i in range(len(split_txt)):\r\n                if fstr in split_txt[i]:\r\n                        ind = i\r\n                        ind_i = split_txt[i]\r\n                        break\r\n        return ind,ind_i\r\n\r\ndef findindv2(split_txt, fstr):\r\n        ind = 0\r\n        ind_i = \"\"\r\n        if fstr == \"\":\r\n                fstr = \"IFCSITE\"\r\n        for i in range(len(split_txt)):\r\n                if fstr in split_txt[i][:5]:\r\n                        ind = i\r\n                        ind_i = split_txt[i]\r\n                        break\r\n        return ind,ind_i\r\n\r\ndef findstr(split_txt, ind, ind_i):\r\n        n_str2 = \"\"\r\n        temp_ind = ind_i.find(\"#\",(1 + ind_i.find(\"#\",1)))\r\n        n_str = ind_i[temp_ind:temp_ind+6]\r\n        for ns in range(1, len(n_str)):\r\n                if n_str[ns].isdigit() == True:\r\n                        n_str2 += n_str[ns]\r\n        n_str2 = \"#\" + n_str2\r\n        return n_str2\r\n\r\n#Временные строчки\r\n\r\nind1,ind2,ind3 = 0, 0, 0\r\nind1_i,ind2_i,ind3_i = \"\",\"\",\"\"\r\nn_str1, n_str2, n_str21, n_str3, n_str41, n_str42, n_str43 = \"\",\"\",\"\",\"\",\"\",\"\", \"\"\r\nn_str4_lst = []\r\nfinalIFC = \"\"\r\n\r\nifc = IN[0]\r\ndX, dY, dZ = IN[1], IN[2], IN[3]\r\npath,suffix = IN[4], IN[5]\r\nsplit_txt = ifc.split(\"\\n\")\r\n\r\n#ПЕРВЫЙ ПРОГОН\r\n\r\ng1 = findind(split_txt, \"\")\r\nind1 = g1[0]\r\ng12 = findstr(split_txt, g1[0], g1[1])\r\n\r\n#ВТОРОЙ ПРОГОН\r\ng2 = findindv2(split_txt, g12)\r\nind2 = g2[0]\r\nn_str2 = g2[1][6:]\r\nind2_i = n_str2.find(\"#\")\r\nn_str2 = n_str2[ind2_i:]\r\n\r\nfor j in n_str2:\r\n        if j.isdigit() == True:\r\n                n_str21 += j\r\n\r\nn_str21 = \"#\" + n_str21\r\n\r\n\r\n#ТРЕТИЙ ПРОГОН\r\ng3 = findindv2(split_txt, n_str21)\r\nind3 = g3[0]\r\nn_str3 = g3[1][6:]\r\n\r\nind3_i = n_str3.find(\"#\")\r\nind3_i_zpt = n_str3.find(\",\")\r\nn_str3 = n_str3[ind3_i:ind3_i_zpt]\r\n\r\n\r\n#ЧЕТВЕРТЫЙ ПРОГОН\r\ng4 = findindv2(split_txt, n_str3)\r\nind4 = g4[0]\r\nind41_i = g4[1].find(\"((\")\r\nind42_i = g4[1].find(\"))\")\r\n\r\nn_str4 = g4[1][ind41_i+2:ind42_i]\r\nn_str4 = n_str4.split(\",\")\r\n\r\nfor w in n_str4:\r\n        w = float(w[:-1])\r\n        w = round(w)\r\n        n_str4_lst.append(w)\r\n\r\n#Прибавляем координаты. Если надо вычесть - то подаем со знаком минус\r\n\r\nn_str4_lst[0] = n_str4_lst[0] + dX\r\nn_str4_lst[1] = n_str4_lst[1] + dY\r\nn_str4_lst[2] = n_str4_lst[2] + dZ\r\n\r\nfor ww in n_str4_lst:\r\n    n_str41 = str(ww) + \",\"\r\n    n_str42 = n_str41.replace(\".0\",\".\")\r\n    n_str43 += n_str42\r\n\r\nn_str43 = \"((\" + n_str43[:-1] + \"))\" + \"\\n\"\r\n\r\nsplit_txt[ind4] = g4[1][:ind41_i] + n_str43\r\n\r\nfinalIFC = \"\".join(split_txt)\r\n   \r\n# Выводим в новый файл ifc\r\n\r\nname = path[path.rfind('\\\\'):path.rfind('.')]\r\npath = path[:path.rfind('\\\\')+1]\r\n\r\nwith open(path + name + suffix + \".ifc\", 'w') as f:\r\n\tf.write(finalIFC)\r\n",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "041ecce8a86a4afc9a1b50192a8f20bb",
+      "Inputs": [
+        {
+          "Id": "df38796e04444c82accbc5c809539dbc",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "096b46e0d14e4761b6c04cd5631278a6",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b1657d21bf054b47a8dc258b39a07be4",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "da84ff4203c9449ebdf0162a4051e8b2",
+          "Name": "IN[3]",
+          "Description": "Input #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a21ef09d8aa14ef1ba5c1370620a3f7a",
+          "Name": "IN[4]",
+          "Description": "Input #4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0068409ebc3c45adba4bf4e50835963a",
+          "Name": "IN[5]",
+          "Description": "Input #5",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ecda4a7cad9f40aa9381836439d9e553",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение встроенного сценария Python."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "-2170978239;",
+      "Id": "e912fc745eae4ce0880d8ebffa0b9c60",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f1aba4e73e474eaab396836da35202e1",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0;",
+      "Id": "bc8bc2cb127e4088ae75d29013c5ef0d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "543e7ef1b0ea4a23982d93aa506e5b87",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "_FCKD",
+      "Id": "1ee19516c47948d7a02b4a85a5b7956e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "4dcd1997723045bd9fd15bd24fbe1128",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "-468586024;",
+      "Id": "c1d375c04bd6410e881935d45a638ea5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "770edb6fbb82433d8ca66c8a06502aa2",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Filename, CoreNodeModels",
+      "HintPath": "\\\\st1\\OTZ\\14 КСК\\КСК ШАБЛОН\\03_BIM модель\\IFC\\02_Edited\\АР-КР_КСК_Корпус1.ifc",
+      "InputValue": "..\\..\\..\\..\\14 КСК\\КСК ШАБЛОН\\03_BIM модель\\IFC\\02_Edited\\АР-КР_КСК_Корпус1.ifc",
+      "NodeType": "ExtensionNode",
+      "Id": "0685895c51eb46549ec28cf23cafca92",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "47b3f8db5d4244c39246999e4daf4b1c",
+          "Name": "",
+          "Description": "Путь к файлу",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Возможность выбрать файл в системе и получить путь к нему."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "7dda28d937204897b1bf4cca467a73ed",
+      "Inputs": [
+        {
+          "Id": "28bb8c8bc9a347fd977924d77016e70a",
+          "Name": "path",
+          "Description": "Путь к файлу в виде строки.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "917e5ccdabfa4e218c8cd765770a1db0",
+          "Name": "file",
+          "Description": "Файловый объект",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание нового объекта на основе пути."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "e1a69b57f8834385a71da5c45463ac37",
+      "End": "df38796e04444c82accbc5c809539dbc",
+      "Id": "b9cb4b8830a44a139dbe86028eb0126f"
+    },
+    {
+      "Start": "f1aba4e73e474eaab396836da35202e1",
+      "End": "096b46e0d14e4761b6c04cd5631278a6",
+      "Id": "50f1cfc41b3e434bbdc2d96871e676b6"
+    },
+    {
+      "Start": "543e7ef1b0ea4a23982d93aa506e5b87",
+      "End": "da84ff4203c9449ebdf0162a4051e8b2",
+      "Id": "b44b1023e9694247a04b3f9291eefeba"
+    },
+    {
+      "Start": "4dcd1997723045bd9fd15bd24fbe1128",
+      "End": "0068409ebc3c45adba4bf4e50835963a",
+      "Id": "e5ef8fc29d76442c8ab9076e4ca7789e"
+    },
+    {
+      "Start": "770edb6fbb82433d8ca66c8a06502aa2",
+      "End": "b1657d21bf054b47a8dc258b39a07be4",
+      "Id": "d7243199ce764e0eaa2791fd46ebed7a"
+    },
+    {
+      "Start": "47b3f8db5d4244c39246999e4daf4b1c",
+      "End": "28bb8c8bc9a347fd977924d77016e70a",
+      "Id": "5ecf8def84494353bb16d94150adbded"
+    },
+    {
+      "Start": "47b3f8db5d4244c39246999e4daf4b1c",
+      "End": "a21ef09d8aa14ef1ba5c1370620a3f7a",
+      "Id": "8d3d0af24869460a8208913206a1f52b"
+    },
+    {
+      "Start": "917e5ccdabfa4e218c8cd765770a1db0",
+      "End": "09cacb012ca647529683192dbb886fb1",
+      "Id": "3e1baee79e934a88b1abd583a8e3569d"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Нет",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.0.5650",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "FileSystem.ReadText",
+        "Id": "16902f03832443108ecee189a55ef3bb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 312.67961982583074,
+        "Y": 219.59509215313307
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "041ecce8a86a4afc9a1b50192a8f20bb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 718.10215862110954,
+        "Y": 258.95593024755675
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "X",
+        "Id": "e912fc745eae4ce0880d8ebffa0b9c60",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 331.91474310634203,
+        "Y": 343.13025639682405
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Z",
+        "Id": "bc8bc2cb127e4088ae75d29013c5ef0d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 363.33491939876814,
+        "Y": 574.0922906223883
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Suffix",
+        "Id": "1ee19516c47948d7a02b4a85a5b7956e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 482.67674543147041,
+        "Y": 549.46363899205255
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Y",
+        "Id": "c1d375c04bd6410e881935d45a638ea5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 333.67210203106811,
+        "Y": 466.11678488622636
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Путь к IFC",
+        "Id": "0685895c51eb46549ec28cf23cafca92",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -290.39589103583432,
+        "Y": 221.61129613889926
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File From Path",
+        "Id": "7dda28d937204897b1bf4cca467a73ed",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 26.340644099175506,
+        "Y": 193.76324580893015
+      }
+    ],
+    "Annotations": [],
+    "X": 421.13416701243881,
+    "Y": -10.777832758256693,
+    "Zoom": 1.0261108253977635
+  }
+}

@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OrchidSigma</name>
+    </assembly>
+    <members>
+        <member name="T:Orchid.Notifications.SigmaNotif">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.SigmaNotif.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.SigmaNotif.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.SigmaNotif.NoSigmaBranch">
+            <summary>
+              Looks up a localized string similar to No Sigma branch could be found.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.SigmaNotif.NoSigmaProject">
+            <summary>
+              Looks up a localized string similar to No Sigma project could be found.
+            </summary>
+        </member>
+        <member name="M:Orchid.Sigma.ComponentClearing(Sigma.ISigmaItem)">
+            Clean Sigma from given root
+        </member>
+        <member name="M:Orchid.Sigma.Document(System.String)">
+            <summary>
+            Open Sigma Estimate project file or create a new empty Sigma document .
+            </summary>
+            <param name="file">Path and Filename for Sigma Estimate document (file) 
+            including extension!, default will create a new empty Sigma document.</param>
+            <returns name="document">Sigma Estimate document.</returns>
+        </member>
+        <member name="M:Orchid.Sigma.SetData(System.Object,System.Collections.IList,System.Boolean,System.Collections.IList)">
+            <summary>
+            Set Revit data in Sigma Estimate project.
+            </summary>
+            <param name="document">Sigma Estimate document, default is the active Sigma project.</param>
+            <param name="branchRoot">Branch root where data should be written (or None).</param>
+            <param name="clearing">Cleaning sub component(s)?</param>
+            <param name="component">Data from (Sigma) Component node.</param>
+            <returns name="watch">Add a watch node to verify the output.</returns>
+        </member>
+        <member name="M:Orchid.Sigma.Clearing(System.Object,System.Collections.IList)">
+            <summary>
+            Clear a branch in Sigma Estimate for sub component.
+            </summary>
+            <param name="document">Sigma Estimate document, default is the active Sigma project.</param>
+            <param name="branch">Branch where sub component is going to be cleaned.</param>
+            <returns name="watch">Add a watch node to verify the output.</returns>
+        </member>
+        <member name="M:Orchid.Sigma.Delete(System.Object,System.Collections.IList)">
+            <summary>
+            Delete a branch in Sigma Estimate.
+            </summary>
+            <param name="document">Sigma Estimate document, default is the active Sigma project.</param>
+            <param name="branch">Branch to be deleted.</param>
+            <returns name="watch">Add a watch node to verify the output.</returns>
+        </member>
+        <member name="M:Orchid.Sigma.Component(System.Collections.IList,System.Collections.Generic.List{Revit.Elements.Element},System.String,System.Collections.Generic.List{System.Double},System.String,System.Double,System.Boolean)">
+            <summary>
+            Create Sigma Estimate component data.
+            </summary>
+            <param name="componentTree">List containing the structure as strings ["number","text"]
+            At least one 'level' is needed!</param>
+            <param name="element">Element(s).</param>
+            <param name="code">Element identifier for Sigma.</param>
+            <param name="quantity">Quantity as numeric value.</param>
+            <param name="sigmaUnit">Unit identifier for Sigma.</param>
+            <param name="sigmaRegulation">Regulation for the Sigma Component.</param>
+            <param name="instance">Component as instances or summarized? 
+            True select Data to be Instances, False select Data to be summarized.</param>
+            <returns name="component">Component.</returns>
+        </member>
+    </members>
+</doc>

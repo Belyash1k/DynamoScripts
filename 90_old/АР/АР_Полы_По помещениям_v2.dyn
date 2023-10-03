@@ -1,0 +1,2469 @@
+{
+  "Uuid": "f0735360-1635-414c-8b09-aed0b1249ce8",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "АР_Полы по помещениям_v2",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "6e7855b084004b66b5db61e6d25cb888",
+      "Name": "Название легенды с пирогом",
+      "Type": "string",
+      "Value": "Эскизы полов",
+      "Description": "Создание строки.",
+      "SelectedIndex": 0
+    },
+    {
+      "Id": "463bb934abf14f4aadcb4a7890004942",
+      "Name": "Временная папка для картинок",
+      "Type": "string",
+      "Value": "C:\\Users\\ProhorovAO\\Desktop",
+      "Description": "Позволяет выбрать папку в системе и получить путь к ней",
+      "SelectedIndex": 0
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.Geometry",
+      "Id": "b5fde1d308e447b1a40aaad0d5bbccfa",
+      "Inputs": [
+        {
+          "Id": "8afe349b993d4dffa2e429f89020f1fa",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9564f367a5a34158b1405e0dfb18ee12",
+          "Name": "var[]",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение всех элементов геометрии, связанных с этим объектом\n\nElement.Geometry ( ): var[]"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "2cc7ce7e5e3d45ea982c60b99705d420",
+      "Inputs": [
+        {
+          "Id": "ae91257108be4fc0a9d59b7bc678f13b",
+          "Name": "Category",
+          "Description": "Категория",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "68282b0f626c4ddb802683141d48633d",
+          "Name": "Elements",
+          "Description": "Тип элемента.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Получение из модели всех элементов определенной категории."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "9c2864135a6a4569a1446a21f246f5cb",
+      "Inputs": [
+        {
+          "Id": "cb7b95494ee742739eafef623c3d40d1",
+          "Name": "Category",
+          "Description": "Категория",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "88c9b91147c841a285a9bd70e075d731",
+          "Name": "Elements",
+          "Description": "Тип элемента.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Получение из модели всех элементов определенной категории."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Solid.Centroid",
+      "Id": "0b317a1404c34cb6baf6fe2e09ec3a95",
+      "Inputs": [
+        {
+          "Id": "1ff0b070b9994a47a1ec63dbbfcd4f00",
+          "Name": "solid",
+          "Description": "Autodesk.DesignScript.Geometry.Solid",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3cc2bfe5b7054caeb19265da1b02787d",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Центроид твердого тела\n\nSolid.Centroid ( ): Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Plane.ByOriginNormal@Autodesk.DesignScript.Geometry.Point,Autodesk.DesignScript.Geometry.Vector",
+      "Id": "627da719fd87408bbefe34b699295287",
+      "Inputs": [
+        {
+          "Id": "aa6cdc4a08af42d4834925811024e320",
+          "Name": "origin",
+          "Description": "Origin point of plane\n\nPoint\nЗначение по умолчанию : Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8a05379cef344eacbd1d2bf8a87bc68e",
+          "Name": "normal",
+          "Description": "Normal direction vector of plane\n\nVector\nЗначение по умолчанию : Autodesk.DesignScript.Geometry.Vector.ByCoordinates(0, 0, 1)",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "82a1c393fb64450bbb77a02631d8a47b",
+          "Name": "Plane",
+          "Description": "Plane created by origin and normal",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Создание плоскости, центрированной по корневой входной точке с входным вектором нормали.\n\nPlane.ByOriginNormal (origin: Point = Autodesk.DesignScript.Geometry.Point.ByCoordinates(0, 0, 0), normal: Vector = Autodesk.DesignScript.Geometry.Vector.ByCoordinates(0, 0, 1)): Plane"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Geometry.Scale@Autodesk.DesignScript.Geometry.Plane,double,double,double",
+      "Id": "1b8804628e8c4ad7a4a8e745a3a4fed9",
+      "Inputs": [
+        {
+          "Id": "4d8cd4ffdf8b4a1f9669034feb5c4acc",
+          "Name": "geometry",
+          "Description": "Autodesk.DesignScript.Geometry.Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "828b90111ee94462a241a8c64b6f4b29",
+          "Name": "plane",
+          "Description": "Plane",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e98f1766efd34c86984aa82ca478c422",
+          "Name": "xamount",
+          "Description": "double\nЗначение по умолчанию : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7036e863c4ec4bfa8d2fe0cd668a5341",
+          "Name": "yamount",
+          "Description": "double\nЗначение по умолчанию : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "42bfdd3a1b604231aa4d0c71f1c2dc4f",
+          "Name": "zamount",
+          "Description": "double\nЗначение по умолчанию : 1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "aaa119452ae84d7aa8f4306f3f1c9dd7",
+          "Name": "Geometry",
+          "Description": "Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Неравномерное масштабирование относительно заданной плоскости\n\nGeometry.Scale (plane: Plane, xamount: double = 1, yamount: double = 1, zamount: double = 1): Geometry"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "1.01;",
+      "Id": "781909c52aa14897babea4cf346df690",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a673a0029be1482e8c1dedb620ef9310",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.Geometry",
+      "Id": "8070000fb4fd432f908725cf0f77e670",
+      "Inputs": [
+        {
+          "Id": "0228917940194518b67040da6ac27197",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "5980dce1d7d7423593c63df261228915",
+          "Name": "var[]",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение всех элементов геометрии, связанных с этим объектом\n\nElement.Geometry ( ): var[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "7539d85128af46d2a383f12d94256feb",
+      "Inputs": [
+        {
+          "Id": "39fbb42ad97a483ea2cea60ff7e3ff57",
+          "Name": "list",
+          "Description": "Список для выравнивания.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c61360245434442dba40033d62720504",
+          "Name": "amount",
+          "Description": "Слои в списке, которые требуется исключить (–1 приведет к удалению всех вложенных в список слоев)\n\nint\nЗначение по умолчанию : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e96b918c332c40d7ab55c3fee9d160fe",
+          "Name": "list",
+          "Description": "Список с выравниванием по объему",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Выравнивание вложенного списка списков по определенному количественному значению.\n\nList.Flatten (list: var[]..[], amount: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.GetParameterValueByName@string",
+      "Id": "adeb28d8f3d04d559f28f03b584ff5eb",
+      "Inputs": [
+        {
+          "Id": "2285b5bd3d474392b7b53f4f543ee6d8",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "53131ba6b78c4dfc97b737dec1852954",
+          "Name": "parameterName",
+          "Description": "Имя параметра, значение которого требуется получить.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "187bac944dcd4439a52c8c9126f7b9fa",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение значения одного из параметров элемента.\n\nElement.GetParameterValueByName (parameterName: string): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Описание",
+      "Id": "27a94b037f144224ae1707abd0154720",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "16ecbfaeea264ba181bd9ac3fe56c622",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a==\"Пол\";",
+      "Id": "d82521b09d8844da86c099afb33f6c39",
+      "Inputs": [
+        {
+          "Id": "c45ec3a0bf834279b5d21f33dcba9059",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2b4b45445b984acc83f0950cb5f6a743",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Id": "7cb72d51656243058266afb7869d8ee9",
+      "Inputs": [
+        {
+          "Id": "e7dce09db5ac47389f130ea47e8e882a",
+          "Name": "list",
+          "Description": "Список, который требуется отфильтровать.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "27cd8bf67a214a8b808e45352a51b0d1",
+          "Name": "mask",
+          "Description": "Список логических операций, представляющих маску.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "bd8c9f446f4a49ec930d37849be47185",
+          "Name": "in",
+          "Description": "Элементы, индекс маски которых имеет значение «истина».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "620e73b131ff433eb3c0cf37833e7786",
+          "Name": "out",
+          "Description": "Элементы, индекс маски которых имеет значение «ложь».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Фильтрация последовательности путем поиска соответствующих индексов в отдельном списке логических операций.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.IsEmpty@var[]..[]",
+      "Id": "222c5c277c544014911b18012b73b337",
+      "Inputs": [
+        {
+          "Id": "2efcf9cbd6ab44289ac3bc588128555e",
+          "Name": "list",
+          "Description": "Проверка того, является ли список пустым\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "eaaaab7acb584b6a90523f9de7f2d2c0",
+          "Name": "bool",
+          "Description": "True — список пуст, False — не пуст",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Определение того, пуст ли данный список.\n\nList.IsEmpty (list: var[]..[]): bool"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Id": "df9579ae8d2344869e75840830adb2d2",
+      "Inputs": [
+        {
+          "Id": "78c7e6d08dd94f7bb1eec99daa0b2373",
+          "Name": "list",
+          "Description": "Список, который требуется отфильтровать.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "363383b1c5b3453788da08e55aa37958",
+          "Name": "mask",
+          "Description": "Список логических операций, представляющих маску.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "febd49926fa745258776099b83cdced9",
+          "Name": "in",
+          "Description": "Элементы, индекс маски которых имеет значение «истина».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "22ebf1244d37441f889bb3592682df85",
+          "Name": "out",
+          "Description": "Элементы, индекс маски которых имеет значение «ложь».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Фильтрация последовательности путем поиска соответствующих индексов в отдельном списке логических операций.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Flatten@var[]..[],int",
+      "Id": "628be457c901421cb8deed1e94afa92e",
+      "Inputs": [
+        {
+          "Id": "9a42769b00e143cbab9068f482e2f410",
+          "Name": "list",
+          "Description": "Список для выравнивания.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6e526ac5250d4621b46edfd1a2f0349b",
+          "Name": "amount",
+          "Description": "Слои в списке, которые требуется исключить (–1 приведет к удалению всех вложенных в список слоев)\n\nint\nЗначение по умолчанию : -1",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "03ce4da5dca84fb6b4065bcb79d855c4",
+          "Name": "list",
+          "Description": "Список с выравниванием по объему",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Выравнивание вложенного списка списков по определенному количественному значению.\n\nList.Flatten (list: var[]..[], amount: int = -1): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "rms;",
+      "Id": "919b3a5424dc4eb8a8e20d9e3e729424",
+      "Inputs": [
+        {
+          "Id": "54981b2fa6b74365897f6abf64d6109e",
+          "Name": "rms",
+          "Description": "rms",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "59f25c81cc8e426d9ec41a06411d3a3a",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.SetParameterByName@string,var",
+      "Id": "a65c6e9177a345839417089c5135ee64",
+      "Inputs": [
+        {
+          "Id": "e27e035a1e2945708bce02b8557d5957",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "33c813f79ed447aeb4a60c68ef28522d",
+          "Name": "parameterName",
+          "Description": "Имя задаваемого параметра.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3a668a97f620401099e6006710fa3a11",
+          "Name": "value",
+          "Description": "Значение.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "305a9618f92d42f19d632951b90b491d",
+          "Name": "Element",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Задание параметров для одного из элементов.\n\nElement.SetParameterByName (parameterName: string, value: var): Element"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Комментарии",
+      "Id": "bd2de3b61c904cf5af293d1116c12bea",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "86d536c516d44fea8e899412fd2c7807",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Прописать вручную номер в полу",
+      "Id": "a9dc62d3435247b4a02f038c3fffd62e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "70e47c2b7e424aff9b438cb2e86a7e2c",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr\r\nfrom System.Collections.Generic import List # noqa\r\nclr.AddReference('RevitServices')\r\nfrom RevitServices.Persistence import DocumentManager # noqa\r\nfrom RevitServices.Transactions import TransactionManager # noqa\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit # noqa\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\nclr.AddReference('RevitAPI')\r\nfrom Autodesk.Revit import DB # noqa\r\nfrom Autodesk.Revit.DB import FilteredElementCollector as FEC # noqa\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\n\r\ndef clean_legends_by_prefix(prefix):\r\n    ids_to_delete = List[DB.ElementId]()\r\n    count = 0\r\n    for view in FEC(doc).OfClass(DB.View):\r\n        if prefix in view.Name:\r\n            ids_to_delete.Add(view.Id)\r\n            count += 1\r\n    with DB.Transaction(doc, 'clean legends') as t:\r\n        t.Start()\r\n        doc.Delete(ids_to_delete)\r\n        t.Commit()\r\n    report.append('{} временных видов удалено'.format(count))\r\n\r\ndef get_view_by_name(name):\r\n\tview = 0\r\n\tfor v in FEC(doc).OfClass(DB.View):\r\n\t\tif v.Name == name:\r\n\t\t\tview = v\r\n\treturn view\r\n\r\ndef duplicate_floor_legend(legend, name):\r\n    with DB.Transaction(doc, 'duplicate floor legend') as t:\r\n        t.Start()\r\n        dup_legend = doc.GetElement(legend.Duplicate(dupopt))\r\n        dup_legend.LookupParameter(\"Имя вида\").Set(name)\r\n        t.Commit()\r\n    return dup_legend\r\n\r\ndef set_type_component(component, type_id):\r\n    with DB.Transaction(doc, 'set component type') as t:\r\n        t.Start()\r\n        component.LookupParameter(\"Тип компонента\").Set(type_id)\r\n        t.Commit()\r\n\r\ndef create_dimensions(current_legend, current_component):\r\n    p_max = current_component.BoundingBox[current_legend].Max\r\n    p_min = current_component.BoundingBox[current_legend].Min\r\n    p_up_left = DB.XYZ(p_min.X, p_max.Y, 0)\r\n    p_up_right = DB.XYZ(p_max.X, p_max.Y, 0)\r\n    p_down_left = DB.XYZ(p_min.X, p_min.Y, 0)\r\n    p_down_right = DB.XYZ(p_max.X, p_min.Y, 0)\r\n    line_1 = DB.Line.CreateBound(p_up_left, p_up_right)\r\n    line_2 = DB.Line.CreateBound(p_down_left, p_down_right)\r\n    dim_line = DB.Line.CreateBound(p_down_left + DB.XYZ(-200/304.8, 0, 0), p_up_left + DB.XYZ(-200/304.8, 0, 0))\r\n    with DB.Transaction(doc, 'create dimension') as t:\r\n        t.Start()\r\n        arr_2 = DB.ReferenceArray()\r\n        d_curve_1 = doc.Create.NewDetailCurve(current_legend, line_1)\r\n        d_curve_2 = doc.Create.NewDetailCurve(current_legend, line_2)\r\n        arr_2.Append(d_curve_1.GeometryCurve.Reference)\r\n        arr_2.Append(d_curve_2.GeometryCurve.Reference)\r\n        doc.Create.NewDimension(current_legend, dim_line, arr_2)\r\n        t.Commit()\r\n\r\ndef create_flag(current_component, current_legend, floor_type):\r\n    point_place_flag = current_component.BoundingBox[current_legend].Max + DB.XYZ(-200/304.8, 0, 0)\r\n    symbols = FEC(doc).OfCategory(DB.BuiltInCategory.OST_GenericAnnotation).WhereElementIsElementType().ToElements()\r\n    for symbol in symbols:\r\n        if symbol.FamilyName == 'floor_flag':\r\n            flag_symbol = symbol\r\n            break\r\n    layer_count = floor_type.GetCompoundStructure().LayerCount\r\n    with DB.Transaction(doc, 'create flag') as t:\r\n        t.Start()\r\n        flag_instance = doc.Create.NewFamilyInstance(point_place_flag, flag_symbol, current_legend)\r\n        for parameter in flag_instance.GetParameters('колво_строк'):\r\n            parameter.Set(layer_count)\r\n        t.Commit()\r\n\r\ndef export_images(path_to_images, image_width, legend_views):\r\n    legend_views_id = List[DB.ElementId]()\r\n    for view in legend_views:\r\n        legend_views_id.Add(view.Id)\r\n    img_options = DB.ImageExportOptions()\r\n    img_options.FilePath = path_to_images\r\n    img_options.ZoomType = DB.ZoomFitType.FitToPage\r\n    img_options.PixelSize = image_width\r\n    img_options.ImageResolution = DB.ImageResolution.DPI_300\r\n    img_options.HLRandWFViewsFileType = DB.ImageFileType.JPEGLossless\r\n    img_options.ExportRange = DB.ExportRange.SetOfViews\r\n    img_options.SetViewsAndSheets(legend_views_id)\r\n    doc.ExportImage(img_options)\r\n    images = FEC(doc).OfClass(DB.ImageType).ToElements()\r\n    return images, img_options\r\n\r\ndef import_and_set_image(current_path, type_id, floor_type_image_parameter):\r\n    image_import_options = DB.ImageTypeOptions(current_path, False, DB.ImageTypeSource.Import)\r\n    image_import_options.Resolution = 300\r\n    image = DB.ImageType.Create(doc, image_import_options)\r\n    if floor_type_image_parameter == 'Изображение типоразмера':\r\n        par = doc.GetElement(type_id).Parameter[DB.BuiltInParameter.ALL_MODEL_TYPE_IMAGE]\r\n    else:\r\n        par = doc.GetElement(type_id).LookupParameter(floor_type_image_parameter)\r\n    par.Set(image.Id)\r\n\r\n#----------------------ВХОДНЫЕ ДАННЫЕ----------------------------------\r\nstart_legend_name = IN[0]\r\npath_to_images = IN[1]\r\nfloor_type_image_parameter = IN[2]\r\nfloor_types_id = IN[3]\r\nimage_width = 1000\r\n#----------------------------------------------------------------------\r\n\r\ndupopt = DB.ViewDuplicateOption.WithDetailing\r\nprefix_legend = 'temp_legend_to_delete'\r\nlegend_views = []\r\nreport = []\r\n\r\nfor i, t in enumerate(floor_types_id):\r\n    if not isinstance(t, DB.ElementId):\r\n        floor_types_id[i] = DB.ElementId(t)\r\nfloor_types_id = list(set(floor_types_id))\r\n\r\nclean_legends_by_prefix(prefix_legend)\r\nstart_legend = get_view_by_name(start_legend_name)\r\nfirst_component = FEC(doc, start_legend.Id).OfCategory(DB.BuiltInCategory.OST_LegendComponents).ToElements()[0]\r\n\r\nfor type_id in floor_types_id:\r\n    floor_type = doc.GetElement(type_id)\r\n    current_legend_name = prefix_legend + \"_\" + floor_type.Id.ToString()\r\n    current_legend = duplicate_floor_legend(start_legend, current_legend_name)\r\n    current_component = FEC(doc, current_legend.Id).OfCategory(DB.BuiltInCategory.OST_LegendComponents).ToElements()[0]\r\n    set_type_component(current_component, type_id)\r\n    create_dimensions(current_legend, current_component)\r\n    #create_flag(current_component, current_legend, floor_type)\r\n    legend_views.append(current_legend)\r\n\r\n#----------------part2------------------\r\n\r\nimages, img_export_options = export_images(path_to_images, image_width, legend_views)\r\n\r\nwith DB.Transaction(doc, 'images') as t:\r\n    t.Start()\r\n    for view, type_id in zip(legend_views, floor_types_id):\r\n        current_path = img_export_options.FilePath + ' - Легенда - ' + view.Name + '.jpg'\r\n        image = 0\r\n        for img in images:\r\n            if img.Path == current_path:\r\n                image = img\r\n        if image:\r\n            image.Reload()\r\n        else:\r\n            import_and_set_image(current_path, type_id, floor_type_image_parameter)\r\n    t.Commit()\r\n\r\nclean_legends_by_prefix(prefix_legend)\r\n\r\nOUT = report\r\n",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "6c7bdaa376114db6aec41af78daba66e",
+      "Inputs": [
+        {
+          "Id": "5728f92cb107430f92bcb976613dff66",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a9bfebc980d045d2b10eec7388937620",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5daf7ffb9f92453baaff4c40d17f7d7f",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "eda05f37c5a04577b8ff7d623be524e9",
+          "Name": "IN[3]",
+          "Description": "Input #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "aa4f42adea404dd1aa0487f3b0b770bb",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение встроенного сценария Python."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Эскизы полов",
+      "Id": "6e7855b084004b66b5db61e6d25cb888",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "26db2eba37ce43b8bc2c532ff351f331",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.Directory, CoreNodeModels",
+      "HintPath": "C:\\Users\\ProhorovAO\\Desktop",
+      "InputValue": "C:\\Users\\ProhorovAO\\Desktop",
+      "NodeType": "ExtensionNode",
+      "Id": "463bb934abf14f4aadcb4a7890004942",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b729722c36be4ebba9d752172d91f679",
+          "Name": "",
+          "Description": "Путь к каталогу",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Позволяет выбрать папку в системе и получить путь к ней"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Изображение типоразмера",
+      "Id": "7a76cf382811431d895091745c17e2a8",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ae507a7d3e8d473caa4c1ba253a2de13",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.UniqueItems@var[]..[]",
+      "Id": "5bf215b5b2a74acbad949728db3b1aea",
+      "Inputs": [
+        {
+          "Id": "b63a629a5d2c4a1a89877a10668e1843",
+          "Name": "list",
+          "Description": "Список, который требуется отфильтровать, исключив повторы.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "609e899080f64affb1d6048105ea2cc9",
+          "Name": "list",
+          "Description": "Отфильтрованный список.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Создание нового списка, содержащего все уникальные элементы из заданного списка.\n\nList.UniqueItems (list: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Загрузить стандартную библиотеку Python и библиотеку DesignScript\r\nimport sys, clr\r\nclr.AddReference('ProtoGeometry')\r\nclr.AddReference('DSCoreNodes') \r\nclr.AddReference('RevitAPI')\r\nclr.AddReference('RevitServices')\r\nclr.AddReference(\"System.Core\")\r\nfrom Autodesk.DesignScript.Geometry import *\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\nimport DSCore\r\nfrom DSCore import *\r\nimport System\r\nclr.ImportExtensions(System.Linq)\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\nfrom itertools import groupby\r\n\r\nuiapp = DocumentManager.Instance.CurrentUIApplication\r\napp = uiapp.Application\r\nversion=int(app.VersionNumber)\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nUIunit = doc.GetUnits().GetFormatOptions(SpecTypeId.Length).GetUnitTypeId()\r\n\r\n# Исходники\r\nrooms_geom = UnwrapElement(IN[0])\r\nfloors_geom = UnwrapElement(IN[1])\r\nrooms = UnwrapElement(IN[2])\r\nfloors = UnwrapElement(IN[3])\r\nf_types = UnwrapElement(IN[4])\r\n\r\n# Заполняемые списки\r\ndata = dict()\r\n\r\n\"\"\" пример структуры словаря data\r\ndata = {\r\n    level1 : [\r\n\t\t    \t[type1, [room1, room2, room3]],\r\n\t\t\t\t[type2, [room4, room5]]\r\n\t\t\t],\r\n    level2 : [\r\n\t\t    \t[type1, [room7, room9]],\r\n\t\t\t\t[type2, [room10]],\r\n\t\t\t\t[type3, []\r\n\t\t    ]\r\n}\r\n\"\"\"\r\n\r\nfor floor, floor_type in zip(floors, f_types):\r\n    lvl = doc.GetElement(floor.LevelId).Name\r\n    foor_type_id = floor_type.Id.IntegerValue\r\n    if lvl in data.keys():\r\n    \tcount = 0\r\n    \tfor t in data[lvl]:\r\n    \t\tif t[0] != foor_type_id:\r\n    \t\t\tcount += 1\r\n    \tif count == len(data[lvl]):\r\n    \t\tdata[lvl].append([foor_type_id, [], []])\r\n    else:\r\n    \tdata[lvl] = [[foor_type_id, [], []]]\r\n\r\nfor floor, floor_type, floor_solid in zip(floors, f_types, floors_geom):\r\n    for room, room_solid in zip(rooms, rooms_geom):\r\n        if Geometry.DoesIntersect(floor_solid, room_solid):\r\n            lvl = doc.GetElement(floor.LevelId).Name\r\n            floor_type_id = floor_type.Id.IntegerValue\r\n            room_num = room.LookupParameter(\"Номер\").AsString()\r\n            room_name = room.LookupParameter(\"Имя\").AsString()\r\n            for i in data[lvl]:\r\n            \tif i[0] == floor_type_id:\r\n            \t\ti[1].append(room_num)\r\n            \t\ti[2].append(room_name)\r\n\r\nfor lvl in data.keys():\r\n\tfor i in data[lvl]:\r\n\t\ti[1] = list(set(i[1]))\r\n\t\ti[1].sort()\r\n\t\ti[1] = '; '.join(i[1])\r\n\t\ti[2] = list(set(i[2]))\r\n\t\ti[2].sort()\r\n\t\ti[2] = '; '.join(i[2])\r\n\r\nTransactionManager.Instance.EnsureInTransaction(doc)\r\n\r\nfor floor, floor_type in zip(floors, f_types):\r\n    lvl = doc.GetElement(floor.LevelId).Name\r\n    floor_type_id = floor_type.Id.IntegerValue\r\n    for i in data[lvl]:\r\n    \tif i[0] == floor_type_id:\r\n    \t\tfloor.LookupParameter(\"NIIPI_Номера помещений\").Set(i[1])\r\n    \t\tfloor.LookupParameter(\"NIIPI_Имена помещений\").Set(i[2])\r\n\r\nTransactionManager.Instance.ForceCloseTransaction()\r\n\r\n\r\nfor f in floors:\r\n\tstruct = []\r\n\tcs = f.FloorType.GetCompoundStructure()\r\n\ta = list(cs.GetLayers())\r\n\tcnt = 1\r\n\t\r\n\tfor x in a:\r\n\t\taa = f.FloorType.Document.GetElement(x.MaterialId)\r\n\t\taaa = aa.LookupParameter(\"Описание\")\r\n\t\tb = UnitUtils.ConvertFromInternalUnits(x.Width,UIunit)\r\n\t\tc = str(b)\r\n\t\td = c[:c.index(\".\")]\r\n\t\tstruct.append((str(cnt) + \") \" + aaa.AsValueString() + \": \" + d + \" мм\"))\r\n\t\tcnt+=1\r\n\t\t\r\n\tfpar = f.LookupParameter(\"NIIPI_Состав пола\")\r\n\t\t\r\n\tTransactionManager.Instance.EnsureInTransaction(doc)\r\n\tfpar.Set(\"\\n\".join(struct))\r\n\tTransactionManager.Instance.ForceCloseTransaction()\r\n\r\nOUT = f_types",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "534fc348d303450d87e48f804aeb2689",
+      "Inputs": [
+        {
+          "Id": "bb2c2b2a078246f0aa5da680e7565a4f",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f9f267ded2ce4e8488701271bc7dcc93",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1f8214d50f5542f0a383d40f2210f909",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4741d7d69aa24733a2dd81c4b90a5db4",
+          "Name": "IN[3]",
+          "Description": "Input #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dfb710711198402ab6269a107d035a11",
+          "Name": "IN[4]",
+          "Description": "Input #4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3a6424c2e0e84716aa58626a1f57a84a",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение встроенного сценария Python."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a;",
+      "Id": "e5d71fd013214baeb6aec30231a67b56",
+      "Inputs": [
+        {
+          "Id": "cedf4fbd563a438ab40905fd4a6db37b",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3cc7cea0201847558081d0b9ec917ada",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a.Area == 0?false:true;",
+      "Id": "1530ddc9c36741bca976ee7c3e4997e8",
+      "Inputs": [
+        {
+          "Id": "d04b890567494e26ae97bda48325b3d9",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "617c5e301269414fb9b6385542c87dad",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Id": "7a72a09168b0478d84bfe13f1ba9b634",
+      "Inputs": [
+        {
+          "Id": "2bacbe1c1c13471e834ce1bb040c023c",
+          "Name": "list",
+          "Description": "Список, который требуется отфильтровать.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e98b05004c8d4698a504f02bd18bcb26",
+          "Name": "mask",
+          "Description": "Список логических операций, представляющих маску.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "617e852d07d440ff9c580142d641ad54",
+          "Name": "in",
+          "Description": "Элементы, индекс маски которых имеет значение «истина».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "61044dccffad4e23a44b06c3af921665",
+          "Name": "out",
+          "Description": "Элементы, индекс маски которых имеет значение «ложь».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Фильтрация последовательности путем поиска соответствующих индексов в отдельном списке логических операций.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a.Id;",
+      "Id": "8c2b9ac9afdc47b0a21f231e5f484b1d",
+      "Inputs": [
+        {
+          "Id": "cab56d126baa4879b3879a3624329d28",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "71b02c9afb87485bb8e1083b48924c41",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Id": "127ae4b1eec249ad8ed63426ff45d1b9",
+      "Inputs": [
+        {
+          "Id": "5da340c176254e85afdbecb12e065899",
+          "Name": "list",
+          "Description": "Список, который требуется отфильтровать.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5df93dca7b334de6887a654864e9319f",
+          "Name": "mask",
+          "Description": "Список логических операций, представляющих маску.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "28823c3ceba342038f8ae6b758893a07",
+          "Name": "in",
+          "Description": "Элементы, индекс маски которых имеет значение «истина».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9f7c18f022c34a6c93a398a5b066c64d",
+          "Name": "out",
+          "Description": "Элементы, индекс маски которых имеет значение «ложь».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Фильтрация последовательности путем поиска соответствующих индексов в отдельном списке логических операций.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "l = IN[0]\r\nout = []\r\nfor i in l:\r\n\tif i:\r\n\t\tout.append(True)\r\n\telse:\r\n\t\tout.append(False)\r\nOUT = out",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "9be87394a1f24bd48deac80411111d5a",
+      "Inputs": [
+        {
+          "Id": "6bfc2efdaf24431c9e873e6d90d86b42",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "88927d41f09843c6b8a523cdaf3e1aa3",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение встроенного сценария Python."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Id": "188690e45de84b5e8528a3c94deaf98a",
+      "Inputs": [
+        {
+          "Id": "8061369282e943d68bc358903b24b3c4",
+          "Name": "list",
+          "Description": "Список, который требуется отфильтровать.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b1676b2c758d4924adfdf6e8a8bb16ac",
+          "Name": "mask",
+          "Description": "Список логических операций, представляющих маску.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a2cfb1cf01ea4346aa87cdcf9b7aeab6",
+          "Name": "in",
+          "Description": "Элементы, индекс маски которых имеет значение «истина».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0b301f2b8ddc4f06b87c5b6f4e8d88eb",
+          "Name": "out",
+          "Description": "Элементы, индекс маски которых имеет значение «ложь».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Фильтрация последовательности путем поиска соответствующих индексов в отдельном списке логических операций.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Id": "72ad7a2eab6f4926b32621a053fce3b9",
+      "Inputs": [
+        {
+          "Id": "9b1047cae2ed45638532e88a081a25bd",
+          "Name": "list",
+          "Description": "Список, который требуется отфильтровать.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e7729101c4214c149298570a6c5ae765",
+          "Name": "mask",
+          "Description": "Список логических операций, представляющих маску.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "717c8d76e81744128d406a101db33d82",
+          "Name": "in",
+          "Description": "Элементы, индекс маски которых имеет значение «истина».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5545653387c84df9980b1101ad256bf6",
+          "Name": "out",
+          "Description": "Элементы, индекс маски которых имеет значение «ложь».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Фильтрация последовательности путем поиска соответствующих индексов в отдельном списке логических операций.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.ElementType",
+      "Id": "2ccb05a02b0f4822bd11536877cb5b02",
+      "Inputs": [
+        {
+          "Id": "1b97447aab3e44bdab5f9029ff64fcae",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "dec81498368b4e6a828c0129246597c4",
+          "Name": "ElementType",
+          "Description": "Тип элемента или нулевое значение.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Возврат типа ElementType для элемента. Возврат нулевого значения, если элементу нельзя назначить тип ElementType.\n\nElement.ElementType: ElementType"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 505,
+      "SelectedString": "OST_Floors",
+      "NodeType": "ExtensionNode",
+      "Id": "cca50b31d8e6407caa79de06d651fef9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "abfa4b3789b14a1ba9924deb0d47a0b9",
+          "Name": "Category",
+          "Description": "Выбранная категория.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Все предопределенные категории."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 521,
+      "SelectedString": "OST_Rooms",
+      "NodeType": "ExtensionNode",
+      "Id": "c7c702e37b28419fb136eb20f71701b5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "0805ad35d6a4417da6e3dc405ac15abd",
+          "Name": "Category",
+          "Description": "Выбранная категория.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Все предопределенные категории."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Комментарии",
+      "Id": "d2b7bd1194f34cc0a7a92636e511bd1a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7de373c8b7214658a310a8fb555804fa",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Прописать вручную номер в полу",
+      "Id": "2c0dbd66f95241a8a6deebdd43c99a58",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "bf27ffd56ea84cacb85af131bac7593a",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.SetParameterByName@string,var",
+      "Id": "24ea6122ef594f2a9e7c255f453f52b5",
+      "Inputs": [
+        {
+          "Id": "f81009301f3c475c9209a9821c4d48ee",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d1490eea6f4640dfb9faf0f4ec796966",
+          "Name": "parameterName",
+          "Description": "Имя задаваемого параметра.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bb50573406d64d9981985bbdd0933cdd",
+          "Name": "value",
+          "Description": "Значение.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "abcbaff61f404dad9499779547cbf719",
+          "Name": "Element",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Задание параметров для одного из элементов.\n\nElement.SetParameterByName (parameterName: string, value: var): Element"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Id": "632a3b5d573f4a66b305ef21e3fe8c68",
+      "Inputs": [
+        {
+          "Id": "3c081071ff9845d2b2ec193be12d43c9",
+          "Name": "list",
+          "Description": "Список, который требуется отфильтровать.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1d9fbe29924e458892be66cbec565c8a",
+          "Name": "mask",
+          "Description": "Список логических операций, представляющих маску.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ecf77368476548d882d227d702014b15",
+          "Name": "in",
+          "Description": "Элементы, индекс маски которых имеет значение «истина».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7de47e21de6d435cb4fd9edc9a8e19dd",
+          "Name": "out",
+          "Description": "Элементы, индекс маски которых имеет значение «ложь».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Фильтрация последовательности путем поиска соответствующих индексов в отдельном списке логических операций.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.ElementType",
+      "Id": "53686184d98b4ab4b1dff07ec38d10b5",
+      "Inputs": [
+        {
+          "Id": "3534661199ab4cf0bd33193ae40d1903",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2faca0d775324cfe982ccb8a4a1b773b",
+          "Name": "ElementType",
+          "Description": "Тип элемента или нулевое значение.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Возврат типа ElementType для элемента. Возврат нулевого значения, если элементу нельзя назначить тип ElementType.\n\nElement.ElementType: ElementType"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Загрузить стандартную библиотеку Python и библиотеку DesignScript\r\nimport sys, clr\r\nclr.AddReference('ProtoGeometry')\r\nclr.AddReference('DSCoreNodes') \r\nclr.AddReference('RevitAPI')\r\nclr.AddReference('RevitServices')\r\nclr.AddReference(\"System.Core\")\r\nfrom Autodesk.DesignScript.Geometry import *\r\nimport Autodesk\r\nfrom Autodesk.Revit.DB import *\r\nimport DSCore\r\nfrom DSCore import *\r\nimport System\r\nclr.ImportExtensions(System.Linq)\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager\r\nfrom RevitServices.Transactions import TransactionManager\r\nfrom itertools import groupby\r\n\r\nuiapp = DocumentManager.Instance.CurrentUIApplication\r\napp = uiapp.Application\r\nversion=int(app.VersionNumber)\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nUIunit = doc.GetUnits().GetFormatOptions(SpecTypeId.Length).GetUnitTypeId()\r\n\r\n# Исходники\r\nrooms_geom = UnwrapElement(IN[0])\r\nfloors_geom = UnwrapElement(IN[1])\r\nrooms = UnwrapElement(IN[2])\r\nfloors = UnwrapElement(IN[3])\r\nf_types = UnwrapElement(IN[4])\r\n\r\n# Заполняемые списки\r\n\r\ndata = {}\r\n\"\"\" пример структуры словаря data\r\ndata = {\r\n\tlevel1 : {\r\n\t\ttype1 : [room1, room2, room3],\r\n\t\ttype2 : [room4, room5]\r\n\t\t},\r\n\tlevel2 : {\r\n\t\ttype1 : [room7, room9],\r\n\t\ttype2 : [room10],\r\n        type3 : []\r\n\t\t}\r\n}\r\n\"\"\"\r\n\r\nfor floor, floor_type, floor_solid in zip(floors, f_types, floors_geom):\r\n    for room, room_solid in zip(rooms, rooms_geom):\r\n        if Geometry.DoesIntersect(floor_solid, room_solid):\r\n            lvl = doc.GetElement(floor.LevelId).Name\r\n            foor_type_id = floor_type.Id.IntegerValue\r\n            # room_num = room.LookupParameter(\"Номер\").AsString()\r\n            # room_name = room.LookupParameter(\"Имя\").AsString()\r\n\r\n            if lvl in data.keys():\r\n                if foor_type_id in data[lvl].keys():\r\n                    data[lvl][foor_type_id].append(room)\r\n                else:\r\n                    data[lvl][foor_type_id] = [room]\r\n            else:\r\n                data[lvl] = {}\r\n                data[lvl][foor_type_id] = [room]\r\n\r\nTransactionManager.Instance.EnsureInTransaction(doc)\r\nfor floor, floor_type in zip(floors, f_types):\r\n    lvl = doc.GetElement(floor.LevelId).Name\r\n    foor_type_id = floor_type.Id.IntegerValue\r\n    if foor_type_id in data[lvl].keys():\r\n    \tnums = list(set([r.LookupParameter(\"Номер\").AsString() for r in data[lvl][foor_type_id]])).sort()\r\n    \tnames = list(set([r.LookupParameter(\"Имя\").AsString() for r in data[lvl][foor_type_id]])).sort()\r\n\t    if nums:\r\n\t    \tfloor.LookupParameter(\"NIIPI_Номера помещений\").Set('; '.join(nums))\r\n\t    \tfloor.LookupParameter(\"NIIPI_Имена помещений\").Set('; '.join(names))\r\nTransactionManager.Instance.ForceCloseTransaction()\r\n\t\t\t\t\t\r\n\r\nOUT = 'ok'",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "00e5fc7f771a4c5098926a38780864ad",
+      "Inputs": [
+        {
+          "Id": "05de60f29c2e46c3883949a5c07280e3",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "973501bd4fa641cdb33e7e7dcb661046",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "80b399704fe843faad4f5b958298d43b",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "427d2078bd554bc6827d1c6d9508753a",
+          "Name": "IN[3]",
+          "Description": "Input #3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "ea3e330df24640e5ab0d695fb00d7208",
+          "Name": "IN[4]",
+          "Description": "Input #4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1cb38cd67605402d9b8f4b65aac3d444",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение встроенного сценария Python."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Transaction.Transaction.End@var",
+      "Id": "9415a904c8e247929e98cfbce44178ac",
+      "Inputs": [
+        {
+          "Id": "1b04f0515c3743f7be6aa3d80a9177e7",
+          "Name": "input",
+          "Description": "Объект.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "1bad608620c54652acc2ff6f0a5d956d",
+          "Name": "var[]..[]",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Завершение текущей транзакции Dynamo и получение предъявленных данных.\n\nTransaction.End (input: var): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "9564f367a5a34158b1405e0dfb18ee12",
+      "End": "2efcf9cbd6ab44289ac3bc588128555e",
+      "Id": "5bd1c0a92e654fe79890e9107fbf6a32"
+    },
+    {
+      "Start": "9564f367a5a34158b1405e0dfb18ee12",
+      "End": "78c7e6d08dd94f7bb1eec99daa0b2373",
+      "Id": "a3ad888c2f304075a40c8986c19458a9"
+    },
+    {
+      "Start": "68282b0f626c4ddb802683141d48633d",
+      "End": "2bacbe1c1c13471e834ce1bb040c023c",
+      "Id": "1134aac650a94d40a88e55e7bcbb3d5f"
+    },
+    {
+      "Start": "68282b0f626c4ddb802683141d48633d",
+      "End": "d04b890567494e26ae97bda48325b3d9",
+      "Id": "b692c96c9ea44a7ab592555c7aa0e612"
+    },
+    {
+      "Start": "88c9b91147c841a285a9bd70e075d731",
+      "End": "e7dce09db5ac47389f130ea47e8e882a",
+      "Id": "4d459672127f4254a39d46477ba66f35"
+    },
+    {
+      "Start": "88c9b91147c841a285a9bd70e075d731",
+      "End": "1b97447aab3e44bdab5f9029ff64fcae",
+      "Id": "c3a75a698ca14c2ca4f890b056281602"
+    },
+    {
+      "Start": "3cc2bfe5b7054caeb19265da1b02787d",
+      "End": "aa6cdc4a08af42d4834925811024e320",
+      "Id": "b3af8e5370234e4ea1bd54c8529e9514"
+    },
+    {
+      "Start": "82a1c393fb64450bbb77a02631d8a47b",
+      "End": "828b90111ee94462a241a8c64b6f4b29",
+      "Id": "d1fbbce98e4d483d895ec3946310a166"
+    },
+    {
+      "Start": "aaa119452ae84d7aa8f4306f3f1c9dd7",
+      "End": "9a42769b00e143cbab9068f482e2f410",
+      "Id": "48357710529a42abb99b08775689a312"
+    },
+    {
+      "Start": "a673a0029be1482e8c1dedb620ef9310",
+      "End": "42bfdd3a1b604231aa4d0c71f1c2dc4f",
+      "Id": "b4420c3157c74c239949f29b0bf85f63"
+    },
+    {
+      "Start": "5980dce1d7d7423593c63df261228915",
+      "End": "5da340c176254e85afdbecb12e065899",
+      "Id": "e65e351752c04c1b8917bfcd10ef8d86"
+    },
+    {
+      "Start": "5980dce1d7d7423593c63df261228915",
+      "End": "6bfc2efdaf24431c9e873e6d90d86b42",
+      "Id": "36c53ee43b714038be7cc822bc22eccb"
+    },
+    {
+      "Start": "e96b918c332c40d7ab55c3fee9d160fe",
+      "End": "f9f267ded2ce4e8488701271bc7dcc93",
+      "Id": "e170caa94ea441a7829702771ba47348"
+    },
+    {
+      "Start": "e96b918c332c40d7ab55c3fee9d160fe",
+      "End": "973501bd4fa641cdb33e7e7dcb661046",
+      "Id": "2046a4e1ed4d45dba25a7572a9aea978"
+    },
+    {
+      "Start": "187bac944dcd4439a52c8c9126f7b9fa",
+      "End": "c45ec3a0bf834279b5d21f33dcba9059",
+      "Id": "97ee58171176497c9c2175759a34ad22"
+    },
+    {
+      "Start": "16ecbfaeea264ba181bd9ac3fe56c622",
+      "End": "53131ba6b78c4dfc97b737dec1852954",
+      "Id": "a16beb31639b40adbf88a33fd2668773"
+    },
+    {
+      "Start": "2b4b45445b984acc83f0950cb5f6a743",
+      "End": "27cd8bf67a214a8b808e45352a51b0d1",
+      "Id": "8882bea126ae417496c668791d34fceb"
+    },
+    {
+      "Start": "bd8c9f446f4a49ec930d37849be47185",
+      "End": "0228917940194518b67040da6ac27197",
+      "Id": "83b099129b5f400d8b1e04f0882ef9ea"
+    },
+    {
+      "Start": "bd8c9f446f4a49ec930d37849be47185",
+      "End": "3534661199ab4cf0bd33193ae40d1903",
+      "Id": "ecb9f01cff8c4e67985639e8c5798d83"
+    },
+    {
+      "Start": "bd8c9f446f4a49ec930d37849be47185",
+      "End": "9b1047cae2ed45638532e88a081a25bd",
+      "Id": "81ec2a0e7afc45faa3efa6aea09978d0"
+    },
+    {
+      "Start": "eaaaab7acb584b6a90523f9de7f2d2c0",
+      "End": "363383b1c5b3453788da08e55aa37958",
+      "Id": "09f0c2e95d9a43be9715892faf54a260"
+    },
+    {
+      "Start": "eaaaab7acb584b6a90523f9de7f2d2c0",
+      "End": "1d9fbe29924e458892be66cbec565c8a",
+      "Id": "23afab9a32f44d19b115a2d0eb1927bc"
+    },
+    {
+      "Start": "febd49926fa745258776099b83cdced9",
+      "End": "f81009301f3c475c9209a9821c4d48ee",
+      "Id": "fecdf376c9ad4d9c87dd4397e47e08b8"
+    },
+    {
+      "Start": "22ebf1244d37441f889bb3592682df85",
+      "End": "4d8cd4ffdf8b4a1f9669034feb5c4acc",
+      "Id": "416a7332574c46bbbbf1811621ac5773"
+    },
+    {
+      "Start": "22ebf1244d37441f889bb3592682df85",
+      "End": "1ff0b070b9994a47a1ec63dbbfcd4f00",
+      "Id": "5c4305574e834422941bd1d5b7495326"
+    },
+    {
+      "Start": "03ce4da5dca84fb6b4065bcb79d855c4",
+      "End": "bb2c2b2a078246f0aa5da680e7565a4f",
+      "Id": "c4cffb090fba4964b691d655c0921b9c"
+    },
+    {
+      "Start": "03ce4da5dca84fb6b4065bcb79d855c4",
+      "End": "05de60f29c2e46c3883949a5c07280e3",
+      "Id": "ae36488ebc514c11950c8614210818a0"
+    },
+    {
+      "Start": "59f25c81cc8e426d9ec41a06411d3a3a",
+      "End": "1f8214d50f5542f0a383d40f2210f909",
+      "Id": "46137c7eff094068a356477813825098"
+    },
+    {
+      "Start": "59f25c81cc8e426d9ec41a06411d3a3a",
+      "End": "80b399704fe843faad4f5b958298d43b",
+      "Id": "5e73dd8de0a0498daf5a397dcabecec3"
+    },
+    {
+      "Start": "86d536c516d44fea8e899412fd2c7807",
+      "End": "33c813f79ed447aeb4a60c68ef28522d",
+      "Id": "a1204ba38c4b42b1a3f71f2b95a4baea"
+    },
+    {
+      "Start": "70e47c2b7e424aff9b438cb2e86a7e2c",
+      "End": "3a668a97f620401099e6006710fa3a11",
+      "Id": "c8fff27927f14fc9ae9fb8b8c9fba8c6"
+    },
+    {
+      "Start": "26db2eba37ce43b8bc2c532ff351f331",
+      "End": "5728f92cb107430f92bcb976613dff66",
+      "Id": "1085d2d607bb4112b91effb273228a8b"
+    },
+    {
+      "Start": "b729722c36be4ebba9d752172d91f679",
+      "End": "a9bfebc980d045d2b10eec7388937620",
+      "Id": "ce08a81dc0d84a248ebb018b99dc3fe1"
+    },
+    {
+      "Start": "ae507a7d3e8d473caa4c1ba253a2de13",
+      "End": "5daf7ffb9f92453baaff4c40d17f7d7f",
+      "Id": "899dd2cf44a449ef900733d4cb6a7a26"
+    },
+    {
+      "Start": "609e899080f64affb1d6048105ea2cc9",
+      "End": "cab56d126baa4879b3879a3624329d28",
+      "Id": "84b5b41610d1484eb5b1f491195b5135"
+    },
+    {
+      "Start": "3a6424c2e0e84716aa58626a1f57a84a",
+      "End": "1b04f0515c3743f7be6aa3d80a9177e7",
+      "Id": "79216b79d739469e9751204858bb6b90"
+    },
+    {
+      "Start": "3cc7cea0201847558081d0b9ec917ada",
+      "End": "b63a629a5d2c4a1a89877a10668e1843",
+      "Id": "9e0c0faaacc746c795b53aa22b380c0e"
+    },
+    {
+      "Start": "617c5e301269414fb9b6385542c87dad",
+      "End": "e98b05004c8d4698a504f02bd18bcb26",
+      "Id": "88654627daf44c85a03f2f4cd3fe7965"
+    },
+    {
+      "Start": "617e852d07d440ff9c580142d641ad54",
+      "End": "8afe349b993d4dffa2e429f89020f1fa",
+      "Id": "3087d2046d884fc6b976186ca9ebc1b2"
+    },
+    {
+      "Start": "617e852d07d440ff9c580142d641ad54",
+      "End": "3c081071ff9845d2b2ec193be12d43c9",
+      "Id": "9f4d55f697f34e759e6b79047ef56c11"
+    },
+    {
+      "Start": "61044dccffad4e23a44b06c3af921665",
+      "End": "e27e035a1e2945708bce02b8557d5957",
+      "Id": "ca8dac0619094e8cb18cbf167517b33b"
+    },
+    {
+      "Start": "71b02c9afb87485bb8e1083b48924c41",
+      "End": "eda05f37c5a04577b8ff7d623be524e9",
+      "Id": "aeb380691b06479cb80d7435d626b9c3"
+    },
+    {
+      "Start": "28823c3ceba342038f8ae6b758893a07",
+      "End": "39fbb42ad97a483ea2cea60ff7e3ff57",
+      "Id": "356cfd9a4004470d8468bfdc3b4f0928"
+    },
+    {
+      "Start": "88927d41f09843c6b8a523cdaf3e1aa3",
+      "End": "5df93dca7b334de6887a654864e9319f",
+      "Id": "2301d35ad4424e408e8ab48db0754f6a"
+    },
+    {
+      "Start": "88927d41f09843c6b8a523cdaf3e1aa3",
+      "End": "b1676b2c758d4924adfdf6e8a8bb16ac",
+      "Id": "9ae9b55536194ab491fc7fdc8171b307"
+    },
+    {
+      "Start": "88927d41f09843c6b8a523cdaf3e1aa3",
+      "End": "e7729101c4214c149298570a6c5ae765",
+      "Id": "7f3567021b504f2d98f28ad7702094a3"
+    },
+    {
+      "Start": "a2cfb1cf01ea4346aa87cdcf9b7aeab6",
+      "End": "dfb710711198402ab6269a107d035a11",
+      "Id": "dd98e958bfb64bea85308f9499fe2b31"
+    },
+    {
+      "Start": "a2cfb1cf01ea4346aa87cdcf9b7aeab6",
+      "End": "ea3e330df24640e5ab0d695fb00d7208",
+      "Id": "e16c9793a25a416f93695baf2070d38e"
+    },
+    {
+      "Start": "717c8d76e81744128d406a101db33d82",
+      "End": "4741d7d69aa24733a2dd81c4b90a5db4",
+      "Id": "490bab31d3c04482afdba12f82121e3e"
+    },
+    {
+      "Start": "717c8d76e81744128d406a101db33d82",
+      "End": "427d2078bd554bc6827d1c6d9508753a",
+      "Id": "9feafd2666734e26afbd3a0aa1e4316b"
+    },
+    {
+      "Start": "dec81498368b4e6a828c0129246597c4",
+      "End": "2285b5bd3d474392b7b53f4f543ee6d8",
+      "Id": "5b7310ac9342477e8bb24f5045ef2bb0"
+    },
+    {
+      "Start": "abfa4b3789b14a1ba9924deb0d47a0b9",
+      "End": "cb7b95494ee742739eafef623c3d40d1",
+      "Id": "8f32d2593b0b43c38c68bb445fc9ee7f"
+    },
+    {
+      "Start": "0805ad35d6a4417da6e3dc405ac15abd",
+      "End": "ae91257108be4fc0a9d59b7bc678f13b",
+      "Id": "09fbc54fd899429e8bd469745314bf06"
+    },
+    {
+      "Start": "7de373c8b7214658a310a8fb555804fa",
+      "End": "d1490eea6f4640dfb9faf0f4ec796966",
+      "Id": "20e6f41aa9b14847a8b2f19417ffa52b"
+    },
+    {
+      "Start": "bf27ffd56ea84cacb85af131bac7593a",
+      "End": "bb50573406d64d9981985bbdd0933cdd",
+      "Id": "45525047f14f40d5915733ec71a8d4a2"
+    },
+    {
+      "Start": "7de47e21de6d435cb4fd9edc9a8e19dd",
+      "End": "54981b2fa6b74365897f6abf64d6109e",
+      "Id": "525d24986d8d4f2dab17a48e2f44c937"
+    },
+    {
+      "Start": "2faca0d775324cfe982ccb8a4a1b773b",
+      "End": "8061369282e943d68bc358903b24b3c4",
+      "Id": "befba9e9281e42a89090c41b1df08534"
+    },
+    {
+      "Start": "1bad608620c54652acc2ff6f0a5d956d",
+      "End": "cedf4fbd563a438ab40905fd4a6db37b",
+      "Id": "388b1dbfaf414b4ca2741a325a5e0b6b"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": null,
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Нет",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 10000.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.0.5650",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": 45880.953125,
+      "EyeY": 10134.6875,
+      "EyeZ": -49369.46484375,
+      "LookX": 29998.9609375,
+      "LookY": -7667.421875,
+      "LookZ": -7932.13671875,
+      "UpX": 0.0253073088824749,
+      "UpY": 0.99965733289718628,
+      "UpZ": -0.0066913077607750893
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": false,
+        "Name": "Element.Geometry",
+        "Id": "b5fde1d308e447b1a40aaad0d5bbccfa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2512.5639523458535,
+        "Y": 373.11162366456324
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements of Category",
+        "Id": "2cc7ce7e5e3d45ea982c60b99705d420",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1826.0983675615985,
+        "Y": 274.77483233698564
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements of Category",
+        "Id": "9c2864135a6a4569a1446a21f246f5cb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1934.695670470182,
+        "Y": 810.33937963713515
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Solid.Centroid",
+        "Id": "0b317a1404c34cb6baf6fe2e09ec3a95",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3139.3455877317992,
+        "Y": 464.39977297552088
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Plane.ByOriginNormal",
+        "Id": "627da719fd87408bbefe34b699295287",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3344.81112299055,
+        "Y": 455.84717451231774
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Geometry.Scale",
+        "Id": "1b8804628e8c4ad7a4a8e745a3a4fed9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3606.2850109815286,
+        "Y": 397.05452094501561
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "781909c52aa14897babea4cf346df690",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3432.27416631941,
+        "Y": 340.38123435821205
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.Geometry",
+        "Id": "8070000fb4fd432f908725cf0f77e670",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3175.4005457640119,
+        "Y": 1021.7193302132151
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Flatten",
+        "Id": "7539d85128af46d2a383f12d94256feb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3866.2775004274122,
+        "Y": 1017.5446375790954
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.GetParameterValueByName",
+        "Id": "adeb28d8f3d04d559f28f03b584ff5eb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2427.3672201872923,
+        "Y": 916.21800128294512
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "27a94b037f144224ae1707abd0154720",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2310.7798582506321,
+        "Y": 977.71255807347507
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "d82521b09d8844da86c099afb33f6c39",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2716.668864048972,
+        "Y": 916.89493671464516
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
+        "Id": "7cb72d51656243058266afb7869d8ee9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2893.0316133713022,
+        "Y": 814.819823174566
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.IsEmpty",
+        "Id": "222c5c277c544014911b18012b73b337",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2723.9112336822122,
+        "Y": 318.44061305036826
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
+        "Id": "df9579ae8d2344869e75840830adb2d2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2958.3413850847865,
+        "Y": 367.53921540351814
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Flatten",
+        "Id": "628be457c901421cb8deed1e94afa92e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3860.8831549614888,
+        "Y": 397.25795846889639
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "919b3a5424dc4eb8a8e20d9e3e729424",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3912.3921946515234,
+        "Y": 274.43785741708234
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.SetParameterByName",
+        "Id": "a65c6e9177a345839417089c5135ee64",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2757.7737984918781,
+        "Y": 17.178795982941779
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "bd2de3b61c904cf5af293d1116c12bea",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2544.3203714419878,
+        "Y": 7.6077818348206847
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "a9dc62d3435247b4a02f038c3fffd62e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2459.9840752633277,
+        "Y": 71.946291991547525
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "6c7bdaa376114db6aec41af78daba66e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 5388.6767374425617,
+        "Y": 574.739817052144
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Название легенды с пирогом",
+        "Id": "6e7855b084004b66b5db61e6d25cb888",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4914.0507759143857,
+        "Y": 246.46050269210934
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Временная папка для картинок",
+        "Id": "463bb934abf14f4aadcb4a7890004942",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4890.6748261143066,
+        "Y": 310.19705175409769
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "7a76cf382811431d895091745c17e2a8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4968.2471891127379,
+        "Y": 405.61872058618923
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.UniqueItems",
+        "Id": "5bf215b5b2a74acbad949728db3b1aea",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4958.3789028910642,
+        "Y": 669.471498512014
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "534fc348d303450d87e48f804aeb2689",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4359.7694858599871,
+        "Y": 674.2363766054641
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "e5d71fd013214baeb6aec30231a67b56",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4835.2635918279748,
+        "Y": 671.06912351605035
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "1530ddc9c36741bca976ee7c3e4997e8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2020.0793405276463,
+        "Y": 357.5385529750331
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
+        "Id": "7a72a09168b0478d84bfe13f1ba9b634",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2307.26152816848,
+        "Y": 277.54299005009
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "8c2b9ac9afdc47b0a21f231e5f484b1d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 5183.7560372662056,
+        "Y": 656.41458457631052
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
+        "Id": "127ae4b1eec249ad8ed63426ff45d1b9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3644.6664047660643,
+        "Y": 1017.8505225630537
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "solid fail",
+        "Id": "9be87394a1f24bd48deac80411111d5a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3435.0665322474251,
+        "Y": 950.55677173049094
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
+        "Id": "188690e45de84b5e8528a3c94deaf98a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3646.2793916475116,
+        "Y": 874.64079692359
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
+        "Id": "72ad7a2eab6f4926b32621a053fce3b9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3647.217317075404,
+        "Y": 747.75710164705
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.ElementType",
+        "Id": "2ccb05a02b0f4822bd11536877cb5b02",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2141.7240460011963,
+        "Y": 884.71248028740274
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Categories",
+        "Id": "cca50b31d8e6407caa79de06d651fef9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1738.7629702721624,
+        "Y": 812.00733791135508
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Categories",
+        "Id": "c7c702e37b28419fb136eb20f71701b5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1640.7372083005512,
+        "Y": 274.08843168781749
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "d2b7bd1194f34cc0a7a92636e511bd1a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3165.2759051103963,
+        "Y": 30.851420057478776
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "2c0dbd66f95241a8a6deebdd43c99a58",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3080.9396089317365,
+        "Y": 95.189930214205617
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.SetParameterByName",
+        "Id": "24ea6122ef594f2a9e7c255f453f52b5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3345.3314081957828,
+        "Y": 44.351601730835569
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
+        "Id": "632a3b5d573f4a66b305ef21e3fe8c68",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2954.4567241951263,
+        "Y": 241.98966562804935
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.ElementType",
+        "Id": "53686184d98b4ab4b1dff07ec38d10b5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3156.2338208871729,
+        "Y": 891.17363064064375
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "00e5fc7f771a4c5098926a38780864ad",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 4315.9391430580172,
+        "Y": 247.39364278485141
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Transaction.End",
+        "Id": "9415a904c8e247929e98cfbce44178ac",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4570.3895360022279,
+        "Y": 656.99089060164192
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "1c31cd8b221844bda0a87851d2db1981",
+        "Title": "Создаем солиды помещений и увеличиваем по оси Z",
+        "Nodes": [
+          "b5fde1d308e447b1a40aaad0d5bbccfa",
+          "2cc7ce7e5e3d45ea982c60b99705d420",
+          "0b317a1404c34cb6baf6fe2e09ec3a95",
+          "627da719fd87408bbefe34b699295287",
+          "1b8804628e8c4ad7a4a8e745a3a4fed9",
+          "781909c52aa14897babea4cf346df690",
+          "222c5c277c544014911b18012b73b337",
+          "df9579ae8d2344869e75840830adb2d2",
+          "628be457c901421cb8deed1e94afa92e",
+          "919b3a5424dc4eb8a8e20d9e3e729424",
+          "a65c6e9177a345839417089c5135ee64",
+          "bd2de3b61c904cf5af293d1116c12bea",
+          "a9dc62d3435247b4a02f038c3fffd62e",
+          "1530ddc9c36741bca976ee7c3e4997e8",
+          "7a72a09168b0478d84bfe13f1ba9b634",
+          "c7c702e37b28419fb136eb20f71701b5",
+          "d2b7bd1194f34cc0a7a92636e511bd1a",
+          "2c0dbd66f95241a8a6deebdd43c99a58",
+          "24ea6122ef594f2a9e7c255f453f52b5",
+          "632a3b5d573f4a66b305ef21e3fe8c68"
+        ],
+        "Left": 1630.7372083005512,
+        "Top": -88.392218165179315,
+        "Width": 2421.1459466609376,
+        "Height": 682.44673911019493,
+        "FontSize": 72.0,
+        "InitialTop": 7.6077818348206847,
+        "InitialHeight": 601.79199114070013,
+        "TextblockHeight": 86.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "5775cf1754f74271b10dad8797d4b2bb",
+        "Title": "Достаем полы и их геометрию",
+        "Nodes": [
+          "9c2864135a6a4569a1446a21f246f5cb",
+          "8070000fb4fd432f908725cf0f77e670",
+          "7539d85128af46d2a383f12d94256feb",
+          "adeb28d8f3d04d559f28f03b584ff5eb",
+          "27a94b037f144224ae1707abd0154720",
+          "d82521b09d8844da86c099afb33f6c39",
+          "7cb72d51656243058266afb7869d8ee9",
+          "cca50b31d8e6407caa79de06d651fef9",
+          "2ccb05a02b0f4822bd11536877cb5b02",
+          "53686184d98b4ab4b1dff07ec38d10b5",
+          "9be87394a1f24bd48deac80411111d5a",
+          "127ae4b1eec249ad8ed63426ff45d1b9",
+          "188690e45de84b5e8528a3c94deaf98a",
+          "72ad7a2eab6f4926b32621a053fce3b9"
+        ],
+        "Left": 1728.7629702721624,
+        "Top": 622.75710164705,
+        "Width": 2328.5145301552498,
+        "Height": 514.09342091600377,
+        "FontSize": 96.0,
+        "InitialTop": 747.75710164705,
+        "InitialHeight": 418.962228566165,
+        "TextblockHeight": 115.0,
+        "Background": "#FF71C6A8"
+      },
+      {
+        "Id": "7eeaa6c1c7a04f6fbff3ed18f03e1785",
+        "Title": "Достаем все материалы из пола и присваиваем полу",
+        "Nodes": [],
+        "Left": 4338.961226370543,
+        "Top": 549.79655520883227,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "aba1b07d91704ba2b1b25c470625683a",
+        "Title": "Добавляем очень красивую картинку в типоразмер пола",
+        "Nodes": [],
+        "Left": 5476.0916920973195,
+        "Top": 450.8513839559655,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "bfe18cade7b1422ea43737d386cf7b06",
+        "Title": "Рассовываем номера помещений по экземплярам пола",
+        "Nodes": [],
+        "Left": 4338.3463195352006,
+        "Top": 493.6699035690317,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": -5308.92713722487,
+    "Y": -335.49989835983661,
+    "Zoom": 1.1222763302060437
+  }
+}

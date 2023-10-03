@@ -1,0 +1,333 @@
+{
+  "Uuid": "ff88a115-0896-4f1a-bfca-b927d33b36be",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "Замена двойных кавычек на одинарные в осях",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 485,
+      "SelectedString": "OST_Grids",
+      "NodeType": "ExtensionNode",
+      "Id": "820ffc5a08714546953553d6e8c84b57",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "594a36dfa2734859a3f6aa4cfa45593f",
+          "Name": "Category",
+          "Description": "Выбранная категория.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Все предопределенные категории."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "1fd0fa40582344e78e0de39bd3c0935e",
+      "Inputs": [
+        {
+          "Id": "d28b939c5a5b4a3f8706fb4ecb4cb019",
+          "Name": "Category",
+          "Description": "Категория",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f917f663327d4e98a3414f76e9b73f21",
+          "Name": "Elements",
+          "Description": "Тип элемента.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Получение из модели всех элементов определенной категории."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a.Name;",
+      "Id": "4ad00e3f320b4bda8c99c4df6e60ebe1",
+      "Inputs": [
+        {
+          "Id": "c99084a17706454e9a0e2b31fbeaf2df",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7ec6c87efcd54881b4829d2125165176",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Загрузить стандартную библиотеку Python и библиотеку DesignScript\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\n\r\n# Введенные в этом узле данные сохраняется в виде списка в переменных IN.\r\nname = UnwrapElement(IN[0])\r\na = []\r\nfor i in name:\r\n\tif '\"' in i:\r\n\t\tm = i.replace('\"',\"'\")\r\n\t\ta.append(m)\r\n\telse:\r\n\t\ta.append(i)\r\n\r\n\r\n# Разместите код под этой строкой\r\n\r\n# Назначьте вывод переменной OUT.\r\nOUT = a",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "30c715b31f4348f4bda37ca988860149",
+      "Inputs": [
+        {
+          "Id": "be2fc8e1535c472989243f83cb54a636",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8d492f8757894b5481f2c5c7818975f4",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение встроенного сценария Python."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.SetParameterByName@string,var",
+      "Id": "13bef39bae2a46f886d1d8691bef5137",
+      "Inputs": [
+        {
+          "Id": "b3d7d23c50f146b48fc5af6acc6cc16d",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c2ae96f204034b00806d809c6b90680d",
+          "Name": "parameterName",
+          "Description": "Имя задаваемого параметра.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "37daf956c9f64b61a7a4e0b0ba7de0e9",
+          "Name": "value",
+          "Description": "Значение.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d771a22f4d6b4da38a6359ccf62c5efe",
+          "Name": "Element",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Задание параметров для одного из элементов.\n\nElement.SetParameterByName (parameterName: string, value: var): Element"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Имя",
+      "Id": "e5c154d26193460da52f41f5c4fb7558",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b208bae258aa4601ba11f4395bacc845",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "594a36dfa2734859a3f6aa4cfa45593f",
+      "End": "d28b939c5a5b4a3f8706fb4ecb4cb019",
+      "Id": "fca29f68f8b04f0cb025e3fbf88ee68a"
+    },
+    {
+      "Start": "f917f663327d4e98a3414f76e9b73f21",
+      "End": "c99084a17706454e9a0e2b31fbeaf2df",
+      "Id": "11b20e4de7bb405aa5c7825e153921b6"
+    },
+    {
+      "Start": "f917f663327d4e98a3414f76e9b73f21",
+      "End": "b3d7d23c50f146b48fc5af6acc6cc16d",
+      "Id": "ee02f9877c924c59a69dde55cb40a5df"
+    },
+    {
+      "Start": "7ec6c87efcd54881b4829d2125165176",
+      "End": "be2fc8e1535c472989243f83cb54a636",
+      "Id": "8ca999dc722a415597e3f646a4e15197"
+    },
+    {
+      "Start": "8d492f8757894b5481f2c5c7818975f4",
+      "End": "37daf956c9f64b61a7a4e0b0ba7de0e9",
+      "Id": "8834197c4c2e4cde92286c38ceba8503"
+    },
+    {
+      "Start": "b208bae258aa4601ba11f4395bacc845",
+      "End": "c2ae96f204034b00806d809c6b90680d",
+      "Id": "a922baeaa88c43669e88c5bed1f2f339"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Нет",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.0.5650",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Categories",
+        "Id": "820ffc5a08714546953553d6e8c84b57",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 307.0,
+        "Y": 338.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements of Category",
+        "Id": "1fd0fa40582344e78e0de39bd3c0935e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 546.0,
+        "Y": 340.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "4ad00e3f320b4bda8c99c4df6e60ebe1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 820.0,
+        "Y": 425.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "30c715b31f4348f4bda37ca988860149",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1025.8258895648664,
+        "Y": 423.11607362342227
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.SetParameterByName",
+        "Id": "13bef39bae2a46f886d1d8691bef5137",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1439.7351761539458,
+        "Y": 209.28661428057453
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "e5c154d26193460da52f41f5c4fb7558",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1172.7152377642253,
+        "Y": 282.11023384140719
+      }
+    ],
+    "Annotations": [],
+    "X": -987.76258256217875,
+    "Y": -168.5412785810671,
+    "Zoom": 1.0298856394709859
+  }
+}

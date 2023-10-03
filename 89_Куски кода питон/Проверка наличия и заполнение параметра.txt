@@ -1,0 +1,34 @@
+import clr
+
+#Import the Revit API
+clr.AddReference('RevitAPI')
+import Autodesk
+from Autodesk.Revit.DB import *
+
+#Import DocumentManager and TransactionManager
+clr.AddReference('RevitServices')
+import RevitServices
+from RevitServices.Persistence import DocumentManager
+from RevitServices.Transactions import TransactionManager
+
+#Reference the active Document and application
+doc = DocumentManager.Instance.CurrentDBDocument
+
+elem = UnwrapElement(IN[0])
+parname = IN[1]
+values = UnwrapElement(IN[2])
+
+tlist = []
+
+
+for i in range(len(elem)):
+	elem_param = elem[i].LookupParameter('EO_Кодификатор_V0')
+	try:
+		TransactionManager.Instance.EnsureInTransaction(doc)
+		elem_param.Set(values[i])
+		tlist.append("success")
+		TransactionManager.Instance.TransactionTaskDone()
+	except:
+		tlist.append("no parameter")
+
+OUT = tlist

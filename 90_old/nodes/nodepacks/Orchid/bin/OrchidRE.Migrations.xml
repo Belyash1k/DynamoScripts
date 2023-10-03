@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<migrations>
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.View.Schedule.Schedule</oldName>
+    <newName>Orchid.E.RevitProject.Schedules.Schedule</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Common.Country</oldName>
+    <newName>Orchid.E.Common.Global.Country</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Print.Printer</oldName>
+    <newName>Orchid.E.Common.Print.Printer</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Print.ColorDepthType</oldName>
+    <newName>Orchid.E.Common.Print.ColorDepthType</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Print.HiddenLineViewsType</oldName>
+    <newName>Orchid.E.Common.Print.HiddenLineViewsType</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Print.MarginType</oldName>
+    <newName>Orchid.E.Common.Print.MarginType</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Print.PageOrientation</oldName>
+    <newName>Orchid.E.Common.Print.PageOrientation</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Print.PaperPlacement</oldName>
+    <newName>Orchid.E.Common.Print.PaperPlacement</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Print.PaperSizes</oldName>
+    <newName>Orchid.E.Common.Print.PaperSizes</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Print.Range</oldName>
+    <newName>Orchid.E.Common.Print.Range</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Print.RasterQualityType</oldName>
+    <newName>Orchid.E.Common.Print.RasterQualityType</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Print.Setting</oldName>
+    <newName>Orchid.E.Common.Print.Setting</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.Core.Print.ZoomType</oldName>
+    <newName>Orchid.E.Common.Print.ZoomType</newName>
+  </priorNameHint>
+
+  
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.Elements.SystemFamily.LayerFunction</oldName>
+    <newName>Orchid.E.RevitProject.Elements.SystemFamilyType.LayerFunction</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.Elements.SystemFamily.LayerPlacement</oldName>
+    <newName>Orchid.E.RevitProject.Elements.SystemFamilyType.LayerPlacement</newName>
+  </priorNameHint>
+
+  
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.IFC.FileType</oldName>
+    <newName>Orchid.E.RevitProject.Common.IFC.FileType</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.IFC.Setting</oldName>
+    <newName>Orchid.E.RevitProject.Common.IFC.Setting</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.IFC.Version</oldName>
+    <newName>Orchid.E.RevitProject.Common.IFC.Version</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.IFC.SitePlacement</oldName>
+    <newName>Orchid.E.RevitProject.Common.IFC.SitePlacement</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.IFC.LevelOfDetail</oldName>
+    <newName>Orchid.E.RevitProject.Common.IFC.LevelOfDetail</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.IFC.SpaceBoundary</oldName>
+    <newName>Orchid.E.RevitProject.Common.IFC.SpaceBoundary</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.Document.LinkCad</oldName>
+    <newName>Orchid.E.RevitProject.Common.Link.LinkedCad</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.Document.LinkFile</oldName>
+    <newName>Orchid.E.RevitProject.Common.Link.LinkedFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.Document.LinkRevit</oldName>
+    <newName>Orchid.E.RevitProject.Common.Link.LinkedRevit</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.Project.Origin</oldName>
+    <newName>Orchid.E.RevitProject.Common.Location.Origin</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.Project.Phase</oldName>
+    <newName>Orchid.E.RevitProject.Common.Document.Phase</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.E.RevitProject.Views.ViewSheetSet.ViewSheetSet</oldName>
+    <newName>Orchid.E.RevitProject.Views.SheetSet.SheetSet</newName>
+  </priorNameHint>
+
+</migrations>

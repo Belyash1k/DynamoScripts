@@ -1,0 +1,165 @@
+{
+  "Uuid": "5f503702-dce5-4ded-a27f-b5341465ef9a",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "DeleteElementsById",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "archilab.Revit.Selection.Select.ByElementId@var",
+      "Id": "b0268b66d59e4e9bada3b0c9886517c3",
+      "Inputs": [
+        {
+          "Id": "f316b86980744bef9c664e31cdc8e810",
+          "Name": "id",
+          "Description": "ElementId, String, Guid or Integer id of the element.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9f898d19218d465aa4239dc276868040",
+          "Name": "Element",
+          "Description": "Found element or null.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Select Element by Id\n\nSelect.ByElementId (id: var): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "archilab.Revit.Elements.Elements.Delete@Revit.Elements.Element",
+      "Id": "69df2816563547e399add1b372eed56c",
+      "Inputs": [
+        {
+          "Id": "964d4dd605e84191b8e4e3599c837300",
+          "Name": "element",
+          "Description": "Element to delete.\n\nElement",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4a852dea433a4243a9d8880faae6d8b6",
+          "Name": "bool",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Delete element from Revit DB.\n\nElements.Delete (element: Element): bool"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[];",
+      "Id": "f9efbfe9d4cc4c84aa4fd82a6ed7d995",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5a63cde0aaa5433ebc2966bd50e430e9",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "9f898d19218d465aa4239dc276868040",
+      "End": "964d4dd605e84191b8e4e3599c837300",
+      "Id": "3c03422a97644f63aa533e07dce178b5"
+    },
+    {
+      "Start": "5a63cde0aaa5433ebc2966bd50e430e9",
+      "End": "f316b86980744bef9c664e31cdc8e810",
+      "Id": "02a019c3a10d423d9735bc1a571b9672"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.4.12684",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Select.ByElementId",
+        "Id": "b0268b66d59e4e9bada3b0c9886517c3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 447.00612260070392,
+        "Y": 172.63505259256391
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Elements.Delete",
+        "Id": "69df2816563547e399add1b372eed56c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 657.40616745409147,
+        "Y": 173.65807023752711
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "ДАВАЙ СЮДА СВОИ СРАНЫЕ АЙДИШНИКИ, КОЖАНЫЙ МЕШОК",
+        "Id": "f9efbfe9d4cc4c84aa4fd82a6ed7d995",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1.3858601600319389,
+        "Y": 176.98909080946643
+      }
+    ],
+    "Annotations": [],
+    "X": 102.4991211456088,
+    "Y": 189.15129685647264,
+    "Zoom": 0.77087948042731225
+  }
+}

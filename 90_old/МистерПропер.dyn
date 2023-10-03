@@ -1,0 +1,210 @@
+{
+  "Uuid": "115825c5-63ba-40ba-8255-50835143e937",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "МистерПропер",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.GetCategory",
+      "Id": "ef891413220d4fbdae3839c3f209fc7c",
+      "Inputs": [
+        {
+          "Id": "b613e8461cab49eda12f35a8814d3000",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b5259154658947fe9d9878d7b1a7b9fa",
+          "Name": "Category",
+          "Description": "Category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get Element Category\n\nElement.GetCategory: Category"
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "fee3c335-8f59-4da6-bb5f-5fca73ac5d18-0071000c"
+      ],
+      "Id": "e0fca56caa814a7599776aae95ea2dc9",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "27c438b4e99245f187f2089bc18e03bd",
+          "Name": "Element",
+          "Description": "The selected elements.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "19efba4773c8442c98ad316b724422fd",
+      "Inputs": [
+        {
+          "Id": "81eaf7e71c654858aa7dbc8b0c1a8ea5",
+          "Name": "Category",
+          "Description": "The Category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "926ae2b9a68546ed92fcfb7ccd30bc6a",
+          "Name": "Elements",
+          "Description": "An element type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Get all elements of the specified category from the model."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "archilab.Revit.Elements.Elements.Delete@Revit.Elements.Element",
+      "Id": "21fec4e09b5349a285d645119e11812c",
+      "Inputs": [
+        {
+          "Id": "79b4a1f754ee4c8b92f145e3671578fc",
+          "Name": "element",
+          "Description": "Element to delete.\n\nElement",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8f13041df3e3420fafacd55f16c270cd",
+          "Name": "bool",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Delete element from Revit DB.\n\nElements.Delete (element: Element): bool"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "b5259154658947fe9d9878d7b1a7b9fa",
+      "End": "81eaf7e71c654858aa7dbc8b0c1a8ea5",
+      "Id": "b313a6a974cb4e738b3e33888c53ef4e"
+    },
+    {
+      "Start": "27c438b4e99245f187f2089bc18e03bd",
+      "End": "b613e8461cab49eda12f35a8814d3000",
+      "Id": "b10446401a6b49d5ba9d96e6779287f7"
+    },
+    {
+      "Start": "926ae2b9a68546ed92fcfb7ccd30bc6a",
+      "End": "79b4a1f754ee4c8b92f145e3671578fc",
+      "Id": "c559224f042a462c8c654a5e09f2a723"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.2.6826",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Element.GetCategory",
+        "Id": "ef891413220d4fbdae3839c3f209fc7c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 756.5,
+        "Y": 394.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Select Model Element",
+        "Id": "e0fca56caa814a7599776aae95ea2dc9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 244.5,
+        "Y": 208.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements of Category",
+        "Id": "19efba4773c8442c98ad316b724422fd",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1120.5334753701302,
+        "Y": 426.16439267942633
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Elements.Delete",
+        "Id": "21fec4e09b5349a285d645119e11812c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1376.4030490691655,
+        "Y": 495.01404472741592
+      }
+    ],
+    "Annotations": [],
+    "X": -106.41219406945015,
+    "Y": 55.953867602359821,
+    "Zoom": 0.729950825270786
+  }
+}

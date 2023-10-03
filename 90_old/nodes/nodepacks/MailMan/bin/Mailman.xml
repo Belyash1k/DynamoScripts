@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Mailman</name>
+    </assembly>
+    <members>
+        <member name="T:Mailman.Outlook">
+            <summary>
+            Outlook interop nodes for Dynamo by Hoss Zamani.
+            
+            Icons made by Freepik from www.flaticon.com is licensed by CC 3.0 BY
+            </summary>
+        </member>
+        <member name="M:Mailman.Outlook._Email(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String[],System.String)">
+            <summary>
+            Prepares an Email item in Outlook. 
+            </summary>
+            <param name="To">Email address of the person you are sending the email to.</param>
+            <param name="Subject">Subject of the email.</param>
+            <param name="MailBody">The body of the mail in plain txt, rich txt or html format.</param>
+            <param name="BodyFormat">Indicate what format the body of the email has. Use Body Format node as input.</param>
+            <param name="CC">Email address of the person you are CCing the email to (optional).</param>
+            <param name="BCC">Email address of the person you are BCCing the email to (optional).</param>
+            <param name="Importance">The importance of the email. Use Importance node as input.</param>
+            <param name="AttachementPaths">File path of any attachments you want to attach to the email. Input null for no attachments.</param>
+            <param name="ActionType">What you want to be done to the prepared email (e.g. to be sent, to be saved etc). Use Action Type node as input.</param>
+            <returns name="string">Report</returns>
+            <search>office,outlook,email,mail</search> 
+        </member>
+        <member name="M:Mailman.Outlook._TaskRequest(System.String,System.String,System.String,System.DateTime,System.DateTime,System.Int32,System.String,System.String,System.String[],System.String)">
+            <summary>
+            Prepares a Task Request item to assign to someone via Outlook. 
+            </summary>
+            <param name="To">Email address of the person you are assigning the task to.</param>
+            <param name="Subject">Subject of the task.</param>
+            <param name="TaskBody">The body of the task.</param>
+            <param name="StartDate">The start date for the task. Use DateTime nodes as input.</param>
+            <param name="DueDate">The due date for the task. Use DateTime nodes as input.</param>
+            <param name="PercentComplete">How many percent the task is already completed.</param>
+            <param name="Importance">The importance of the task request. Use Importance node as input.</param>
+            <param name="Status">Status of the task. Use Status node as input.</param>
+            <param name="AttachementPaths">File path of any attachments you want to attach to this task request. Input null for no attachments.</param>
+            <param name="ActionType">What you want to be done to the prepared task request (e.g. to be sent, to be saved etc). Use Action Type node as input.</param>
+            <returns name="string">Report</returns>
+            <search>office,outlook,task,request,taskrequest</search> 
+        </member>
+        <member name="M:Mailman.Outlook._Contact(System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String,System.String)">
+            <summary>
+            Prepares a Contact item in Outlook.
+            </summary>
+            <param name="FullName">Full name of the contact.</param>
+            <param name="Email">Email address of the contact.</param>
+            <param name="PrimaryPhoneNo">Primary phone number of the contact as string.</param>
+            <param name="MobileNumber">Mobile phone number of the contact as string.</param>
+            <param name="Company">Company name of the contact (optional).</param>
+            <param name="JobTitle">Job title of the contact (optional).</param>
+            <param name="Address">Address of the contact (optional).</param>
+            <param name="ContactPicturePath">A file path to the picture you want to assign to this contact (optional).</param>
+            <param name="ActionType">What you want to be done to the preapred Contact item (e.g saving it, sending it etc).</param>
+            <param name="SendTo">If you indicate Send as ActionType you need to provide an email address to whom you want to send the Contact item to.</param>
+            <param name="SendCC">If you indicate Send as ActionType you can provide an email address to whom you want to CC the Contact item to.</param>
+            <param name="SendSubject">If you indicate Send as ActionType you can provide a subject for the email.</param>
+            <returns>Report</returns>
+        </member>
+        <member name="T:Mailman.Properties.Resources">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Mailman.Properties.Resources.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Mailman.Properties.Resources.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,323 @@
+{
+  "Uuid": "a3089816-6626-431e-a257-9be3243ca2ee",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "PinElems",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.SetPinnedStatus@bool",
+      "Id": "24ac0b3906364514837031a2b2c3f2f0",
+      "Inputs": [
+        {
+          "Id": "648656c958f04ec1ba5913e989047016",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c7dd89eea57e4f05b0ed4c8940fdd80b",
+          "Name": "pinned",
+          "Description": "Значение статуса закрепления True/False\n\nbool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "75ba4df0ac0a48a39e42b198fefd8d69",
+          "Name": "Element",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Задание статуса закрепленного существующего элемента\n\nElement.SetPinnedStatus (pinned: bool): Element"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "266d950eabaa4dce90af636755c0b0e9",
+      "Inputs": [
+        {
+          "Id": "c9f3171d413c48468ea2fc6c05be8991",
+          "Name": "Category",
+          "Description": "Категория",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "d22dae26be2b447db02648a4355a61db",
+          "Name": "Elements",
+          "Description": "Тип элемента.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Получение из модели всех элементов определенной категории."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.IsPinned",
+      "Id": "d013bd17fdbc40dda778660736d036ef",
+      "Inputs": [
+        {
+          "Id": "e931cceed62a4dd883d94cae7c18e458",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b5b53bc350864c13812203765b7964a6",
+          "Name": "bool",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение статуса закрепленного элемента\n\nElement.IsPinned: bool"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.FilterByBoolMask@var[]..[],var[]..[]",
+      "Id": "75a931858a0b41e0b3e7cfb9d0952db2",
+      "Inputs": [
+        {
+          "Id": "f7aa207759e546cb9d5c9e9e143ec89a",
+          "Name": "list",
+          "Description": "Список, который требуется отфильтровать.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7be01303aa844b338167ae341b592b63",
+          "Name": "mask",
+          "Description": "Список логических операций, представляющих маску.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "492e850e73df4579b3fae4fbf0d77cc1",
+          "Name": "in",
+          "Description": "Элементы, индекс маски которых имеет значение «истина».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4b6d61a3f59c406386f2de1105ffdb13",
+          "Name": "out",
+          "Description": "Элементы, индекс маски которых имеет значение «ложь».",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Фильтрация последовательности путем поиска соответствующих индексов в отдельном списке логических операций.\n\nList.FilterByBoolMask (list: var[]..[], mask: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "b327657a7b5144228cea54628017f25a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e0c0666f95574674afca02d4f86daf55",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 505,
+      "SelectedString": "OST_Floors",
+      "NodeType": "ExtensionNode",
+      "Id": "f2bc263a799b4c748af44ecb5410ccd6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "626e5436780849f78b418102ef97fdb5",
+          "Name": "Category",
+          "Description": "Выбранная категория.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Все предопределенные категории."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "d22dae26be2b447db02648a4355a61db",
+      "End": "f7aa207759e546cb9d5c9e9e143ec89a",
+      "Id": "e5cf6e4dba3a46e59f4f91983fd53f36"
+    },
+    {
+      "Start": "d22dae26be2b447db02648a4355a61db",
+      "End": "e931cceed62a4dd883d94cae7c18e458",
+      "Id": "edacc2806f604ea78de0dd8c96b6c9fa"
+    },
+    {
+      "Start": "b5b53bc350864c13812203765b7964a6",
+      "End": "7be01303aa844b338167ae341b592b63",
+      "Id": "b4461d104d37451980f349c81da28686"
+    },
+    {
+      "Start": "4b6d61a3f59c406386f2de1105ffdb13",
+      "End": "648656c958f04ec1ba5913e989047016",
+      "Id": "9f752cf91fb94bbc97b7259b342e0566"
+    },
+    {
+      "Start": "e0c0666f95574674afca02d4f86daf55",
+      "End": "c7dd89eea57e4f05b0ed4c8940fdd80b",
+      "Id": "f43e16f3034d49faaead9c8762ece629"
+    },
+    {
+      "Start": "626e5436780849f78b418102ef97fdb5",
+      "End": "c9f3171d413c48468ea2fc6c05be8991",
+      "Id": "7a0e730017ed4dee9648bbef5fa12860"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.10.1.3976",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Element.SetPinnedStatus",
+        "Id": "24ac0b3906364514837031a2b2c3f2f0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 976.5955311188211,
+        "Y": 328.12829778043465
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements of Category",
+        "Id": "266d950eabaa4dce90af636755c0b0e9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 79.772500016673234,
+        "Y": 304.56137217027469
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.IsPinned",
+        "Id": "d013bd17fdbc40dda778660736d036ef",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 337.28431566516105,
+        "Y": 423.14105343316146
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.FilterByBoolMask",
+        "Id": "75a931858a0b41e0b3e7cfb9d0952db2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 582.136299486111,
+        "Y": 303.18229531018312
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "b327657a7b5144228cea54628017f25a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 605.9963901615738,
+        "Y": 509.4848999665578
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Выбрать категорию",
+        "Id": "f2bc263a799b4c748af44ecb5410ccd6",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -184.60104389089634,
+        "Y": 302.33370932577134
+      }
+    ],
+    "Annotations": [],
+    "X": 256.06090800633297,
+    "Y": 205.33208848393696,
+    "Zoom": 1.1062865710608145
+  }
+}

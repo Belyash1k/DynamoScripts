@@ -1,0 +1,339 @@
+{
+  "Uuid": "ee4c7d36-d0f1-473b-95b1-d80b18b6c0ba",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "CreatingWorksets",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Загрузить стандартную библиотеку Python и библиотеку DesignScript\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('RevitAPI')\r\nfrom Autodesk.Revit.DB import *\r\nclr.AddReference('RevitServices')\r\nfrom RevitServices.Persistence import DocumentManager as DM\r\nfrom RevitServices.Transactions import TransactionManager as TM\r\ndoc = DM.Instance.CurrentDBDocument\r\n\r\na, l = IN[0], []\r\nfor i in a:\r\n\tTM.Instance.EnsureInTransaction(doc)\r\n\tb = Workset.Create(doc, i)\r\n\tTM.Instance.TransactionTaskDone()\r\n\tl.append(b.Name)\r\nOUT = l",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "549071cc0bd845d294a4db987abd3c58",
+      "Inputs": [
+        {
+          "Id": "6a8d7c1220b644d6b27bcc4318014776",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a9640dc0aef743b6b94dd834c46d03fb",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение встроенного сценария Python."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSOffice.Data.ImportExcel@var,string,bool,bool",
+      "Id": "7a2b6233af0246ec8af4c0c9ddc4b2b9",
+      "Inputs": [
+        {
+          "Id": "5cb5870da2d642b88e105f72377d40e4",
+          "Name": "file",
+          "Description": "Файл электронной таблицы Microsoft Excel.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7a0fe62b504a4e6486a7aab559090dbe",
+          "Name": "sheetName",
+          "Description": "Имя рабочего листа, содержащего данные.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "92229ac5536248578356ce7557820f7a",
+          "Name": "readAsStrings",
+          "Description": "Включение/выключение режима чтения файла Excel по строкам.\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3750fa21de8e4b888876b4fce5a6910c",
+          "Name": "showExcel",
+          "Description": "Включение/выключение режима отображения и скрытия главного окна Excel.\n\nbool\nЗначение по умолчанию : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b3face7cb0df4b41bfa2e8a290e98d5f",
+          "Name": "data",
+          "Description": "Строки с данными из таблицы Excel.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Чтение данных из электронной таблицы Microsoft Excel. Данные считываются по строкам и возвращаются в виде наборов списков по строкам. Для индексов строк и столбцов предусмотрено нулевое значение. Например, значение в ячейке A1 будет отображаться в списке данных как [0; 0]. Для работы с данным узлом потребуется установленное приложение Microsoft Excel.\n\nData.ImportExcel (file: var, sheetName: string, readAsStrings: bool = false, showExcel: bool = true): var[][]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "D:\\В разработке\\Dynamo\\Worksets.xlsx",
+      "Id": "fcbfb04ce10842e58c952b5757bb75fa",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f7672050e7e04d55ba989327b18cc67a",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.FileObject, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "42e2b038c48049bbb2b9f9166b4fe692",
+      "Inputs": [
+        {
+          "Id": "38806a42cabf4c858fb6fe0c20d4f0b0",
+          "Name": "path",
+          "Description": "Путь к файлу в виде строки.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8dfd51d097e94bdfa069c36759509fe2",
+          "Name": "file",
+          "Description": "Файловый объект",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание нового объекта на основе пути."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Лист1",
+      "Id": "fcc6bdebbb0649809ff8b8403029e24d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2684d931fe6d414ba139fc321aec6e76",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "99fe7b8ef55b45f9b5cb05f5e869a43f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "260d46c5c7dc4a998d68d35af209dff2",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "2dc849f2d4f74bdf991bdc41b5a19ee5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "86ab1ee040894d408dda2fec10c5cf40",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "f7672050e7e04d55ba989327b18cc67a",
+      "End": "38806a42cabf4c858fb6fe0c20d4f0b0",
+      "Id": "be448be4d91b4cf6a5b127a958215035"
+    },
+    {
+      "Start": "8dfd51d097e94bdfa069c36759509fe2",
+      "End": "5cb5870da2d642b88e105f72377d40e4",
+      "Id": "1e60bd45a8d84b96a7902f9b6d0075b4"
+    },
+    {
+      "Start": "2684d931fe6d414ba139fc321aec6e76",
+      "End": "7a0fe62b504a4e6486a7aab559090dbe",
+      "Id": "e6af7649751b4738a52b215604ce2fd9"
+    },
+    {
+      "Start": "260d46c5c7dc4a998d68d35af209dff2",
+      "End": "92229ac5536248578356ce7557820f7a",
+      "Id": "3208c5108f244b6684da8860e3770e30"
+    },
+    {
+      "Start": "86ab1ee040894d408dda2fec10c5cf40",
+      "End": "3750fa21de8e4b888876b4fce5a6910c",
+      "Id": "163129e9eb7b4192bbf9054e572558a9"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.10.1.3976",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "549071cc0bd845d294a4db987abd3c58",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 492.0,
+        "Y": 312.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Data.ImportExcel",
+        "Id": "7a2b6233af0246ec8af4c0c9ddc4b2b9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -113.01166998467784,
+        "Y": 440.67678867054383
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "fcbfb04ce10842e58c952b5757bb75fa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -860.992918188417,
+        "Y": 323.85302029294843
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "File From Path",
+        "Id": "42e2b038c48049bbb2b9f9166b4fe692",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -556.014756616284,
+        "Y": 324.80303812758285
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "fcc6bdebbb0649809ff8b8403029e24d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -405.76863317419372,
+        "Y": 429.57431256766228
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "99fe7b8ef55b45f9b5cb05f5e869a43f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -476.293996840869,
+        "Y": 482.77765708813644
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "2dc849f2d4f74bdf991bdc41b5a19ee5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -472.58213559525461,
+        "Y": 545.87929826358254
+      }
+    ],
+    "Annotations": [],
+    "X": 781.950270490529,
+    "Y": -79.1904935093134,
+    "Zoom": 0.80821986639302923
+  }
+}

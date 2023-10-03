@@ -1,0 +1,3 @@
+﻿D:\Revit\Проекты\testBatch\Проект1.rvt
+D:\Revit\Проекты\testBatch\Проект2.rvt
+D:\Revit\Проекты\testBatch\Проект3.rvt

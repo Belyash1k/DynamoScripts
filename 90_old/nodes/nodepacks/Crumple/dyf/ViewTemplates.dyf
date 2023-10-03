@@ -1,0 +1,165 @@
+{
+  "Uuid": "e0d01115-8760-42bc-9ae5-9845031894e8",
+  "IsCustomNode": true,
+  "Category": "Crumple.Revit.Selection",
+  "Description": "Returns all view templates in the active document. Due to API/Dynamo limitations, 3D view templates are excluded from the list.",
+  "Name": "© ViewTemplates",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Made by Gavin Crump\r\n# Free for use\r\n# BIM Guru, www.bimguru.com.au\r\n\r\n# Boilerplate text\r\nimport clr\r\n\r\nclr.AddReference(\"RevitServices\")\r\nimport RevitServices\r\nfrom RevitServices.Persistence import DocumentManager \r\n\r\nclr.AddReference(\"RevitAPI\")\r\nimport Autodesk \r\nfrom Autodesk.Revit.DB import *\r\n\r\n# Current doc/app/ui\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\n\r\n# Get view templates\r\nviews_all = FilteredElementCollector(doc).OfClass(View).ToElements()\r\n\r\nviewTemplates = []\r\n\r\nfor v in views_all:\r\n\tif v.IsTemplate and v.ViewType != ViewType.ThreeD:\r\n\t\tviewTemplates.append(v)\r\n\r\n# Preparing output to Dynamo\r\nOUT = viewTemplates",
+      "VariableInputPorts": true,
+      "Id": "d95dcb08b6ab4e5db0b0a5c5b5d2df73",
+      "Inputs": [
+        {
+          "Id": "5e1fca83e45e4ed3bc73c47fff889d5e",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9c650fb71067460d99ea5019778b4999",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded IronPython script."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "viewTemplates",
+      "Id": "7728bdec4df746c9a8762d4ce7812f87",
+      "Inputs": [
+        {
+          "Id": "06644fa832d74c09ba695b88c17e97af",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "A function output, use with custom nodes"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "Refresh",
+        "TypeName": "bool",
+        "TypeRank": 0,
+        "DefaultValue": "True",
+        "Description": ""
+      },
+      "Id": "8d991ea470e04764944f44a818eb0b5c",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "23af95321c4f4595986f3c9072b3dc6f",
+          "Name": "",
+          "Description": "Symbol",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "A function parameter, use with custom nodes.\r\n\r\nYou can specify the type and default value for parameter. E.g.,\r\n\r\ninput : var[]..[]\r\nvalue : bool = false"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "9c650fb71067460d99ea5019778b4999",
+      "End": "06644fa832d74c09ba695b88c17e97af",
+      "Id": "b28e60292f8742bf92d440c15f4079fb"
+    },
+    {
+      "Start": "23af95321c4f4595986f3c9072b3dc6f",
+      "End": "5e1fca83e45e4ed3bc73c47fff889d5e",
+      "Id": "946cb49ba38045a3a4acf5a7683b9052"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.3.0.5885",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "d95dcb08b6ab4e5db0b0a5c5b5d2df73",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 250.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "7728bdec4df746c9a8762d4ce7812f87",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 449.0,
+        "Y": 0.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "8d991ea470e04764944f44a818eb0b5c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 18.0,
+        "Y": -1.0
+      }
+    ],
+    "Annotations": [],
+    "X": 221.86244405143589,
+    "Y": 280.28539035921779,
+    "Zoom": 1.7835993623828124
+  }
+}

@@ -1,0 +1,933 @@
+<?xml version="1.0"?>
+<migrations>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Views.Schedule.All</oldName>
+    <newName>Orchid.RevitProject.Schedules.Schedule.All</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Views.Schedule.GetData@ScheduleView-string</oldName>
+    <newName>Orchid.RevitProject.Schedules.Schedule.GetData@ScheduleView-string</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Views.Schedule.GetData@ScheduleView-string-double</oldName>
+    <newName>Orchid.RevitProject.Schedules.Schedule.GetData@ScheduleView-string-double</newName>
+  </priorNameHint>
+
+  
+  <priorNameHint>
+    <oldName>Orchid.RevitFamily.Nested.GetAssociated</oldName>
+    <newName>Orchid.RevitFamily.Document.GetAssociated</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Common.ToRevitType</oldName>
+    <newName>Orchid.RevitProject.Elements.Element.ToRevitType</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Common.ToDynamoType</oldName>
+    <newName>Orchid.RevitProject.Elements.Element.ToDynamoType</newName>
+  </priorNameHint>
+  
+  
+  <priorNameHint>
+    <oldName>Orchid.Core.Clipboard.CopyTo</oldName>
+    <newName>Orchid.Common.Clipboard.CopyTo</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.DataStream.Await</oldName>
+    <newName>Orchid.Common.DataStream.Await</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.DataStream.Circut</oldName>
+    <newName>Orchid.Common.DataStream.Circut</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.DataStream.Timer</oldName>
+    <newName>Orchid.Common.DataStream.Timer</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Directory.Current</oldName>
+    <newName>Orchid.Common.Directory.Current</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Directory.FromPath</oldName>
+    <newName>Orchid.Common.Directory.FromPath</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Directory.Contents</oldName>
+    <newName>Orchid.Common.Directory.Contents</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Geometry.BoundingBox.ElementIntersect@BoundingBox,double</oldName>
+    <newName>Orchid.Common.Geometry.BoundingBox.ElementIntersect@BoundingBox,double</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Geometry.BoundingBox.ElementIntersect@BoundingBox,Element,double</oldName>
+    <newName>Orchid.Common.Geometry.BoundingBox.ElementIntersect@BoundingBox,Element,double</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Geometry.Point.Reverse</oldName>
+    <newName>Orchid.Common.Geometry.Point.Reverse</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Number.ToDouble</oldName>
+    <newName>Orchid.Common.Number.ToDouble</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Number.ToInteger</oldName>
+    <newName>Orchid.Common.Number.ToInteger</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.File.FromPath</oldName>
+    <newName>Orchid.Common.File.FromPath</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.File.Rename</oldName>
+    <newName>Orchid.Common.File.Rename</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.File.Info</oldName>
+    <newName>Orchid.Common.File.Info</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.AllTrue</oldName>
+    <newName>Orchid.Common.List.AllTrue</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.AnyTrue</oldName>
+    <newName>Orchid.Common.List.AnyTrue</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.AllFalse</oldName>
+    <newName>Orchid.Common.List.AllFalse</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.AnyFalse</oldName>
+    <newName>Orchid.Common.List.AnyFalse</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.Clean</oldName>
+    <newName>Orchid.Common.List.Clean</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.Replace</oldName>
+    <newName>Orchid.Common.List.Replace</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.Sort</oldName>
+    <newName>Orchid.Common.List.Sort</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.SortNatural</oldName>
+    <newName>Orchid.Common.List.SortNatural</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.GroupBySortedKey@var[]..[],var[]..[],boolean</oldName>
+    <newName>Orchid.Common.List.GroupBySortedKey@var[]..[],var[]..[],boolean</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.GroupBySortedKey@var[]..[],var[]..[],var[]..[]</oldName>
+    <newName>Orchid.Common.List.GroupBySortedKey@var[]..[],var[]..[],var[]..[]</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.SortGroupByKey@var[]..[],var[]..[],var[]..[]</oldName>
+    <newName>Orchid.Common.List.SortGroupByKey@var[]..[],var[]..[],var[]..[]</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.IndexOf</oldName>
+    <newName>Orchid.Common.List.IndexOf</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.GetItemAtIndex</oldName>
+    <newName>Orchid.Common.List.GetItemAtIndex</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.ReplaceItemAtIndex</oldName>
+    <newName>Orchid.Common.List.ReplaceItemAtIndex</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.FilterByKey</oldName>
+    <newName>Orchid.Common.List.FilterByKey</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.SummationByKey</oldName>
+    <newName>Orchid.Common.List.SummationByKey</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.List.GroupByEqual</oldName>
+    <newName>Orchid.Common.List.GroupByEqual</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Math.Random</oldName>
+    <newName>Orchid.Common.Math.Random</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Math.RandomList</oldName>
+    <newName>Orchid.Common.Math.RandomList</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Common.Hashing</oldName>
+    <newName>Orchid.Common.Object.Hashing</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Print.MergePDF</oldName>
+    <newName>Orchid.Common.Print.MergePDF</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Print.ByView</oldName>
+    <newName>Orchid.Common.Print.ByView</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Print.ByViewSheetSet</oldName>
+    <newName>Orchid.Common.Print.ByViewSheetSet</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Print.CreateSetting</oldName>
+    <newName>Orchid.Common.Print.CreateSetting</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Print.ChangeSetting</oldName>
+    <newName>Orchid.Common.Print.ChangeSetting</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Print.DeleteSetting</oldName>
+    <newName>Orchid.Common.Print.DeleteSetting</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Print.SetOptions</oldName>
+    <newName>Orchid.Common.Print.SetOptions</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Scripting.DynamoPackagesPath</oldName>
+    <newName>Orchid.Common.Scripting.DynamoPackagesPath</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Scripting.DynamoDefinitionsPath</oldName>
+    <newName>Orchid.Common.Scripting.DynamoDefinitionsPath</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.Scripting.ScriptFileReader</oldName>
+    <newName>Orchid.Common.Scripting.ScriptFileReader</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.String.Contains</oldName>
+    <newName>Orchid.Common.String.Contains</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.String.Replace</oldName>
+    <newName>Orchid.Common.String.Replace</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.String.Substring</oldName>
+    <newName>Orchid.Common.String.Substring</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.Core.File.NewProject</oldName>
+    <newName>Orchid.RevitProject.Common.Document.NewProject</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.File.LoadFamily@string</oldName>
+    <newName>Orchid.RevitProject.Common.Document.LoadFamily@string</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.File.LoadFamily@var,string</oldName>
+    <newName>Orchid.RevitProject.Common.Document.LoadFamily@var,string</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.File.LoadFamily@Document,string</oldName>
+    <newName>Orchid.RevitProject.Common.Document.LoadFamily@Document,string</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Document.LoadFamily@var</oldName>
+    <newName>Orchid.RevitProject.Elements.Family.Load@var</newName>
+  </priorNameHint>
+
+  
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Family.LoadFamily@var</oldName>
+    <newName>Orchid.RevitProject.Elements.Family.Load@var</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Family.EditFamily</oldName>
+    <newName>Orchid.RevitProject.Elements.Family.Edit</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Document.EditFamily</oldName>
+    <newName>Orchid.RevitProject.Elements.Family.Edit</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Core.File.SaveFamily</oldName>
+    <newName>Orchid.RevitProject.Elements.Family.Save</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.Associate</oldName>
+    <newName>Orchid.RevitProject.Parameters.GlobalParameter.Associate</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.GetAssociated</oldName>
+    <newName>Orchid.RevitProject.Parameters.GlobalParameter.GetAssociated</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.HasAssociated</oldName>
+    <newName>Orchid.RevitProject.Parameters.GlobalParameter.HasAssociated</newName>
+  </priorNameHint>
+  
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.AddProjectParameter</oldName>
+    <newName>Orchid.RevitProject.Parameters.ProjectParameter.Add</newName>
+  </priorNameHint>
+  
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.AddIfcParameters</oldName>
+    <newName>Orchid.RevitProject.Parameters.ProjectParameter.AddIFC</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.AddSharedParameter</oldName>
+    <newName>Orchid.RevitProject.Parameters.SharedParameter.Add</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.CreateSharedParameter</oldName>
+    <newName>Orchid.RevitProject.Parameters.SharedParameter.Create</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.SetFile</oldName>
+    <newName>Orchid.RevitProject.Parameters.SharedParameter.SetFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.GroupByType</oldName>
+    <newName>Orchid.RevitProject.Parameters.SharedParameter.GroupByType</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.GroupByGroupName</oldName>
+    <newName>Orchid.RevitProject.Parameters.SharedParameter.GroupByGroupName</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.GlobalParameters</oldName>
+    <newName>Orchid.RevitProject.Common.Document.GlobalParameters</newName>
+  </priorNameHint>
+  
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.ProjectParameters</oldName>
+    <newName>Orchid.RevitProject.Common.Document.ProjectParameters</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Parameters.Parameter.SharedParameters</oldName>
+    <newName>Orchid.RevitProject.Common.Document.SharedParameters</newName>
+  </priorNameHint>
+  
+
+  <priorNameHint>
+    <oldName>Orchid.RevitFamily.Parameter.AddSharedParameter</oldName>
+    <newName>Orchid.RevitFamily.SharedParameter.Add</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitFamily.Parameter.CreateSharedParameter</oldName>
+    <newName>Orchid.RevitFamily.SharedParameter.Create</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitFamily.Parameter.AllSharedParameter</oldName>
+    <newName>Orchid.RevitFamily.SharedParameter.All</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitFamily.Parameter.AddParameter@var,string[],string,string,string,bool,bool</oldName>
+    <newName>Orchid.RevitFamily.Parameter.Add@var,string[],string,string,string,bool,bool</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitFamily.Parameter.AddParameter@var,string[],Revit.Elements.Category,string,string,bool,bool</oldName>
+    <newName>Orchid.RevitFamily.Parameter.Add@var,string[],Revit.Elements.Category,string,string,bool,bool</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitFamily.Parameter.AddIfcParameters</oldName>
+    <newName>Orchid.RevitFamily.Parameter.AddIFC</newName>
+  </priorNameHint>
+  
+  <priorNameHint>
+    <oldName>Orchid.RevitFamily.Parameter.Parameters</oldName>
+    <newName>Orchid.RevitFamily.Document.Parameters</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Common.Point.Reverse</oldName>
+    <newName>Orchid.Common.Geometry.Point.Reverse</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Document.TransferByType</oldName>
+    <newName>Orchid.RevitProject.Common.Document.TransferByElementType</newName>
+  </priorNameHint>
+
+  
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Element.SetType</oldName>
+    <newName>Orchid.RevitProject.Elements.FamilyInstance.SetType</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Element.IsFaceFlipped</oldName>
+    <newName>Orchid.RevitProject.Elements.FamilyInstance.IsFaceFlipped</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Element.IsHandFlipped</oldName>
+    <newName>Orchid.RevitProject.Elements.FamilyInstance.IsHandFlipped</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Element.FaceFlipped</oldName>
+    <newName>Orchid.RevitProject.Elements.FamilyInstance.FaceFlipped</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Element.HandFlipped</oldName>
+    <newName>Orchid.RevitProject.Elements.FamilyInstance.HandFlipped</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Element.HandOrientation</oldName>
+    <newName>Orchid.RevitProject.Elements.FamilyInstance.HandOrientation</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Element.IsFlipped</oldName>
+    <newName>Orchid.RevitProject.Elements.Wall.IsFlipped</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Element.Flipped</oldName>
+    <newName>Orchid.RevitProject.Elements.Wall.Flipped</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Element.Orientation</oldName>
+    <newName>Orchid.RevitProject.Elements.Wall.Orientation</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.SystemFamily.CreateCompoundLayer</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamilyType.CreateCompoundLayer</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.SystemFamily.DeleteCompoundLayer</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamilyType.DeleteCompoundLayer</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.SystemFamily.GetCompoundLayerMaterial</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamilyType.GetCompoundLayerMaterial</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.SystemFamily.GetCompoundLayerWidth</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamilyType.GetCompoundLayerWidth</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.SystemFamily.SetCompoundLayerMaterial</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamilyType.SetCompoundLayerMaterial</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.SystemFamily.SetCompoundLayerWidth</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamilyType.SetCompoundLayerWidth</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.SystemFamily.SetCompoundLayerWrapping</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamilyType.SetCompoundLayerWrapping</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.SystemFamily.SetCompoundLayerVariable</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamilyType.SetCompoundLayerVariable</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.SystemFamily.SetCompoundLayerStructural</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamilyType.SetCompoundLayerStructural</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.SystemFamily.ThermalProperties</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamilyType.ThermalProperties</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Element.GetAnalytical</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamily.GetAnalytical</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Element.SetAnalyticalLocation</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamily.SetAnalyticalLocation</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Floor.SetAreaLoad</oldName>
+    <newName>Orchid.RevitProject.Elements.SystemFamily.SetAreaLoad</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.Family.FamilyDocument</oldName>
+    <newName>Orchid.RevitProject.Elements.Family.EditFamily</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Elements.FamilyType.FamilyDocument</oldName>
+    <newName>Orchid.RevitProject.Elements.FamilyType.EditFamily</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Link.LinkCadFile@var,string,Autodesk.DesignScript.Geometry.Point,bool,Revit.Elements.Element,bool,bool</oldName>
+    <newName>Orchid.RevitProject.Common.Link.SetCadFile@var,string,Autodesk.DesignScript.Geometry.Point,bool,Revit.Elements.Element,bool,bool</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Link.LinkCadFile@var,string,string,string,string,Autodesk.DesignScript.Geometry.Point,bool,Revit.Elements.Element,bool,bool</oldName>
+    <newName>Orchid.RevitProject.Common.Link.SetCadFile@var,string,string,string,string,Autodesk.DesignScript.Geometry.Point,bool,Revit.Elements.Element,bool,bool</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Link.LinkRevitFile</oldName>
+    <newName>Orchid.RevitProject.Common.Link.SetRevitFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Link.LinkedFile</oldName>
+    <newName>Orchid.RevitProject.Common.Link.GetFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Link.LinkedRevitFile</oldName>
+    <newName>Orchid.RevitProject.Common.Link.GetRevitFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Link.LinkedCadFile</oldName>
+    <newName>Orchid.RevitProject.Common.Link.GetCadFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Link.LinkReload</oldName>
+    <newName>Orchid.RevitProject.Common.Link.Reload</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Link.LinkRepath</oldName>
+    <newName>Orchid.RevitProject.Common.Link.Repath</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Link.LinkUnload</oldName>
+    <newName>Orchid.RevitProject.Common.Link.Unload</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.PostCommand.Purge</oldName>
+    <newName>Orchid.RevitProject.Common.PostCommand.Purge</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.IFC.Export</oldName>
+    <newName>Orchid.RevitProject.Common.IFC.Export</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.IFC.SettingAdditional</oldName>
+    <newName>Orchid.RevitProject.Common.IFC.SettingAdditional</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.IFC.SettingAdvanced</oldName>
+    <newName>Orchid.RevitProject.Common.IFC.SettingAdvanced</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.IFC.SettingByName</oldName>
+    <newName>Orchid.RevitProject.Common.IFC.SettingByName</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.IFC.SettingGeneral</oldName>
+    <newName>Orchid.RevitProject.Common.IFC.SettingGeneral</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.IFC.SettingProperty</oldName>
+    <newName>Orchid.RevitProject.Common.IFC.SettingProperty</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.ActiveView</oldName>
+    <newName>Orchid.RevitProject.Common.Document.ActiveView</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.BackgroundOpen</oldName>
+    <newName>Orchid.RevitProject.Common.Document.BackgroundOpen</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.Close</oldName>
+    <newName>Orchid.RevitProject.Common.Document.Close</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.ContainCategory</oldName>
+    <newName>Orchid.RevitProject.Common.Document.ContainCategory</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.ContainType</oldName>
+    <newName>Orchid.RevitProject.Common.Document.ContainType</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.ConvertToLink</oldName>
+    <newName>Orchid.RevitProject.Common.Document.ConvertToLink</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.CopyDraftingView</oldName>
+    <newName>Orchid.RevitProject.Common.Document.CopyDraftingView</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.CopyElement</oldName>
+    <newName>Orchid.RevitProject.Common.Document.CopyElement</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.CopySchedule</oldName>
+    <newName>Orchid.RevitProject.Common.Document.CopySchedule</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.Current</oldName>
+    <newName>Orchid.RevitProject.Common.Document.Current</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.ImportImage</oldName>
+    <newName>Orchid.RevitProject.Common.Document.ImportImage</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.Info</oldName>
+    <newName>Orchid.RevitProject.Common.Document.Info</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.Name</oldName>
+    <newName>Orchid.RevitProject.Common.Document.Name</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.Opened</oldName>
+    <newName>Orchid.RevitProject.Common.Document.Opened</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.OpenView</oldName>
+    <newName>Orchid.RevitProject.Common.Document.OpenView</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.Purge</oldName>
+    <newName>Orchid.RevitProject.Common.Document.Purge</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.Save</oldName>
+    <newName>Orchid.RevitProject.Common.Document.Save</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.SaveAs</oldName>
+    <newName>Orchid.RevitProject.Common.Document.SaveAs</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.SetStartingView</oldName>
+    <newName>Orchid.RevitProject.Common.Document.SetStartingView</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.TransferByCategory</oldName>
+    <newName>Orchid.RevitProject.Common.Document.TransferByCategory</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.TransferByFamily</oldName>
+    <newName>Orchid.RevitProject.Common.Document.TransferByFamily</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.TransferByType</oldName>
+    <newName>Orchid.RevitProject.Common.Document.TransferByElementType</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.LoadFamily</oldName>
+    <newName>Orchid.RevitProject.Common.Document.LoadFamily</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitFamily.Document.LoadFamily</oldName>
+    <newName>Orchid.RevitProject.Common.Document.LoadFamily</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Document.LinkedCadFile</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkedCadFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Document.LinkedFile</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkedFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Document.LinkedRevitFile</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkedRevitFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Document.LinkReload</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkReload</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Document.LinkRepath</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkRepath</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Common.Document.LinkUnload</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkUnload</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.LinkedCadFile</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkedCadFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.LinkedFile</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkedFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.LinkedRevitFile</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkedRevitFile</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.LinkReload</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkReload</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.LinkRepath</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkRepath</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Document.LinkUnload</oldName>
+    <newName>Orchid.RevitProject.Common.Link.LinkUnload</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Views.ViewSheetSet.Create</oldName>
+    <newName>Orchid.RevitProject.Views.SheetSet.Create</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Views.ViewSheetSet.Change</oldName>
+    <newName>Orchid.RevitProject.Views.SheetSet.Change</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Views.ViewSheetSet.GetView</oldName>
+    <newName>Orchid.RevitProject.Views.SheetSet.GetView</newName>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.RevitProject.Views.ViewSheetSet.Delete</oldName>
+    <newName>Orchid.RevitProject.Views.SheetSet.Delete</newName>
+  </priorNameHint>
+
+
+  <priorNameHint>
+    <oldName>Orchid.Common.Dictionary.ByKeysValues</oldName>
+    <newName>DesignScript.Builtin.Dictionary.ByKeysValues</newName>
+    <additionalAttributes>
+      <attribute>
+        <name>assembly</name>
+        <value>DesignScriptBuiltin.dll</value>
+      </attribute>
+    </additionalAttributes>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Common.Dictionary.Components</oldName>
+    <newName>DesignScript.Builtin.Dictionary.Components</newName>
+    <additionalAttributes>
+      <attribute>
+        <name>assembly</name>
+        <value>DesignScriptBuiltin.dll</value>
+      </attribute>
+    </additionalAttributes>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Common.Dictionary.Keys</oldName>
+    <newName>DesignScript.Builtin.Dictionary.Keys</newName>
+    <additionalAttributes>
+      <attribute>
+        <name>assembly</name>
+        <value>DesignScriptBuiltin.dll</value>
+      </attribute>
+    </additionalAttributes>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Common.Dictionary.Values</oldName>
+    <newName>DesignScript.Builtin.Dictionary.Values</newName>
+    <additionalAttributes>
+      <attribute>
+        <name>assembly</name>
+        <value>DesignScriptBuiltin.dll</value>
+      </attribute>
+    </additionalAttributes>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Common.Dictionary.Count</oldName>
+    <newName>DesignScript.Builtin.Dictionary.Count</newName>
+    <additionalAttributes>
+      <attribute>
+        <name>assembly</name>
+        <value>DesignScriptBuiltin.dll</value>
+      </attribute>
+    </additionalAttributes>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Common.Dictionary.SetValueAtKeys</oldName>
+    <newName>DesignScript.Builtin.Dictionary.SetValueAtKeys</newName>
+    <additionalAttributes>
+      <attribute>
+        <name>assembly</name>
+        <value>DesignScriptBuiltin.dll</value>
+      </attribute>
+    </additionalAttributes>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Common.Dictionary.RemoveKeys</oldName>
+    <newName>DesignScript.Builtin.Dictionary.RemoveKeys</newName>
+    <additionalAttributes>
+      <attribute>
+        <name>assembly</name>
+        <value>DesignScriptBuiltin.dll</value>
+      </attribute>
+    </additionalAttributes>
+  </priorNameHint>
+
+  <priorNameHint>
+    <oldName>Orchid.Common.Dictionary.ValueAtKey</oldName>
+    <newName>DesignScript.Builtin.Dictionary.ValueAtKey</newName>
+    <additionalAttributes>
+      <attribute>
+        <name>assembly</name>
+        <value>DesignScriptBuiltin.dll</value>
+      </attribute>
+    </additionalAttributes>
+  </priorNameHint>
+
+</migrations>

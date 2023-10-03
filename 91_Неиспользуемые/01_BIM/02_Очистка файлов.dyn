@@ -1,0 +1,323 @@
+{
+  "Uuid": "caada0ff-3838-4326-a52d-5dfa6e40bcb8",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "02_Очистка файлов и перемещение в исходящие",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementTypes, DSRevitNodesUI",
+      "SelectedIndex": 43,
+      "SelectedString": "CADLinkType",
+      "NodeType": "ExtensionNode",
+      "Id": "3064489774034c6c80167f0b6b8e82d6",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "dac20cec3eb5429f8c75805be4affa51",
+          "Name": "Types",
+          "Description": "Выбрано Types",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Все подтипы элементов."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfType, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "308c9a22e97d4f3781518e2a3b090574",
+      "Inputs": [
+        {
+          "Id": "758d43d1b57046f2b47d918bfdced7a3",
+          "Name": "element type",
+          "Description": "Тип элемента.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "3b4e9fd2b17e47a481bf75ed8e07bdbb",
+          "Name": "elements",
+          "Description": "Все элементы в активном документе данного типа.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Все элементы в активном документе данного типа."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.Delete@Revit.Elements.Element",
+      "Id": "ac7929526b864c8fa811b7d0577a7285",
+      "Inputs": [
+        {
+          "Id": "09d88df8f2984719a26051aca6b414f1",
+          "Name": "element",
+          "Description": "Элемент, который требуется удалить.\n\nElement",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "59494a0a216243149ca2b1ec71f046aa",
+          "Name": "int[]",
+          "Description": "Список идентификаторов удаленных элементов, включая все зависимые элементы.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Удаление элемента и всех полностью зависимых от него элементов.\n\nElement.Delete (element: Element): int[]"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementTypes, DSRevitNodesUI",
+      "SelectedIndex": 151,
+      "SelectedString": "Group",
+      "NodeType": "ExtensionNode",
+      "Id": "075f5313f738495ca2bfe8f30b709290",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "70735f0d7ae84f62b9e2ffe6586653db",
+          "Name": "Types",
+          "Description": "Выбрано Types",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Все подтипы элементов."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfType, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "2d5f9c8358a64838a56d0e7530023217",
+      "Inputs": [
+        {
+          "Id": "900568b89e924dbab2e52638aaedcfa6",
+          "Name": "element type",
+          "Description": "Тип элемента.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0c1f6a5253fb4ca396f6b5d1ccb7a0e8",
+          "Name": "elements",
+          "Description": "Все элементы в активном документе данного типа.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Все элементы в активном документе данного типа."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Group.UngroupElements",
+      "Id": "c96b18741eb04d82a9a8f525036b2dde",
+      "Inputs": [
+        {
+          "Id": "e3013366e9a04e5b933218b7ec5320da",
+          "Name": "group",
+          "Description": "Revit.Elements.Group",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4c8d846fc07f4474b10b0f9071ebd780",
+          "Name": "Element[]",
+          "Description": "Element[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Разгруппирование группы.\n\nGroup.UngroupElements ( ): Element[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "dac20cec3eb5429f8c75805be4affa51",
+      "End": "758d43d1b57046f2b47d918bfdced7a3",
+      "Id": "c703636dddab450198f549efe31262b6"
+    },
+    {
+      "Start": "3b4e9fd2b17e47a481bf75ed8e07bdbb",
+      "End": "09d88df8f2984719a26051aca6b414f1",
+      "Id": "515e7e87cbf3424fa37c7ac0228082d6"
+    },
+    {
+      "Start": "70735f0d7ae84f62b9e2ffe6586653db",
+      "End": "900568b89e924dbab2e52638aaedcfa6",
+      "Id": "aa02058f117d428988bce06b7385a451"
+    },
+    {
+      "Start": "0c1f6a5253fb4ca396f6b5d1ccb7a0e8",
+      "End": "e3013366e9a04e5b933218b7ec5320da",
+      "Id": "a6764f72a04142e0a79107ac81110ac6"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.6.1.8786",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Element Types",
+        "Id": "3064489774034c6c80167f0b6b8e82d6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 303.5,
+        "Y": 572.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements of Type",
+        "Id": "308c9a22e97d4f3781518e2a3b090574",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 596.0,
+        "Y": 572.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.Delete",
+        "Id": "ac7929526b864c8fa811b7d0577a7285",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 907.0,
+        "Y": 571.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element Types",
+        "Id": "075f5313f738495ca2bfe8f30b709290",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 295.97053307720819,
+        "Y": 892.815447803696
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements of Type",
+        "Id": "2d5f9c8358a64838a56d0e7530023217",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 584.76426837531574,
+        "Y": 895.5951463301152
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Group.UngroupElements",
+        "Id": "c96b18741eb04d82a9a8f525036b2dde",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 892.035675811199,
+        "Y": 895.77632046970075
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "35fc5b5e5f2543b4b653999949bab653",
+        "Title": "Удалить CAD",
+        "Nodes": [
+          "3064489774034c6c80167f0b6b8e82d6",
+          "308c9a22e97d4f3781518e2a3b090574",
+          "ac7929526b864c8fa811b7d0577a7285"
+        ],
+        "Left": 293.5,
+        "Top": 518.0,
+        "Width": 816.5,
+        "Height": 147.0,
+        "FontSize": 36.0,
+        "InitialTop": 571.0,
+        "InitialHeight": 124.0,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      },
+      {
+        "Id": "273ec060567145549d3155da0ecb629b",
+        "Title": "Разгруппировка групп",
+        "Nodes": [
+          "075f5313f738495ca2bfe8f30b709290",
+          "2d5f9c8358a64838a56d0e7530023217",
+          "c96b18741eb04d82a9a8f525036b2dde"
+        ],
+        "Left": 285.97053307720819,
+        "Top": 839.815447803696,
+        "Width": 829.0651427339908,
+        "Height": 148.96087266600478,
+        "FontSize": 36.0,
+        "InitialTop": 892.815447803696,
+        "InitialHeight": 125.96087266600478,
+        "TextblockHeight": 43.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 22.374687752206114,
+    "Y": 36.06482531522056,
+    "Zoom": 0.65527233321848866
+  }
+}

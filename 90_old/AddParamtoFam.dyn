@@ -1,0 +1,893 @@
+{
+  "Uuid": "e0b180b3-3ecf-463e-9d57-ffb78fc8ab81",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "AddParamtoFam",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "M:\\BIM\\Revit\\Семейства\\00_NIIPI\\АР\\Двери",
+      "Id": "7823352424a941db9331a16996216294",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "93fc09741ea0412583b6ba34c22d7280",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Orchid.RevitProject.Common.Document.BackgroundOpen@string",
+      "Id": "6f29e819faf64b5c9ce196180f039967",
+      "Inputs": [
+        {
+          "Id": "6b2f9e744a954228aecdf5d827b2d651",
+          "Name": "file",
+          "Description": "File (path) to open in the background.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "caa27c95a95b4a5b8fc42e8e414a5df9",
+          "Name": "Document",
+          "Description": "Document as Revit type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Open documents in background.\n\nDocument.BackgroundOpen (file: string): Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Orchid.Common.Directory.Contents@string,string,bool,bool",
+      "Id": "d22ac9054435440fbceca02a4587da26",
+      "Inputs": [
+        {
+          "Id": "6bad577531324f7eab590373dae41cfc",
+          "Name": "directory",
+          "Description": "Directory to get contents from.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0b82889a6668496db43c6dfd13ea7506",
+          "Name": "searchString",
+          "Description": "Search string used to filter results.\n\nstring\nЗначение по умолчанию : \"*\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "72a8c61d2e37429bbfc7d8f02160ce17",
+          "Name": "deepSearch",
+          "Description": "Apply searching in all subfolders?\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e2ae04231c244a099fe91cb0c333c671",
+          "Name": "condense",
+          "Description": "Condense to shortest feasible output?\n\nbool\nЗначение по умолчанию : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "f1cd23ec56cd4232b598b901d511c727",
+          "Name": "File",
+          "Description": "File object.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the files in a directory and its subdirectories. Use string for extension type, default is * for all files! If files are are readonly but not hidden, are they included. If files are both hidden or readonly files (and thereby system files) are they left out.\n\nDirectory.Contents (directory: string, searchString: string = \"*\", deepSearch: bool = false, condense: bool = true): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Описание",
+      "Id": "28e00a4bb3804989b02e6f01f1e671f1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "7e6175563d3f43cb8b70e944085bc40a",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Orchid.RevitProject.Common.Document.Save@Orchid.RevitProject.Common.Document,bool",
+      "Id": "6f069005ed8a4d9b8b64b0ac1c935ba9",
+      "Inputs": [
+        {
+          "Id": "8bf068bcc15842bfb5dafc3c9345a1ea",
+          "Name": "document",
+          "Description": "Document (rvt) as Orchid document.\n\nDocument\nЗначение по умолчанию : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "dbd9643af84a40fba6836efe50369825",
+          "Name": "compact",
+          "Description": "Save using compact mode?\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b51ec94e9068434ea3186ca330baca7b",
+          "Name": "Document",
+          "Description": "Document as Revit type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Save document.\n\nDocument.Save (document: Document = null, compact: bool = false): Document"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Orchid.RevitFamily.Parameter.SetValue@Orchid.RevitProject.Common.Document,var[],string[],var[],bool",
+      "Id": "dda9622077644ae0888fd8df3406fbeb",
+      "Inputs": [
+        {
+          "Id": "a055c9e3e791417ea261bf16f13c081d",
+          "Name": "familyDocument",
+          "Description": "Family document (rfa) as Orchid document.\n\nDocument\nЗначение по умолчанию : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a021e817e5be45bf8591c9d32cf7703c",
+          "Name": "familyType",
+          "Description": "FamilyType as Orchid type.\n\nvar[]\nЗначение по умолчанию : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e29792cf450c482487cb925695039038",
+          "Name": "parameterName",
+          "Description": "The name of the parameter to set.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7d2779c32ed94b948ae29ef0443184e2",
+          "Name": "value",
+          "Description": "The value to set.\n\nvar[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a554e67b63214763a2da29d88cdbf208",
+          "Name": "condense",
+          "Description": "Condense to shortest feasible output?\n\nbool\nЗначение по умолчанию : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9c157f4b5c7f47eb85a81f8b13d2de47",
+          "Name": "Parameter",
+          "Description": "Parameter as Orchid type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Set family parameter value by parameter name. Provided values must comply with the number of family types! Note: If no family type is provided (default as null), then will the default family type in the familyDocument be used. Furthermore, If no family types exists, then a default family type will be created named as the familyDocument.\n\nParameter.SetValue (familyDocument: Document = null, familyType: var[] = null, parameterName: string[], value: var[], condense: bool = true): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a != null? b : null;",
+      "Id": "a73ce439f20f404ca8eeae130186a6cb",
+      "Inputs": [
+        {
+          "Id": "f1f582c652724e1da687bd4527f83655",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5ea1bbf194a84fb5bd8210975881eaac",
+          "Name": "b",
+          "Description": "b",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "76c3524df3374b079edb844d319cef53",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a[0];",
+      "Id": "650ed518a34b46e4bf26b8ca4aee15c6",
+      "Inputs": [
+        {
+          "Id": "18158f32760f47698c17420d60ab9bda",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "18c7b4721d9d41f0ac74d79b501ec3c1",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "Дверь",
+      "Id": "63d75e7598ec40de99c7587ef607620f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "aeaa97beeafc4ce1bb59b7b7a20cefb8",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Orchid.RevitFamily.SharedParameter.Add@Orchid.RevitProject.Common.Document,string[],string,string,bool,bool,bool",
+      "Id": "a763a18d98a94695b16b189ff73511a2",
+      "Inputs": [
+        {
+          "Id": "5020ab4cc4e74a56bb249e9322d711d4",
+          "Name": "familyDocument",
+          "Description": "Family document (rfa) as Orchid document.\n\nDocument\nЗначение по умолчанию : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2bde794462724c8e89b89c16e4b84fc3",
+          "Name": "parameterName",
+          "Description": "The name of the parameter to add.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d276b9a0dbeb46cbbc67887850d90ac9",
+          "Name": "groupName",
+          "Description": "The name of the group where the parameter belong to.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "3faf0f1bd9f74ca59a599c691d8bdd92",
+          "Name": "group",
+          "Description": "BuiltIn Parameter Group.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "785c590b21ba4f428f040b3dbb9509f2",
+          "Name": "instance",
+          "Description": "Is instance parameter? Otherwise it's a type parameter!\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "4603dc8b6e9c4bbb9c5359081b9dd553",
+          "Name": "reporting",
+          "Description": "Is reporting parameter? Is only available to Length and Angle parameters!\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "93539965bc514dbfab190c1055515864",
+          "Name": "condense",
+          "Description": "Condense to shortest feasible output?\n\nbool\nЗначение по умолчанию : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a919cc7ab40a4486839b83ada21687cb",
+          "Name": "Parameter",
+          "Description": "Parameter as Orchid type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Add shared parameter by name, from current loaded shared parameter file.\n\nSharedParameter.Add (familyDocument: Document = null, parameterName: string[], groupName: string, group: string, instance: bool = false, reporting: bool = false, condense: bool = true): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "\"ADSK_Открывание\";\n\"01 Обязательные ОБЩИЕ\";\n\"Text\";\n\"PG_DATA\";",
+      "Id": "6c18fac5d6744c679b9b5af76b6b05fc",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2a82ff8836e7470c92b561b926a5c119",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "809ca6a1977844a8b860276a9e7266b0",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c8247f9fb8354fcab472ee5502b25681",
+          "Name": "",
+          "Description": "Значение выражения в строке 3",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a303daa32174417b8b48c0514a476c5c",
+          "Name": "",
+          "Description": "Значение выражения в строке 4",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Orchid.Common.DataStream.Await@var[]..[],var[]..[]",
+      "Id": "3955311ba29b474d9393c13b2a1c91e6",
+      "Inputs": [
+        {
+          "Id": "57a4afcb2ce949c28b8aef52f4ac60b4",
+          "Name": "pass",
+          "Description": "Data to pass.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "011dabcbdf1941bc9cebe28b3c199aad",
+          "Name": "waitFor",
+          "Description": "Data object to wait for.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7b9115b9e8594938a4127091dfd3100d",
+          "Name": "pass",
+          "Description": "Passed data.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Await a data stream before passing another data stream.\n\nDataStream.Await (pass: var[]..[], waitFor: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Orchid.RevitFamily.SharedParameter.Create@Orchid.RevitProject.Common.Document,string[],string,string,string,string,bool,bool,bool",
+      "Id": "974bf39bd2134139ba94eabedfccdbc9",
+      "Inputs": [
+        {
+          "Id": "07b4f3c5e763426eb7137d7ce6309af0",
+          "Name": "familyDocument",
+          "Description": "Family document (rfa) as Orchid document.\n\nDocument\nЗначение по умолчанию : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5492772fa1d44d1985e320eee2e41525",
+          "Name": "parameterName",
+          "Description": "The name of the parameter to create.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "deb52729b87e45c49991cd910e77671f",
+          "Name": "groupName",
+          "Description": "The name of the group where the parameter belong to.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "567daf0e4d1e43e39a0be40623ecba42",
+          "Name": "type",
+          "Description": "BuiltIn Parameter Type.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5ca49ad468a94e15b07eb941b14b41f9",
+          "Name": "group",
+          "Description": "BuiltIn Parameter Group.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b62fedaeecfc4aee89ee2bf9ed200096",
+          "Name": "tooltip",
+          "Description": "Tooltip for the parameter.\n\nstring\nЗначение по умолчанию : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a306f3a6d3094323846adf5d25fb2b56",
+          "Name": "instance",
+          "Description": "Is instance parameter? Otherwise it's a type parameter!\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "66d89ab6369542a5b2c22bcabc92387c",
+          "Name": "reporting",
+          "Description": "Is reporting parameter? Is only available to Length and Angle parameters!\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fc1bd056320f4fbea3e76bc7cbeacc6e",
+          "Name": "condense",
+          "Description": "Condense to shortest feasible output?\n\nbool\nЗначение по умолчанию : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4b02b3ad077f466aa88df86c333e819a",
+          "Name": "Parameter",
+          "Description": "Parameter as Orchid type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Create shared parameter by name in the family. If the parameter not exists in the shared parameter file is it being created.\n\nSharedParameter.Create (familyDocument: Document = null, parameterName: string[], groupName: string, type: string, group: string, tooltip: string = null, instance: bool = false, reporting: bool = false, condense: bool = true): var[]..[]"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "93fc09741ea0412583b6ba34c22d7280",
+      "End": "6bad577531324f7eab590373dae41cfc",
+      "Id": "c37bae6d4825435e918fc51e7fa65eb1"
+    },
+    {
+      "Start": "caa27c95a95b4a5b8fc42e8e414a5df9",
+      "End": "a055c9e3e791417ea261bf16f13c081d",
+      "Id": "895750a644374917ba5c5897e02dcdfc"
+    },
+    {
+      "Start": "caa27c95a95b4a5b8fc42e8e414a5df9",
+      "End": "57a4afcb2ce949c28b8aef52f4ac60b4",
+      "Id": "29012cd36b90433c9da11a6b1a3b039d"
+    },
+    {
+      "Start": "caa27c95a95b4a5b8fc42e8e414a5df9",
+      "End": "07b4f3c5e763426eb7137d7ce6309af0",
+      "Id": "7be28e804fd343518cf6a23fa5cbfc47"
+    },
+    {
+      "Start": "f1cd23ec56cd4232b598b901d511c727",
+      "End": "18158f32760f47698c17420d60ab9bda",
+      "Id": "8e31b40ab60941989f0ed52ea13af86d"
+    },
+    {
+      "Start": "f1cd23ec56cd4232b598b901d511c727",
+      "End": "6b2f9e744a954228aecdf5d827b2d651",
+      "Id": "cd9c371ce85045ba89ef021afb1ebae5"
+    },
+    {
+      "Start": "7e6175563d3f43cb8b70e944085bc40a",
+      "End": "e29792cf450c482487cb925695039038",
+      "Id": "4fa0c1d53cf04d99a66b84bd4f7d0ea4"
+    },
+    {
+      "Start": "9c157f4b5c7f47eb85a81f8b13d2de47",
+      "End": "f1f582c652724e1da687bd4527f83655",
+      "Id": "13363a9137124bb2ac647879294be043"
+    },
+    {
+      "Start": "aeaa97beeafc4ce1bb59b7b7a20cefb8",
+      "End": "7d2779c32ed94b948ae29ef0443184e2",
+      "Id": "51093a0a25304f7b974908a80433a3b2"
+    },
+    {
+      "Start": "2a82ff8836e7470c92b561b926a5c119",
+      "End": "5492772fa1d44d1985e320eee2e41525",
+      "Id": "db5823b21e79414e850a999632c7f71f"
+    },
+    {
+      "Start": "809ca6a1977844a8b860276a9e7266b0",
+      "End": "d276b9a0dbeb46cbbc67887850d90ac9",
+      "Id": "56b78376900448cd9b3d2f2f65a784bd"
+    },
+    {
+      "Start": "809ca6a1977844a8b860276a9e7266b0",
+      "End": "deb52729b87e45c49991cd910e77671f",
+      "Id": "27557c223c3f402c8ada2c4957dbeca7"
+    },
+    {
+      "Start": "c8247f9fb8354fcab472ee5502b25681",
+      "End": "3faf0f1bd9f74ca59a599c691d8bdd92",
+      "Id": "d4575d0f596b49dbae0956a90d838f70"
+    },
+    {
+      "Start": "c8247f9fb8354fcab472ee5502b25681",
+      "End": "567daf0e4d1e43e39a0be40623ecba42",
+      "Id": "f0ec1ecf22b244e48696f04be53e3209"
+    },
+    {
+      "Start": "a303daa32174417b8b48c0514a476c5c",
+      "End": "5ca49ad468a94e15b07eb941b14b41f9",
+      "Id": "d598cfc295e948dd80f653edb6902e38"
+    },
+    {
+      "Start": "7b9115b9e8594938a4127091dfd3100d",
+      "End": "8bf068bcc15842bfb5dafc3c9345a1ea",
+      "Id": "68058dfd8d5d4cbaa2323231841145d9"
+    },
+    {
+      "Start": "4b02b3ad077f466aa88df86c333e819a",
+      "End": "011dabcbdf1941bc9cebe28b3c199aad",
+      "Id": "b647985294e84c34b4f528c7bcf7f865"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Orchid",
+      "Version": "203.2.0.7778",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "6f29e819faf64b5c9ce196180f039967",
+        "d22ac9054435440fbceca02a4587da26",
+        "6f069005ed8a4d9b8b64b0ac1c935ba9",
+        "dda9622077644ae0888fd8df3406fbeb"
+      ]
+    },
+    {
+      "Name": "Orchid",
+      "Version": "212.1.0.7978",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "a763a18d98a94695b16b189ff73511a2",
+        "3955311ba29b474d9393c13b2a1c91e6",
+        "974bf39bd2134139ba94eabedfccdbc9"
+      ]
+    }
+  ],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Нет",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.0.5650",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "7823352424a941db9331a16996216294",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 76.982283522733155,
+        "Y": 659.77335079501518
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.BackgroundOpen",
+        "Id": "6f29e819faf64b5c9ce196180f039967",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 870.846320311978,
+        "Y": 658.113336383094
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Directory.Contents",
+        "Id": "d22ac9054435440fbceca02a4587da26",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 327.15879939928811,
+        "Y": 660.67879021828992
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "28e00a4bb3804989b02e6f01f1e671f1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2494.3559526235408,
+        "Y": 1172.0166718250725
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Save",
+        "Id": "6f069005ed8a4d9b8b64b0ac1c935ba9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3611.3590044996627,
+        "Y": 572.09609607792891
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Parameter.SetValue",
+        "Id": "dda9622077644ae0888fd8df3406fbeb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 2647.0544182109629,
+        "Y": 1127.06628647978
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "a73ce439f20f404ca8eeae130186a6cb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3276.1817843138269,
+        "Y": 1126.3257790978942
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "650ed518a34b46e4bf26b8ca4aee15c6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 687.0,
+        "Y": 756.632582915051
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "63d75e7598ec40de99c7587ef607620f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2527.397208382818,
+        "Y": 1273.7360183669844
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "SharedParameter.Add",
+        "Id": "a763a18d98a94695b16b189ff73511a2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": true,
+        "X": 2301.1006053430779,
+        "Y": 926.89403279945077
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "6c18fac5d6744c679b9b5af76b6b05fc",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1187.3059414286176,
+        "Y": 813.73768799979666
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "DataStream.Await",
+        "Id": "3955311ba29b474d9393c13b2a1c91e6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3292.2787929890969,
+        "Y": 573.72152838793022
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "SharedParameter.Create",
+        "Id": "974bf39bd2134139ba94eabedfccdbc9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2256.9010134640375,
+        "Y": 381.06207483164991
+      }
+    ],
+    "Annotations": [],
+    "X": -2247.7847318483364,
+    "Y": -220.61280709623554,
+    "Zoom": 0.86077690486284775
+  }
+}

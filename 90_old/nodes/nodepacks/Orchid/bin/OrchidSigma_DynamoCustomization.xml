@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc>
+  <assembly>
+    <name>OrchidSigma</name>
+  </assembly>
+  <namespaces>
+  <namespace name="Orchid">
+    <category>Orchid.Applications</category>
+  </namespace>
+  </namespaces>
+</doc>

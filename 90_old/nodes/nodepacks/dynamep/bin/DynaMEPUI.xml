@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DynaMEPUI</name>
+    </assembly>
+    <members>
+        <member name="T:DynaMEPUI.Pipe.PipeType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DynaMEPUI.Pipe.PipeType.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DynaMEPUI.Pipe.PipeType.PopulateItemsCore(System.String)">
+            <summary>
+            </summary>
+            <param name="currentSelection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DynaMEPUI.Pipe.PipeType.BuildOutputAst(System.Collections.Generic.List{ProtoCore.AST.AssociativeAST.AssociativeNode})">
+            <summary>
+            </summary>
+            <param name="inputAstNodes"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DynaMEPUI.Duct.DuctType">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:DynaMEPUI.Duct.DuctType.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DynaMEPUI.Duct.DuctType.PopulateItemsCore(System.String)">
+            <summary>
+            </summary>
+            <param name="currentSelection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DynaMEPUI.Duct.DuctType.BuildOutputAst(System.Collections.Generic.List{ProtoCore.AST.AssociativeAST.AssociativeNode})">
+            <summary>
+            </summary>
+            <param name="inputAstNodes"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DynaMEPUI.ViewTemplate.ViewTemplates">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DynaMEPUI.ViewTemplate.ViewTemplates.#ctor">
+            <summary>
+            </summary>
+        </member>
+        <member name="M:DynaMEPUI.ViewTemplate.ViewTemplates.PopulateItemsCore(System.String)">
+            <summary>
+            </summary>
+            <param name="currentSelection"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DynaMEPUI.ViewTemplate.ViewTemplates.BuildOutputAst(System.Collections.Generic.List{ProtoCore.AST.AssociativeAST.AssociativeNode})">
+            <summary>
+            </summary>
+            <param name="inputAstNodes"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

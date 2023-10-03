@@ -1,0 +1,168 @@
+{
+  "Uuid": "bdfa69db-c3ac-48ea-87d5-aec2536149e2",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "ExportSize_Auto",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Application.Document.FilePath",
+      "Id": "5428d2f541dd46dcac9651111c7003a7",
+      "Inputs": [
+        {
+          "Id": "e19cbb579a75476289595371a8eedcde",
+          "Name": "document",
+          "Description": "Revit.Application.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "72cad10edbc94fe88d7f9a91f75ed020",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "The full path of the Document.\n\nDocument.FilePath: string"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Application.Document.Current",
+      "Id": "c90c6ea7a7e4437db1f0dc889f11b2ad",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "ef4c3718c16d430bb5874b121764dc50",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get the current document\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "import clr # Модуль для подгрузки .NET библиотек\r\nimport os\r\nfrom datetime import datetime\r\n# Библиотеки Revit API\r\nclr.AddReference('RevitAPI') # Основная библиотека Revit API\r\nclr.AddReference('RevitAPIUI') # Библиотека Revit API интерфейса\r\nfrom Autodesk.Revit.DB import * # Указать классы для импорта\r\n# from Autodesk.Revit.UI import * # Убрать решетку (если надо) и указать классы\r\n\r\n# Библиотеки Dynamo\r\nclr.AddReference('RevitNodes') # Конвертация элементов и геометрии\r\nimport Revit # Расширяем исходные методы классов через ImportExtensions\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.AddReference('RevitServices') # Работа с документом и транзакциями\r\nfrom RevitServices.Persistence import DocumentManager as DM # Менеджер документа\r\nfrom RevitServices.Transactions import TransactionManager as TM # Менеджер транзакций\r\n\r\n# Системные библиотеки\r\nimport System # Работа с системными типами и структурами данных .NET\r\nfrom System.Collections.Generic import * # Можно конкретно указать List\r\nimport sys # Настройки интерпретатора IronPython, путь к библиотекам\r\nsys.path.append(r'C:\\Program Files (x86)\\IronPython 2.7\\Lib')\r\n\r\n# Документ и транзакции\r\ndoc = DM.Instance.CurrentDBDocument # Получение файла документа\r\n# uidoc = DM.Instance.CurrentUIApplication.ActiveUIDocument # Интерфейс\r\n\r\nc_path = UnwrapElement(IN[0])\r\nc_name_startind = c_path.rfind(\"\\\\\")\r\nc_name = c_path[c_name_startind + 1:-4]\r\nc_path_rvt = c_path[c_name_startind + 1:]\r\nc_txt = \"\"\r\n\r\nnow = datetime.now()\r\n\r\nf = open(r\"D:\\Revit\\CheckModels.txt\", \"a\")\r\nf.write(\"\\n\")\r\nf.write(\"\\n\")\r\nf.write(\"\\n\")\r\nf.write(\"***********************\")\r\nf.write(\"\\n\")\r\nf.write(str(now.strftime(\"%d.%m.%Y %H:%M:%S\")))\r\nf.write(\"\\n\")\r\nf.write(str(c_name))\r\nf.write(\"\\n\")\r\nf.write(str(\"Текущий размер:\") + str(os.path.getsize(c_path)/1000000) + str(\"МБ\"))\r\nf.close()\r\n\r\n\r\n",
+      "Engine": "CPython3",
+      "VariableInputPorts": true,
+      "Id": "b626d1a7009a47d39465f479d9cdabed",
+      "Inputs": [
+        {
+          "Id": "69f1fc7dda904864a2d5cbc41cd72761",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "83ab660ea0ca4113843d623d9bcdb24d",
+          "Name": "OUT",
+          "Description": "Result of the python script",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Runs an embedded Python script."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "72cad10edbc94fe88d7f9a91f75ed020",
+      "End": "69f1fc7dda904864a2d5cbc41cd72761",
+      "Id": "5536b8f99c30435eaf99774c37e1e1a8"
+    },
+    {
+      "Start": "ef4c3718c16d430bb5874b121764dc50",
+      "End": "e19cbb579a75476289595371a8eedcde",
+      "Id": "0576c0e997e946fa8c7aafa4879b6dfe"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.10.1.3976",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Background Preview",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Document.FilePath",
+        "Id": "5428d2f541dd46dcac9651111c7003a7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 683.0,
+        "Y": 327.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Document.Current",
+        "Id": "c90c6ea7a7e4437db1f0dc889f11b2ad",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 484.0,
+        "Y": 326.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "b626d1a7009a47d39465f479d9cdabed",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1024.1497753874676,
+        "Y": 326.0605978899718
+      }
+    ],
+    "Annotations": [],
+    "X": -203.02908912499993,
+    "Y": -2.2349626475113382,
+    "Zoom": 1.130842140625
+  }
+}

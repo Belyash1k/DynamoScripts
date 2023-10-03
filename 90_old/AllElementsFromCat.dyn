@@ -1,0 +1,328 @@
+{
+  "Uuid": "569d0600-0f80-445c-bf4b-9098b7ac49dd",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "AllElementsFromCat",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "4cff639b842c434ba969f321f912848b",
+      "Name": "True - удалить, false - не удалять",
+      "Type": "boolean",
+      "Value": "true",
+      "Description": "Выбор между значениями true и false."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "DSRevitNodesUI.Categories, DSRevitNodesUI",
+      "SelectedIndex": 628,
+      "NodeType": "ExtensionNode",
+      "Id": "2432a12329c743bcb121093f3675aacb",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "75dc6eacb0664a6f80ff1c3d6537181b",
+          "Name": "Category",
+          "Description": "Выбранная категория.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Все предопределенные категории."
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.ElementsOfCategory, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "Id": "25c619cce0394906b5975caf1cae525b",
+      "Inputs": [
+        {
+          "Id": "ff2f2bc911894559bb558bfdf1ce3de0",
+          "Name": "Category",
+          "Description": "Категория",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7ad0eda774604dc5aac7331ccce0b857",
+          "Name": "Elements",
+          "Description": "Тип элемента.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Получение из модели всех элементов определенной категории."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "9266cc47-e982-46fc-9fd4-59bd7fb19a53",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "3bb9b081ea2d4eb4bc4cefa3e41427db",
+      "Inputs": [
+        {
+          "Id": "269fd08f1371477196855462fc6a7f3b",
+          "Name": "element",
+          "Description": "var[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "09253d10349245d3b438b7d5dc135cd9",
+          "Name": "name",
+          "Description": "возвращаемое значение",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Gets an element's name. Unlike the OOTB node, this node should work for all Revit elements that have names and will also return the localized names of system parameters, parameter groups, display unit types, parameter types, unit symbol types and unit types."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "d4b5869ce72347fd9367d766c54a2492",
+      "Inputs": [
+        {
+          "Id": "b238899c67a946d5af7e7da57d6ffde1",
+          "Name": "",
+          "Description": "Узел для оценки.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0963443b3b084f4d82af803e6d1b7ff5",
+          "Name": "",
+          "Description": "Просмотр содержимого.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Function, DynamoCore",
+      "FunctionSignature": "a8709c69-aa1d-4e0d-b2f1-182332d5b6b9",
+      "FunctionType": "Graph",
+      "NodeType": "FunctionNode",
+      "Id": "3a704e49371b4267be2be527d459594c",
+      "Inputs": [
+        {
+          "Id": "898ad6458119407f87870a49f4091ad2",
+          "Name": "element",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "1cb404a8d31043f88ee1e95f2b4f8397",
+          "Name": "confirm",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2c1d36812f514b66b5a629dd4a40ecf8",
+          "Name": "count",
+          "Description": "возвращаемое значение",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "771f1250dc5c4a75ae16991840cc426e",
+          "Name": "deletedIds(str)",
+          "Description": "возвращаемое значение",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "47611f06f3c749aa9ac68f09ecff2e7b",
+          "Name": "failedIds(str)",
+          "Description": "возвращаемое значение",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Attempts to delete the input list of elements from the active Revit document.The node returns the number of successfully deleted elements and their Ids as a string. Carefully observe the deleted elements count. It may be greater than the input list because hosted elements or tags will be deleted as well. If an element in the list can not be deleted (for example last revision or last view), the whole list will fail to be deleted."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "4cff639b842c434ba969f321f912848b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e4a4c2eb3c6749adb18c40b1e417a22b",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "75dc6eacb0664a6f80ff1c3d6537181b",
+      "End": "ff2f2bc911894559bb558bfdf1ce3de0",
+      "Id": "a27e7b3c6c3e4c2ab550d41514c9f6bc"
+    },
+    {
+      "Start": "7ad0eda774604dc5aac7331ccce0b857",
+      "End": "269fd08f1371477196855462fc6a7f3b",
+      "Id": "cb908ef7ce4c47948ad6c3f70b345c3d"
+    },
+    {
+      "Start": "7ad0eda774604dc5aac7331ccce0b857",
+      "End": "898ad6458119407f87870a49f4091ad2",
+      "Id": "bfe3caa277f0474d8551c2cae31765a4"
+    },
+    {
+      "Start": "09253d10349245d3b438b7d5dc135cd9",
+      "End": "b238899c67a946d5af7e7da57d6ffde1",
+      "Id": "3541ed9da0814c18874359030f88cac3"
+    },
+    {
+      "Start": "e4a4c2eb3c6749adb18c40b1e417a22b",
+      "End": "1cb404a8d31043f88ee1e95f2b4f8397",
+      "Id": "e1c9433eaf444ffca68e416d15502bdf"
+    }
+  ],
+  "Dependencies": [
+    "9266cc47-e982-46fc-9fd4-59bd7fb19a53",
+    "a8709c69-aa1d-4e0d-b2f1-182332d5b6b9"
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.5.13212",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Выбрать категорию элементов",
+        "Id": "2432a12329c743bcb121093f3675aacb",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 335.0,
+        "Y": 361.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "All Elements of Category",
+        "Id": "25c619cce0394906b5975caf1cae525b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 584.0,
+        "Y": 363.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Element.Name+",
+        "Id": "3bb9b081ea2d4eb4bc4cefa3e41427db",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 746.25245463432293,
+        "Y": 82.583645134303964
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Watch",
+        "Id": "d4b5869ce72347fd9367d766c54a2492",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1017.4629273792771,
+        "Y": 84.24563899061792
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "ꟿ Document.DeleteElements",
+        "Id": "3a704e49371b4267be2be527d459594c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1170.4863318565879,
+        "Y": 350.80631604191313
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "True - удалить, false - не удалять",
+        "Id": "4cff639b842c434ba969f321f912848b",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 864.24566396601722,
+        "Y": 292.22727982932719
+      }
+    ],
+    "Annotations": [],
+    "X": -137.83570581914046,
+    "Y": 52.664867868593745,
+    "Zoom": 1.0064686878467257
+  }
+}

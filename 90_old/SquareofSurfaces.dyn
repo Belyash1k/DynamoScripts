@@ -1,0 +1,269 @@
+{
+  "Uuid": "3c9d0464-8643-5ffe-96e5-ab1769818209",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "SquareofSurfaces",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [
+    {
+      "Id": "b2e593bbc52447c99fed254e1df2a82f",
+      "Name": "Площадь в миллиметрах",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Визуализация входного элемента узла."
+    },
+    {
+      "Id": "19be64b34c684645ba01b716965b1d8d",
+      "Name": "Площадь в метрах",
+      "Type": "unknown",
+      "InitialValue": "",
+      "Description": "Визуализация входного элемента узла."
+    }
+  ],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Nodes.DSFaceSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "c0645e8e-6b09-4437-81e8-13cc3b2714b3-0030253a:1:SURFACE"
+      ],
+      "Id": "e0f73c9bdca14507805df25ab0cf902a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "098c82f954e54b5f894abed0e4e3c6c0",
+          "Name": "Поверхность",
+          "Description": "Выбранные элементы.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Surface.Area",
+      "Id": "348501521c5d40d3ba5ac5303c0b0595",
+      "Inputs": [
+        {
+          "Id": "6cdb9e973a3f49ee9317df0d2dfcb0d9",
+          "Name": "surface",
+          "Description": "Autodesk.DesignScript.Geometry.Surface",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2803ce75277346ad84357699f57377d9",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение общей площади поверхности.\n\nSurface.Area: double"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "b2e593bbc52447c99fed254e1df2a82f",
+      "Inputs": [
+        {
+          "Id": "2d0cfa2205ed438f88ca39ef54a14c30",
+          "Name": "",
+          "Description": "Узел для оценки.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "c2ab36ec07964d7daa1c52792885d82e",
+          "Name": "",
+          "Description": "Просмотр содержимого.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "ar/100000;",
+      "Id": "55042cc790524e3d80af74dac07387f5",
+      "Inputs": [
+        {
+          "Id": "82ea3bd66e0f4dbab2aaddfc320e77a8",
+          "Name": "ar",
+          "Description": "ar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0fab57a5ffc74c668d78d25900f4f1ba",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Watch, CoreNodeModels",
+      "NodeType": "ExtensionNode",
+      "Id": "19be64b34c684645ba01b716965b1d8d",
+      "Inputs": [
+        {
+          "Id": "3b90a6b281e440d1899e555822565533",
+          "Name": "",
+          "Description": "Узел для оценки.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b7b112a6ef1f442d981ad0325efbe4a6",
+          "Name": "",
+          "Description": "Просмотр содержимого.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Визуализация входного элемента узла."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "098c82f954e54b5f894abed0e4e3c6c0",
+      "End": "6cdb9e973a3f49ee9317df0d2dfcb0d9",
+      "Id": "3d8abe6631604929b435067375c9ddf8"
+    },
+    {
+      "Start": "2803ce75277346ad84357699f57377d9",
+      "End": "2d0cfa2205ed438f88ca39ef54a14c30",
+      "Id": "4c0ff7225a4f4e9e87950531323cb32f"
+    },
+    {
+      "Start": "2803ce75277346ad84357699f57377d9",
+      "End": "82ea3bd66e0f4dbab2aaddfc320e77a8",
+      "Id": "8a76251bd75d49c2b0c448306320e965"
+    },
+    {
+      "Start": "0fab57a5ffc74c668d78d25900f4f1ba",
+      "End": "3b90a6b281e440d1899e555822565533",
+      "Id": "601eb8aefe48419389e6b28142bc04dc"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.5.13212",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -572.28536615717439,
+      "EyeY": 2186.7715361173609,
+      "EyeZ": 760.23437199571072,
+      "LookX": 2018.4200339319145,
+      "LookY": -2092.1027326236876,
+      "LookZ": -3400.8440021020756,
+      "UpX": 0.13639402288218197,
+      "UpY": 0.96363045320862328,
+      "UpZ": -0.22981083562564797
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Выбрать поверхность",
+        "Id": "e0f73c9bdca14507805df25ab0cf902a",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -190.07792225897788,
+        "Y": -120.22778661030952
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Surface.Area",
+        "Id": "348501521c5d40d3ba5ac5303c0b0595",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 191.04054305892976,
+        "Y": -120.25056518227223
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Площадь в миллиметрах",
+        "Id": "b2e593bbc52447c99fed254e1df2a82f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 542.80455111876279,
+        "Y": -288.22776004230474
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "55042cc790524e3d80af74dac07387f5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 475.94050573117738,
+        "Y": -13.071393122587097
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Площадь в метрах",
+        "Id": "19be64b34c684645ba01b716965b1d8d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": true,
+        "Excluded": false,
+        "X": 667.30529554443422,
+        "Y": -1.6784276340138149
+      }
+    ],
+    "Annotations": [],
+    "X": 475.64124220414305,
+    "Y": 546.39470691512054,
+    "Zoom": 0.96556678260774487
+  }
+}

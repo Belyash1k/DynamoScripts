@@ -1,0 +1,172 @@
+{
+  "Uuid": "3c9d0464-8643-5ffe-96e5-ab1769818209",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "отделка_стены_v0.5.1",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "Solid": {
+        "Key": "Autodesk.DesignScript.Geometry.Solid",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Autodesk.DesignScript.Geometry.Solid": {
+        "Key": "Autodesk.DesignScript.Geometry.Solid",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Geometry.Solid": {
+        "Key": "Autodesk.DesignScript.Geometry.Solid",
+        "Value": "ProtoGeometry.dll"
+      },
+      "List": {
+        "Key": "DSCore.List",
+        "Value": "DSCoreNodes.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# -*- coding: utf-8 -*-\r\nimport clr # noqa\r\nclr.AddReference(\"System\")\r\nfrom System.Collections.Generic import List # noqa\r\n\r\nclr.AddReference('RevitServices')\r\nfrom RevitServices.Persistence import DocumentManager # noqa\r\nfrom RevitServices.Transactions import TransactionManager # noqa\r\n\r\nclr.AddReference(\"RevitNodes\")\r\nimport Revit # noqa\r\nclr.ImportExtensions(Revit.Elements)\r\nclr.ImportExtensions(Revit.GeometryConversion)\r\n\r\nclr.AddReference('RevitAPI')\r\nfrom Autodesk.Revit import DB # noqa\r\nfrom Autodesk.Revit.DB import FilteredElementCollector as FEC # noqa\r\nfrom Autodesk.Revit.DB import BuiltInCategory as BIC # noqa\r\nfrom Autodesk.Revit.DB import ElementId # noqa\r\n\r\nclr.AddReference(\"RevitAPIUI\")\r\nfrom Autodesk.Revit.UI import TaskDialog\r\n\r\nimport time\r\n\r\n\r\ndef get_parameter_value(parameter):\r\n    if isinstance(parameter, DB.Parameter):\r\n        storage_type = parameter.storage_type\r\n        if storage_type == DB.StorageType.Integer:\r\n            return parameter.AsInteger()\r\n        if storage_type == DB.StorageType.Double:\r\n            display_unit_type = parameter.DisplayUnitType\r\n            value = parameter.AsDouble()\r\n            # value = DB.UnitUtils.ConvertFromInternalUnits(value, display_unit_type)\r\n            return value\r\n        if storage_type == DB.StorageType.String:\r\n            return parameter.AsString()\r\n        if storage_type == DB.StorageType.ElementId:\r\n            return parameter.AsElementId()\r\n    else:\r\n        return None\r\n\r\ndef get_rooms(view):\r\n    msg = '\\n\\nСкрипт работает в двух режимах:'\\\r\n        '\\n- запускается из спецификации (рассчитываются все '\\\r\n        'помещения спецификации);'\\\r\n        '\\n- запускается из любого вида с предварительно выбранными '\\\r\n        'помещениями (рассчитываются только выбранные помещения).'\r\n    if view.ViewType == DB.ViewType.Schedule:\r\n        rooms = FEC(doc, view.Id).OfCategory(BIC.OST_Rooms)\r\n        if rooms.GetElementCount()==0:\r\n            msg = 'Расчёт не выполнен.\\n\\n'\\\r\n            'На текущей спецификации отсутствуют помещения для расчёта.' + msg\r\n            TaskDialog.Show('Пустая спецификация', msg)\r\n            rooms = []\r\n    else:\r\n        idd = [i.IntegerValue for i in uidoc.Selection.GetElementIds()]\r\n        if idd:\r\n            rooms = [doc.GetElement(ElementId(int(i))) for i in idd\\\r\n                    if doc.GetElement(ElementId(int(i))).Category.Name == \"Помещения\"]\r\n        else:\r\n            msg = 'Расчёт не выполнен.\\n\\n'\\\r\n                    'Ничего не выбрано.' + msg\r\n            TaskDialog.Show('Ничего не выбрано', msg)\r\n            rooms = []\r\n    if rooms:\r\n        rooms = [r for r in rooms if r.Area>0]\r\n    return rooms\r\n\r\ndef delete_directshapes(rooms):\r\n    global fin_report\r\n    room_nums = []\r\n    for room in rooms:\r\n        room_nums.append(room.get_Parameter(DB.BuiltInParameter.ROOM_NUMBER).AsString())\r\n    to_delete = []\r\n    for el in FEC(doc).OfCategory(BIC.OST_Entourage).WhereElementIsNotElementType():\r\n        ds_num = el.get_Parameter(DB.BuiltInParameter.ALL_MODEL_MARK).AsString()\r\n        if ds_num in room_nums:\r\n            to_delete.append(el.Id)\r\n    fin_report += \"Удалены лишние грани - \" + str(len(to_delete)) + \" шт. \\n\"\r\n    TransactionManager.Instance.EnsureInTransaction(doc)\r\n    doc.Delete(List[ElementId](to_delete))\r\n    TransactionManager.Instance.ForceCloseTransaction()\r\n\r\ndef create_global_variables():\r\n    global options\r\n    global g_options\r\n    global bb_tolerance\r\n    global extrude_thin\r\n    global height_plint\r\n    global directshapes_list\r\n    global view_3d\r\n\r\n    options = DB.SpatialElementBoundaryOptions()\r\n    options.StoreFreeBoundaryFaces = True\r\n    options.SpatialElementBoundaryLocation = DB.SpatialElementBoundaryLocation.Finish\r\n    g_options = DB.Options()\r\n    bb_tolerance = DB.UnitUtils.ConvertToInternalUnits(0.01, DB.UnitTypeId.Meters) #в метрах\r\n    extrude_thin = DB.UnitUtils.ConvertToInternalUnits(0.001, DB.UnitTypeId.Meters) #в метрах\r\n    height_plint = DB.UnitUtils.ConvertToInternalUnits(0.05, DB.UnitTypeId.Meters)\r\n    directshapes_list = []\r\n\r\n    for v in FEC(doc).OfClass(DB.View):\r\n        if v.ViewType == DB.ViewType.ThreeD and not v.IsTemplate:\r\n            view_3d = v\r\n            break\r\n        else:\r\n            view_3d = v\r\n\r\ndef get_wall_column_list_ids():\r\n    all_walls = []\r\n    for el in FEC(doc).OfClass(DB.Wall): # стены\r\n        base = get_wall_column_base(el)\r\n        if wall_exclude_keyword not in base.lower():\r\n            if el.WallType.Kind != DB.WallKind.Curtain:\r\n                all_walls.append(el.Id)\r\n    for el in FEC(doc).OfCategory(BIC.OST_Walls).OfClass(DB.FamilyInstance): # стены - модель в контексте\r\n        base = get_wall_column_base(el)\r\n        if wall_exclude_keyword not in base.lower():\r\n            all_walls.append(el.Id)\r\n    for el in FEC(doc).OfCategory(BIC.OST_StructuralColumns).WhereElementIsNotElementType(): # несущие колонны\r\n        base = get_wall_column_base(el)\r\n        if wall_exclude_keyword not in base.lower():\r\n            all_walls.append(el.Id)\r\n    return List[DB.ElementId](all_walls)\r\n\r\ndef get_wall_column_base(el):\r\n    if isinstance(el, DB.Wall):\r\n        base = el.WallType.LookupParameter(wall_base_param_name).AsString()\r\n    elif isinstance(el, DB.FamilyInstance):\r\n        base = el.Symbol.LookupParameter(wall_base_param_name).AsString()\r\n    return base if base else \"\"\r\n\r\ndef get_room_solids_by_sides_extrude(room, extrude_thin):\r\n    solids_by_faces = []\r\n    solid_fails = []\r\n    for g in room.ClosedShell:\r\n        for face in g.Faces:\r\n            if isinstance(face, DB.PlanarFace):\r\n                if face.FaceNormal.Z < 0.8 and face.FaceNormal.Z > -0.8:\r\n                    curve_loop = face.GetEdgesAsCurveLoops()\r\n                    try:\r\n                        solids_by_faces.append(DB.GeometryCreationUtilities.CreateExtrusionGeometry(curve_loop, \r\n                            face.FaceNormal, \r\n                            extrude_thin))\r\n                    except:\r\n                        solid_fails.append(face.Area)\r\n            elif isinstance(face, DB.CylindricalFace):\r\n                try:\r\n                    solids_by_faces.append(create_cylindric_solid(face))\r\n                except:\r\n                    solid_fails.append(face.Area)\r\n    return solids_by_faces, solid_fails\r\n\r\ndef create_cylindric_solid(face, h=0):\r\n    for edge_arr in face.EdgeLoops:\r\n        curves = [i.AsCurve() for i in edge_arr]\r\n        arcs = [i for i in curves if isinstance(i, DB.Arc)]\r\n        lines = [i for i in curves if isinstance(i, DB.Line)]\r\n\r\n        height = h if h else lines[0].Length\r\n        norm_vect = DB.XYZ(0, 0, 1)\r\n\r\n        arc = arcs[0] if arcs[0].GetEndPoint(0).Z < arcs[1].GetEndPoint(0).Z else arcs[1]\r\n        arc_2 = arc.CreateOffset(extrude_thin, DB.XYZ(0, 0, -1))\r\n        arc_2 = arc_2.CreateReversed()\r\n        line_1 = DB.Line.CreateBound(arc.GetEndPoint(1), arc_2.GetEndPoint(0))\r\n        line_2 = DB.Line.CreateBound(arc_2.GetEndPoint(1), arc.GetEndPoint(0))\r\n        curve_loop = DB.CurveLoop()\r\n        curve_loop.Append(arc)\r\n        curve_loop.Append(line_1)\r\n        curve_loop.Append(arc_2)\r\n        curve_loop.Append(line_2)\r\n        \r\n        solid = DB.GeometryCreationUtilities.CreateExtrusionGeometry(List[DB.CurveLoop]([curve_loop]), norm_vect, height)\r\n        return solid\r\n\r\ndef create_union_solid(solids):\r\n    if solids:\r\n        union = solids.pop()\r\n        union_fails = 0\r\n        if len(solids) > 0:\r\n            for solid in solids:\r\n                try:\r\n                    union = DB.BooleanOperationsUtils.ExecuteBooleanOperation(union, solid, DB.BooleanOperationsType.Union)\r\n                except:\r\n                    union_fails += 1\r\n    else:\r\n        union, union_fails = [], 0\r\n    return union, union_fails\r\n\r\ndef get_plint_solids(room, height):\r\n    up_vect = DB.XYZ(0, 0, height)\r\n    solids = []\r\n    solid_fails = []\r\n    for g in room.ClosedShell:\r\n        for face in g.Faces:\r\n            if isinstance(face, DB.PlanarFace):\r\n                if face.FaceNormal.Z < -0.99:\r\n                    for curve_loop in face.GetEdgesAsCurveLoops():\r\n                        for curve in curve_loop:\r\n                            if hasattr(curve, \"Direction\"): # for line\r\n                                vert_curve_loop = DB.CurveLoop()\r\n                                p1 = curve.GetEndPoint(0)\r\n                                p2 = curve.GetEndPoint(1)\r\n                                p1_up = p1 + up_vect\r\n                                p2_up = p2 + up_vect\r\n                                vert_curve_loop.Append(curve)\r\n                                vert_curve_loop.Append(DB.Line.CreateBound(p2, p2_up))\r\n                                vert_curve_loop.Append(DB.Line.CreateBound(p2_up, p1_up))\r\n                                vert_curve_loop.Append(DB.Line.CreateBound(p1_up, p1))\r\n                                p_vect = (p2 - p1).Normalize()\r\n                                norm_vect = DB.XYZ(p_vect.Y, p_vect.X, 0)\r\n                                check_point = DB.Line.CreateBound(p2_up, p1_up).Evaluate(0.5, True) + norm_vect\r\n                                if room.IsPointInRoom(check_point):\r\n                                    norm_vect = norm_vect.Negate()\r\n                                try:\r\n                                    solids.append(DB.GeometryCreationUtilities.CreateExtrusionGeometry(\r\n                                        List[DB.CurveLoop]([vert_curve_loop]),\r\n                                        norm_vect,\r\n                                        extrude_thin))\r\n                                except:\r\n                                    solid_fails.append(curve.Length)\r\n            elif isinstance(face, DB.CylindricalFace):\r\n                try:\r\n                    solids.append(create_cylindric_solid(face, height))\r\n                except:\r\n                    pass # ------------------------------------------------------------------------------------------------------\r\n    # union, union_fails = create_union_solid(solids)\r\n    # fails_count = union_fails + solid_fails\r\n    return solids, solid_fails\r\n\r\ndef get_boundary_walls(room):\r\n    room_bounds = []\r\n    for segments in room.GetBoundarySegments(options):\r\n        for segment in segments:\r\n            element = doc.GetElement(segment.ElementId)\r\n            if element:\r\n                if element.Category.Id == ElementId(BIC.OST_Walls) or element.Category.Id == ElementId(BIC.OST_StructuralColumns):\r\n                    base = get_wall_column_base(element)\r\n                    if wall_exclude_keyword not in base.lower():\r\n                        room_bounds.append(element.Id.IntegerValue)\r\n    return list(set(room_bounds))\r\n\r\ndef get_around_walls(room):\r\n    collector = FEC(doc, all_wall_ids)\r\n    room_bb = room.BoundingBox[view_3d]\r\n    outline = DB.Outline(room_bb.Min, room_bb.Max)\r\n    bb_filter = DB.BoundingBoxIntersectsFilter(outline, bb_tolerance)\r\n    wall_ids = collector.WherePasses(bb_filter).ToElementIds()\r\n    return [i.IntegerValue for i in wall_ids]\r\n\r\ndef update_wall_solids(walls_id):\r\n    for wall_id in walls_id:\r\n        if wall_id not in walls_solids_flat:\r\n            try:\r\n                el_geometry = doc.GetElement(ElementId(wall_id)).Geometry[g_options]\r\n                solids = []\r\n                for geom in el_geometry:\r\n                    if isinstance(geom, DB.Solid):\r\n                        solids.append(geom)\r\n                    elif isinstance(geom, DB.GeometryInstance):\r\n                        for geom_instane in geom.GetInstanceGeometry():\r\n                            if isinstance(geom_instane, DB.Solid):\r\n                                solids.append(geom_instane)\r\n                solid, fail_cnt = create_union_solid(solids)\r\n                if fail_cnt:\r\n                    test_out.append(\"several_solids_error-\" + str(fail_cnt))\r\n                walls_solids_flat[wall_id] = solid\r\n            except:\r\n                all_walls_error_id[wall_id] = \"Error.Geometry\"\r\n\r\ndef get_intersections(room_solids, walls_id):\r\n    room_itersects = []\r\n    walls_id_done = []\r\n    wall_id_errors = []\r\n    for wall_id in walls_id:\r\n        for solid in room_solids:\r\n            try:\r\n                intersect = DB.BooleanOperationsUtils.ExecuteBooleanOperation(\r\n                    solid,\r\n                    walls_solids_flat[wall_id],\r\n                    DB.BooleanOperationsType.Intersect)\r\n                if intersect.Volume > DB.UnitUtils.ConvertToInternalUnits(1000, DB.UnitTypeId.CubicMillimeters):\r\n                    room_itersects.append(intersect)\r\n                    walls_id_done.append(wall_id)\r\n            except:\r\n                wall_id_errors.append(wall_id)\r\n    return room_itersects, walls_id_done, wall_id_errors\r\n\r\ndef get_areas(room, intersections, walls_id_done):\r\n    fin = room.LookupParameter(room_finish_param_name).AsString()\r\n    fin = fin if fin else \"\"\r\n    if len(intersections) == len(walls_id_done):\r\n        mat_list = []\r\n        area_list = []\r\n        for wall_id, intersect in zip(walls_id_done, intersections):\r\n            wall = doc.GetElement(ElementId(wall_id))\r\n            base = get_wall_column_base(wall)\r\n            mat_list.append(base + '.' + fin)\r\n            i = intersect.Volume / extrude_thin\r\n            area_list.append(DB.UnitUtils.ConvertFromInternalUnits(i, DB.UnitTypeId.SquareMeters))\r\n        return area_list, mat_list\r\n\r\ndef get_area_strings(mat_list, area_list):\r\n    py_faces_sum = 0\r\n    mat_areas = {}\r\n    for mat, area in zip(mat_list, area_list):\r\n        if mat not in mat_areas.keys():\r\n            mat_areas[mat] = area\r\n        else:\r\n            mat_areas[mat] += area\r\n    area_list_2, mat_list_2 = [], []\r\n    for mat in mat_areas.keys():\r\n        mat_list_2.append(mat)\r\n        area_list_2.append(mat_areas[mat])\r\n        py_faces_sum += mat_areas[mat]\r\n    wall_materials = ' : '.join(mat_list_2)\r\n    wall_areas = ' : '.join([str(round(i, 2)) for i in area_list_2])\r\n    return wall_materials, wall_areas, py_faces_sum\r\n\r\ndef update_directshape_list(room_num, intersections, area_list, mat_list, room_errors):\r\n    for solid, area, mat in zip(intersections, area_list, mat_list):\r\n        note = \" : \".join([mat, str(area)])\r\n        directshapes_list.append([solid, room_num, note, room_errors])\r\n\r\ndef create_directshape(solid, room_num, note, err_msg):\r\n    ds = DB.DirectShape.CreateElement(doc, ElementId(BIC.OST_Entourage))\r\n    geom = List[DB.GeometryObject]([solid])\r\n    try:\r\n        ds.SetShape(geom)\r\n        ds.get_Parameter(DB.BuiltInParameter.ALL_MODEL_MARK).Set(room_num)\r\n        ds.get_Parameter(DB.BuiltInParameter.ALL_MODEL_INSTANCE_COMMENTS).Set(note)\r\n        ds.LookupParameter(\"отделка.ошибки\").Set(err_msg)\r\n    except:\r\n        ds_errors += 1\r\n\r\ndef get_room_errors(wall_materials, plint_length, face_fails, plint_fails, wall_id_errors):\r\n    err = \"\"\r\n    if wall_materials == \"\":\r\n        err += \"Стены не найдены или исключены!\"\r\n    elif plint_length == 0:\r\n        err += \"Не удалось посчитать плинтус!\"\r\n    if face_fails:\r\n        fails = DB.UnitUtils.ConvertFromInternalUnits(sum(face_fails), DB.UnitTypeId.SquareMeters)\r\n        err += 'Ошибки_грани - ' + str(round(fails, 2)) + ' м2; '\r\n    if plint_fails:\r\n        fails = DB.UnitUtils.ConvertFromInternalUnits(sum(plint_fails), DB.UnitTypeId.Meters)\r\n        err += 'Ошибки_плинтус - ' + str(round(fails, 2)) + 'м. п.; '\r\n    if wall_id_errors:\r\n        temp = []\r\n        for wall_id in wall_id_errors:\r\n            temp.append(get_wall_column_base(doc.GetElement(DB.ElementId(wall_id))))\r\n        err += \"Ошибки_стены - \" + \"; \".join(list(set(temp))) + \"; \"\r\n    return err\r\n\r\ndef update_wall_errors(room_num, wall_id_errors):\r\n    for wall_id in wall_id_errors:\r\n        if wall_id not in all_walls_error_id.keys():\r\n            all_walls_error_id[wall_id] = \"Error.Rooms - \" + room_num\r\n        else:\r\n            all_walls_error_id[wall_id] += \"; \" + room_num\r\n\r\ndef get_floor_in_doors(room):\r\n    pass\r\n\r\ndef get_stairs_info():\r\n    pass\r\n\r\ndoc = DocumentManager.Instance.CurrentDBDocument\r\nuidoc = DocumentManager.Instance.CurrentUIApplication.ActiveUIDocument\r\nactive_view = doc.ActiveView\r\nfin_report = \"\"\r\nscript_start_time = time.time()\r\n\r\n# check_parameters() --------------------------------------------------------------------------------------------------\r\nroom_finish_param_name = \"отделка.стены.финиш\"\r\nwall_base_param_name = \"отделка.стены.основа\"\r\nwall_exclude_keyword = \"исключить\"\r\n\r\n# rooms = UnwrapElement(IN[0]) # noqa\r\nrooms = get_rooms(active_view)\r\nfin_report += \"Помещений посчитано - \" + str(len(rooms)) + \"\\n\\n\"\r\nif rooms:\r\n    delete_directshapes(rooms)\r\n    create_global_variables()\r\n    all_wall_ids = get_wall_column_list_ids()\r\n\r\n    all_walls_error_id = dict()\r\n    walls_solids_flat = dict()\r\n    test_out = []\r\n    to_set = []\r\n    ds_errors = 0\r\n    core_loop_start_time = time.time()\r\n\r\n    for room in rooms: # core loop\r\n        start_time = time.time()\r\n        room_errors, room_info = \"\", \"\"\r\n        room_num = room.get_Parameter(DB.BuiltInParameter.ROOM_NUMBER).AsString()\r\n\r\n        room_solids, face_fails = get_room_solids_by_sides_extrude(room, extrude_thin) # стены\r\n        walls_id = get_boundary_walls(room)\r\n        walls_id_around = get_around_walls(room)\r\n        walls_id_around = [i for i in walls_id_around if i not in walls_id]\r\n        update_wall_solids(walls_id + walls_id_around)\r\n        intersections, walls_id_done, wall_id_errors = get_intersections(room_solids, walls_id)\r\n        intersections_around, walls_id_done_around, temp = get_intersections(room_solids, walls_id_around)\r\n        # возможно стоит добавить walls_error_around к остальным стенам с ошибками------------\r\n        intersections += intersections_around\r\n        walls_id_done += walls_id_done_around\r\n        area_list, mat_list = get_areas(room, intersections, walls_id_done)\r\n        wall_materials, wall_areas, py_faces_sum = get_area_strings(mat_list, area_list)\r\n\r\n        room_solid_plint, plint_fails = get_plint_solids(room, height_plint) # плинтуса\r\n        plint_intersections, temp, temp = get_intersections(room_solid_plint, walls_id + walls_id_around)\r\n        plint_length = 0\r\n        for plint_s in plint_intersections:\r\n            plint_length += plint_s.Volume / extrude_thin / height_plint\r\n        plint_length = DB.UnitUtils.ConvertFromInternalUnits(round(plint_length, 2), DB.UnitTypeId.Meters)\r\n\r\n        room_errors += get_room_errors(wall_materials, plint_length, face_fails, plint_fails, wall_id_errors)\r\n        update_wall_errors(room_num, wall_id_errors)\r\n\r\n        update_directshape_list(room_num, intersections, area_list, mat_list, room_errors)\r\n        update_directshape_list(room_num, plint_intersections, [str(plint_length)] * len(plint_intersections), ['плинтус'] * len(plint_intersections), room_errors)\r\n\r\n        # bottom_solids = get_plint_solids(room, bottom_height)\r\n        # bottom_intersections, walls_bottom_id_done, walls_bottom_errors = get_intersections(bottom_solids, walls_id)\r\n        # area_list_bottom, mat_list_bottom = get_areas(room, bottom_intersections, walls_bottom_id_done)\r\n        # bottom_finish = room.LookupParameter(\"\").AsString()\r\n        # mat_dict_new = copy(mat_dict)\r\n        # for mat in mat_dict.keys():\r\n        #     for mat_bot, area_bot in zip(mat_list_bottom, area_list_bottom):\r\n        #         if mat == mat_bot:\r\n        #             mat_dict_new[mat] -= area_bot\r\n        #             base = mat[:mat.find(\".\") + 1]\r\n        #             bottom_material = base + bottom_finish\r\n        #             if bottom_material not in mat_dict_new.keys():\r\n        #                 mat_dict_new[bottom_material] = area_bot\r\n        #             else:\r\n        #                 mat_dict_new[bottom_material] += area_bot\r\n        # update_directshape_list(room_num, bottom_intersections, area_list_bottom, mat_list_bottom)\r\n\r\n        floor_in_doors = get_floor_in_doors(room)\r\n\r\n        stairs_info = get_stairs_info()\r\n\r\n        duration = time.time() - start_time\r\n        room_info += \"расчет_секунд-\" + str(duration)\r\n        to_set.append([room, wall_materials, wall_areas, plint_length, room_errors, room_info, py_faces_sum])\r\n        test_out.append([room.LookupParameter('Номер').AsString(), room_errors, room_info, wall_materials, wall_areas, plint_length])\r\n\r\n    core_loop_duration = time.time() - core_loop_start_time\r\n    test_out.append(core_loop_duration)\r\n\r\n    TransactionManager.Instance.EnsureInTransaction(doc)\r\n\r\n    for room, wall_materials, wall_areas, plint_length, room_errors, room_info, py_faces_sum in to_set:\r\n        room.LookupParameter(\"отделка.грани.материал\").Set(wall_materials)\r\n        room.LookupParameter(\"отделка.грани.площадь\").Set(wall_areas)\r\n        room.LookupParameter(\"отделка.плинтус.длина\").Set(plint_length)\r\n        room.LookupParameter(\"отделка.ошибки\").Set(room_errors)\r\n        # room.LookupParameter(\"Комментарии\").Set(room_info)\r\n        # room.LookupParameter(\"py_faces_sum\").Set(round(py_faces_sum, 2))\r\n\r\n    for wall_id in all_walls_error_id.keys():\r\n        wall = doc.GetElement(DB.ElementId(wall_id))\r\n        wall.LookupParameter(\"отделка.ошибки\").Set(all_walls_error_id[wall_id])\r\n    \r\n    for solid, room_num, note, room_errors in directshapes_list:\r\n        create_directshape(solid, room_num, note, room_errors)\r\n\r\n    TransactionManager.Instance.ForceCloseTransaction()\r\n\r\n    fin_report += \"Создано новых граней - \" + str(len(directshapes_list)) + \" шт. \\n\"\r\n    fin_report += \"Время выполнения скрипта - \" + str(round(time.time() - script_start_time, 2)) + \" сек. \\n\"\r\n    TaskDialog.Show('Отчет', fin_report)\r\n\r\n    OUT = test_out\r\n\r\n",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "36863d3050a540a99284420bdfbb89b6",
+      "Inputs": [
+        {
+          "Id": "1455557ab8294092b8c96cc9053e6805",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "aa84ee5cd1b14d0dbf751599ffbab318",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение встроенного сценария Python."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "7e6c1477c225477d956191351b07032d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f1b05bd029e048f4a86db701e13a9aac",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "f1b05bd029e048f4a86db701e13a9aac",
+      "End": "1455557ab8294092b8c96cc9053e6805",
+      "Id": "84cd1befa8324a8cbd828905549e456b"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    }
+  ],
+  "Author": "None provided",
+  "Linting": {
+    "activeLinter": "Нет",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.0.5650",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -802.61328125,
+      "EyeY": 297.388671875,
+      "EyeZ": -125161.46875,
+      "LookX": 48208.296875,
+      "LookY": -45649.4921875,
+      "LookZ": 69705.4375,
+      "UpX": 0.15610578656196594,
+      "UpY": 0.961604118347168,
+      "UpZ": 0.22571727633476257
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Python Script",
+        "Id": "36863d3050a540a99284420bdfbb89b6",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -2473.1864276217871,
+        "Y": 664.55163360155575
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "trigger_for_reset",
+        "Id": "7e6c1477c225477d956191351b07032d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -2790.2724035516708,
+        "Y": 663.9261149667733
+      }
+    ],
+    "Annotations": [
+      {
+        "Id": "ed812d53ad574ea2aaad2dc0205ea622",
+        "Title": "При перезапуске скрипта переключать\r\nc True на False или обратно",
+        "Nodes": [],
+        "Left": -2790.6106573591192,
+        "Top": 610.35805225858371,
+        "Width": 0.0,
+        "Height": 0.0,
+        "FontSize": 36.0,
+        "InitialTop": 0.0,
+        "InitialHeight": 0.0,
+        "TextblockHeight": 0.0,
+        "Background": "#FFC1D676"
+      }
+    ],
+    "X": 3950.6715759815215,
+    "Y": -588.65022909378536,
+    "Zoom": 1.3310205950684539
+  }
+}

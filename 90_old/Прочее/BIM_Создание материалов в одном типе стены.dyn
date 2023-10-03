@@ -1,0 +1,401 @@
+{
+  "Uuid": "1c14835b-e4a1-4f94-ab0a-6fb70c82dcf4",
+  "IsCustomNode": false,
+  "Description": "",
+  "Name": "BIM_Создание материалов в одном типе стены",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Orchid.RevitMaterial.Material.All",
+      "Id": "a01fdf199b92424bb3c68699b1f3ef02",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "062d3febfbe441a1b0d5490b11fbb580",
+          "Name": "Material",
+          "Description": "Material.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Get all materials in document.\n\nMaterial.All ( ): Element[]\n\nNamespace:\nOrchid.RevitMaterial"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Orchid.RevitProject.Elements.SystemFamilyType.CreateCompoundLayer@Revit.Elements.Element,string[],Revit.Elements.Element[],double[],bool[],bool[],bool[],string[],int[]",
+      "Id": "aeaa3f737446468fab6279233802776a",
+      "Inputs": [
+        {
+          "Id": "c4bbae1753df4bc1b4c757d3e5231211",
+          "Name": "elementType",
+          "Description": "The system family type.\n\nElement",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "32d3197ddc0b4eb890456ee3b8b500fe",
+          "Name": "function",
+          "Description": "The function of the layer (integer).\n\nstring[]\nЗначение по умолчанию : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "8a7aea726efa44caa471b116d1257f46",
+          "Name": "material",
+          "Description": "The material.\n\nElement[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "6960027854934858ab79ea0a0af18f30",
+          "Name": "thickness",
+          "Description": "Thickness of the layer.\n\ndouble[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "03cb41a802a74779918c4d1942f60106",
+          "Name": "wrapping",
+          "Description": "Wrapping of the layer.\n\nbool[]\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0121c2296b444a63a12bb338a1012a12",
+          "Name": "variable",
+          "Description": "Set the layer variable.\n\nbool[]\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5ae8d2e2c17c4306b0a3db77ad8108db",
+          "Name": "structural",
+          "Description": "Set the layer structural.\n\nbool[]\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "be161fbf39ef4749afb676cad57db822",
+          "Name": "placement",
+          "Description": "Placement of the layer (string).\n\nstring[]\nЗначение по умолчанию : \"Core\"",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "2025a4af1c374a16abc3ba80a144a1c3",
+          "Name": "index",
+          "Description": "The index of the layer.\n\nint[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "58160355b1924b6cbec35b0bc2b56716",
+          "Name": "ElementType",
+          "Description": "The system family type.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Longest",
+      "Description": "Create a layer by index at a specified compound layer in a system family type that have a compound structure (walls, floors, roofs etc.).\n\nSystemFamilyType.CreateCompoundLayer (elementType: Element, function: string[] = null, material: Element[], thickness: double[], wrapping: bool[] = false, variable: bool[] = false, structural: bool[] = false, placement: string[] = \"Core\", index: int[]): Element\n\nNamespace:\nOrchid.RevitProject.Elements"
+    },
+    {
+      "ConcreteType": "DSRevitNodesUI.WallTypes, DSRevitNodesUI",
+      "SelectedIndex": 2,
+      "SelectedString": "Стена 1",
+      "NodeType": "ExtensionNode",
+      "Id": "91808240774449fcba4fa723e5a641c8",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "02791af32cee49a48b74b4e059358628",
+          "Name": "Wall Type",
+          "Description": "Выбрано Wall Type",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Все типы стен, доступные в документе."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "100;",
+      "Id": "1a6d4c490bce401f8502f45a57ea39af",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "55f0329a4f5e4f5a9c85de84d02b1a60",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "b = a-1;\n0..#b..1;",
+      "Id": "1727a3b8ec314dd8a544509f19e0aa40",
+      "Inputs": [
+        {
+          "Id": "af34fb196b17457a834569ddc5ea67ec",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "be6967304901477289c08409db1d7cf0",
+          "Name": "",
+          "Description": "b",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "c24f2ecb4f2546c5b4b2f0e1efd25207",
+          "Name": "",
+          "Description": "Значение выражения в строке 2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Count@var[]..[]",
+      "Id": "2f2c6b45194a47c7958062cefb8ffc09",
+      "Inputs": [
+        {
+          "Id": "1a17dc2708ee473fac901177a5813314",
+          "Name": "list",
+          "Description": "Список, элементы которого требуется сосчитать.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e195fc3b407c491a9a5f0e89b984b954",
+          "Name": "int",
+          "Description": "Длина списка.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение количества элементов, хранящихся в данном списке.\n\nList.Count (list: var[]..[]): int"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "062d3febfbe441a1b0d5490b11fbb580",
+      "End": "8a7aea726efa44caa471b116d1257f46",
+      "Id": "180341781b7443498b7c7eb4120387b4"
+    },
+    {
+      "Start": "062d3febfbe441a1b0d5490b11fbb580",
+      "End": "1a17dc2708ee473fac901177a5813314",
+      "Id": "a75949fddc6841f4aada8d7c94155f8a"
+    },
+    {
+      "Start": "02791af32cee49a48b74b4e059358628",
+      "End": "c4bbae1753df4bc1b4c757d3e5231211",
+      "Id": "c46a13504e534f42b5216006cdcf5037"
+    },
+    {
+      "Start": "55f0329a4f5e4f5a9c85de84d02b1a60",
+      "End": "6960027854934858ab79ea0a0af18f30",
+      "Id": "a8f65d07c51349b2baf8636498a6fcb2"
+    },
+    {
+      "Start": "c24f2ecb4f2546c5b4b2f0e1efd25207",
+      "End": "2025a4af1c374a16abc3ba80a144a1c3",
+      "Id": "d992cc861bba43b8b926884fb3a70616"
+    },
+    {
+      "Start": "e195fc3b407c491a9a5f0e89b984b954",
+      "End": "af34fb196b17457a834569ddc5ea67ec",
+      "Id": "605a0411010a4397a1e8309bdf03cd2d"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Orchid",
+      "Version": "212.3.0.8318",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "a01fdf199b92424bb3c68699b1f3ef02",
+        "aeaa3f737446468fab6279233802776a"
+      ]
+    }
+  ],
+  "Thumbnail": "",
+  "GraphDocumentationURL": null,
+  "ExtensionWorkspaceData": [
+    {
+      "ExtensionGuid": "28992e1d-abb9-417f-8b1b-05e053bee670",
+      "Name": "Properties",
+      "Version": "2.12",
+      "Data": {}
+    },
+    {
+      "ExtensionGuid": "DFBD9CC0-DB40-457A-939E-8C8555555A9D",
+      "Name": "Generative Design",
+      "Version": "1.10",
+      "Data": {}
+    }
+  ],
+  "Author": "",
+  "Linting": {
+    "activeLinter": "Нет",
+    "activeLinterId": "7b75fb44-43fd-4631-a878-29f4d5d8399a",
+    "warningCount": 0,
+    "errorCount": 0
+  },
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 10000.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.12.1.8246",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": 37.885158538818359,
+      "EyeY": 40.674930572509766,
+      "EyeZ": 166.45732116699219,
+      "LookX": -42.885158538818359,
+      "LookY": -29.674930572509766,
+      "LookZ": -174.45732116699219,
+      "UpX": 0.012493402697145939,
+      "UpY": 0.99862957000732422,
+      "UpZ": 0.050823111087083817
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "o|Material.All",
+        "Id": "a01fdf199b92424bb3c68699b1f3ef02",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -374.41739962998918,
+        "Y": 439.93596161834068
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "o|SystemFamilyType.CreateCompoundLayer",
+        "Id": "aeaa3f737446468fab6279233802776a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 822.87136264668618,
+        "Y": 386.52101266615051
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Wall Types",
+        "Id": "91808240774449fcba4fa723e5a641c8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 596.532893999042,
+        "Y": 353.79489689944637
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "1a6d4c490bce401f8502f45a57ea39af",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 527.46364942245145,
+        "Y": 446.3927903502007
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "1727a3b8ec314dd8a544509f19e0aa40",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 206.21269047332294,
+        "Y": 596.45184319286
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Count",
+        "Id": "2f2c6b45194a47c7958062cefb8ffc09",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -1.2396278947992414,
+        "Y": 502.88440356526166
+      }
+    ],
+    "Annotations": [],
+    "X": 411.91451979843328,
+    "Y": 103.77933184421974,
+    "Zoom": 0.71293240932190638
+  }
+}

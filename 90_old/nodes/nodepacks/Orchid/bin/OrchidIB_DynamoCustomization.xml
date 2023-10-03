@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<doc>
+  <assembly>
+    <name>OrchidIB</name>
+  </assembly>
+  <namespaces>
+    <namespace name="Orchid.IfcExport">
+      <category>Orchid.RevitProject.Common</category>
+    </namespace>
+  </namespaces>
+</doc>

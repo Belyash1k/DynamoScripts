@@ -1,0 +1,19 @@
+﻿<?xml version="1.0"?>
+<doc>
+  <assembly>
+     <name>Mailman</name>
+  </assembly>
+  <namespaces>
+    <namespace name="Mailman">
+      <category>Mailman</category>
+    </namespace>
+  </namespaces>
+  <assembly>
+     <name>MailmanUI</name>
+  </assembly>
+  <namespaces>
+    <namespace name="MailmanUI">
+      <category>Mailman.Outlook</category>
+    </namespace>
+  </namespaces>
+</doc>

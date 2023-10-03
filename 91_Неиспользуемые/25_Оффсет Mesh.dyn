@@ -1,0 +1,1309 @@
+{
+  "Uuid": "5c665461-2134-47f6-ab7b-e6a568f92e3d",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "25_Оффсет слоев",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "943da77d-aefd-4007-8221-61f49c408cf3-0006c202"
+      ],
+      "Id": "e448a521a3c549b4927482e992f871db",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "1cc5f37b2b00460a90e600ac804e8ffb",
+          "Name": "Element",
+          "Description": "Выбранные элементы.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Element.Geometry",
+      "Id": "6d238cc813954b08a368b2b855e2328c",
+      "Inputs": [
+        {
+          "Id": "339ea434dcce49129bea6758bacc1bd6",
+          "Name": "element",
+          "Description": "Revit.Elements.Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "ff6a9ae4d80c40e7906b6de46fa6f158",
+          "Name": "var[]",
+          "Description": "var[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение всех элементов геометрии, связанных с этим объектом\n\nElement.Geometry ( ): var[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "a[293];",
+      "Id": "80c0539e2cdb4f87b098dc0d6585f11b",
+      "Inputs": [
+        {
+          "Id": "360cb3aeb4b54c0d985eb5c238844826",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cf226297dca04c3fa4264985d5803c49",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Mesh.FaceIndices",
+      "Id": "2454609bf1a64565a6c9b21f1f0dbfe9",
+      "Inputs": [
+        {
+          "Id": "38ba7f5222124e4f8f460453b166ec0c",
+          "Name": "mesh",
+          "Description": "Autodesk.DesignScript.Geometry.Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a29aeea276224134954845cac846e74b",
+          "Name": "IndexGroup[]",
+          "Description": "IndexGroup[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Индексы вершин, образующих все грани поочередно против часовой стрелки.\n\nMesh.FaceIndices: IndexGroup[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Mesh.VertexPositions",
+      "Id": "754a2795c3b14f08919a3dd971aeeec2",
+      "Inputs": [
+        {
+          "Id": "7404a9c1f5a5432eb200be87a5077261",
+          "Name": "mesh",
+          "Description": "Autodesk.DesignScript.Geometry.Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "183d48f3d04c4a0bb66c898488c29f30",
+          "Name": "Point[]",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Положение вершин\n\nMesh.VertexPositions: Point[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.IndexGroup.A",
+      "Id": "6d6a97a5044146c9b427f0ced311f72b",
+      "Inputs": [
+        {
+          "Id": "e5f4f3c0c2c54eeb865a5f5181f7bf4a",
+          "Name": "indexGroup",
+          "Description": "Autodesk.DesignScript.Geometry.IndexGroup",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fbbeadfce32e4794a04c25a70d8c5f7a",
+          "Name": "int",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Первый индекс\n\nIndexGroup.A: int"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.IndexGroup.B",
+      "Id": "de43e409987f4a0da9e143922a8ff4b3",
+      "Inputs": [
+        {
+          "Id": "03e73ae154d844cbb53869c3f76cfa91",
+          "Name": "indexGroup",
+          "Description": "Autodesk.DesignScript.Geometry.IndexGroup",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "38b5090c793e40ca82632b919cfbb4e4",
+          "Name": "int",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Второй индекс\n\nIndexGroup.B: int"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.IndexGroup.C",
+      "Id": "ea2b7903ade9488eb7f6b69ec642f311",
+      "Inputs": [
+        {
+          "Id": "cd4e167c08ab4621be8099c250475823",
+          "Name": "indexGroup",
+          "Description": "Autodesk.DesignScript.Geometry.IndexGroup",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b15522fce3fc4130b933758aa74ca4be",
+          "Name": "int",
+          "Description": "int",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Третий индекс\n\nIndexGroup.C: int"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[a,b,c];",
+      "Id": "71b89b591d1c40ab808c0cd6d579a20f",
+      "Inputs": [
+        {
+          "Id": "c3aadd04a1b24868b2fdb43c22a827a4",
+          "Name": "a",
+          "Description": "a",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "a8089b4e448b44f2a3889a94c9c61436",
+          "Name": "b",
+          "Description": "b",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bd7187d68b1046d3a176219c84a78166",
+          "Name": "c",
+          "Description": "c",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "8117c1b465994e049059d487bd84d469",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Transpose@var[]..[]",
+      "Id": "2e22c09044e742c28963fc16f6870d3c",
+      "Inputs": [
+        {
+          "Id": "9fffe6d858df4b03adbf0b5b917d4a6e",
+          "Name": "lists",
+          "Description": "Перечень списков для переноса.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "99808cb1bc454b9bb95d42c66f9039fa",
+          "Name": "lists",
+          "Description": "Перечень перенесенных списков.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Замена строк и столбцов в перечне списков. Если некоторые строки короче других, то в результирующий массив в качестве заполнителей вставляются нулевые значения, благодаря чему он всегда остается прямоугольным.\n\nList.Transpose (lists: var[]..[]): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Mesh.VertexNormals",
+      "Id": "a0b78861126d4e848dd5c76e2cf7f00a",
+      "Inputs": [
+        {
+          "Id": "86f84c36db4a4f4d90fa8bfb00da0492",
+          "Name": "mesh",
+          "Description": "Autodesk.DesignScript.Geometry.Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "23477df042ef4066bae4c59443d7e987",
+          "Name": "Vector[]",
+          "Description": "Vector[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Вектор нормали в этой вершине\n\nMesh.VertexNormals: Vector[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Geometry.Translate@Autodesk.DesignScript.Geometry.Vector,double",
+      "Id": "f8f4a8151085449891486dac3e153a60",
+      "Inputs": [
+        {
+          "Id": "36759608996c4286b9989b09572e101f",
+          "Name": "geometry",
+          "Description": "Autodesk.DesignScript.Geometry.Geometry",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "bf02094d37d5402bbf32112863bcebad",
+          "Name": "direction",
+          "Description": "Направление перемещения.\n\nVector",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0f4e5cae40fb40c8958fcf67c51e2fef",
+          "Name": "distance",
+          "Description": "Расстояние перемещения вдоль заданного направления.\n\ndouble",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "cd470381323e4e33a191905f7e9d6431",
+          "Name": "Geometry",
+          "Description": "Преобразованная геометрия.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Преобразование любого типа геометрии по заданному расстоянию в указанном направлении.\n\nGeometry.Translate (direction: Vector, distance: double): Geometry"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "10;",
+      "Id": "685413cbe55a46e281e35bf1bf8d00a1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e85cc5c40f27437fa353d950fbf2ec97",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Vector.X",
+      "Id": "090d5f53e68b45ef890eee587df4b081",
+      "Inputs": [
+        {
+          "Id": "f305e7e61894494ba1fae9b984b0ee8b",
+          "Name": "vector",
+          "Description": "Autodesk.DesignScript.Geometry.Vector",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "feac36c963c54c9fa4568c6dfd0d8cda",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение компонента вектора по оси X\n\nVector.X: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Vector.Y",
+      "Id": "dc192c8c041344e3a38c8f71643997ea",
+      "Inputs": [
+        {
+          "Id": "23ddbbad62b84c97b45c1b44d51e8e01",
+          "Name": "vector",
+          "Description": "Autodesk.DesignScript.Geometry.Vector",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "246daab437124498ac1c1270d1960f1e",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение компонента вектора по оси Y\n\nVector.Y: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Vector.ByCoordinates@double,double,double",
+      "Id": "09269cd32167481293990cdd9d56f24a",
+      "Inputs": [
+        {
+          "Id": "f146d30042364014af61fbb13b74b9f8",
+          "Name": "x",
+          "Description": "Координата X\n\ndouble\nЗначение по умолчанию : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "f1790700993c4f50b33f55856aef5500",
+          "Name": "y",
+          "Description": "Координата Y\n\ndouble\nЗначение по умолчанию : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "fdb68b82e5194339b11b5c4388096ab6",
+          "Name": "z",
+          "Description": "Координата Z\n\ndouble\nЗначение по умолчанию : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "a499d29a48e343cfa427922357251d48",
+          "Name": "Vector",
+          "Description": "Vector",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Построение вектора на основе 3 евклидовых координат\n\nVector.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Vector"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0;",
+      "Id": "30ff540f8e664f8897e88792e25ad671",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "2e84e06b57684e158a74f8a620c24030",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.ByCoordinates@double,double,double",
+      "Id": "b8c169b5ac33424db654b7782cce74ad",
+      "Inputs": [
+        {
+          "Id": "01fc6904750947d1a2fe58097483674e",
+          "Name": "x",
+          "Description": "double\nЗначение по умолчанию : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "200dca0ffa4a4bc29f4f38950f046d7c",
+          "Name": "y",
+          "Description": "double\nЗначение по умолчанию : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "93e02020a4404bb6a8cd3aa43cce8fb7",
+          "Name": "z",
+          "Description": "double\nЗначение по умолчанию : 0",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "b5a9c2a8445040be855b63b9c2fdbac4",
+          "Name": "Point",
+          "Description": "Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Построение точки на основе трех заданных декартовых координат\n\nPoint.ByCoordinates (x: double = 0, y: double = 0, z: double = 0): Point"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.X",
+      "Id": "6d28910931b246668aba4e597886f513",
+      "Inputs": [
+        {
+          "Id": "66b74223e5a74c658a70dd73c6987c7a",
+          "Name": "point",
+          "Description": "Autodesk.DesignScript.Geometry.Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "63c33a4b56174ee382eeed6f30f8ee38",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение координаты точки по оси X\n\nPoint.X: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.Y",
+      "Id": "d1b71349fe864f07b830f39227a3a2ee",
+      "Inputs": [
+        {
+          "Id": "58cfd9a986a440ce8c238a1499fa744a",
+          "Name": "point",
+          "Description": "Autodesk.DesignScript.Geometry.Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "0b1305913fe14d439e25ad49a41bf576",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение координаты точки по оси Y\n\nPoint.Y: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Point.Z",
+      "Id": "d48b0918282f44e6b1974f8eba8db816",
+      "Inputs": [
+        {
+          "Id": "d367ee6c8f714c0fa3533ceefcd2b00d",
+          "Name": "point",
+          "Description": "Autodesk.DesignScript.Geometry.Point",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "82f356e9cf264ff68ccc146bd4b315e5",
+          "Name": "double",
+          "Description": "double",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение координаты точки по оси Z\n\nPoint.Z: double"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "z-5;",
+      "Id": "b059e22468fb491789ac9a81b5de78ab",
+      "Inputs": [
+        {
+          "Id": "dc4df90d1a7544649fe8b202e681781d",
+          "Name": "z",
+          "Description": "z",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e920ec45aced490ab784b45ca8dc40e2",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.DesignScript.Geometry.Mesh.ByPointsFaceIndices@Autodesk.DesignScript.Geometry.Point[],Autodesk.DesignScript.Geometry.IndexGroup[]",
+      "Id": "fefef20d9c364f75aa1cefe8c50f9635",
+      "Inputs": [
+        {
+          "Id": "efb771e3e32641aa90778ae9a3f490ff",
+          "Name": "vertexPositions",
+          "Description": "Point[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "0f3b9f7d3e7940dcafec4f812de1b47f",
+          "Name": "indices",
+          "Description": "IndexGroup[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4ee4250c071047a392559f31183ca665",
+          "Name": "Mesh",
+          "Description": "Mesh",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Создание сетки на основе набора точек и набора элементов IndexGroups, ссылающихся на набор точек\n\nMesh.ByPointsFaceIndices (vertexPositions: Point[], indices: IndexGroup[]): Mesh"
+    },
+    {
+      "ConcreteType": "GeometryUI.ExportWithUnits, GeometryUI",
+      "SelectedExportedUnitsSource": [
+        0,
+        1,
+        2,
+        3,
+        5,
+        4
+      ],
+      "SelectedExportedUnit": 2,
+      "NodeType": "ExtensionNode",
+      "Id": "fb749c5cb51d4f6c95c9ffe4121d8ed0",
+      "Inputs": [
+        {
+          "Id": "48b143842d104d97a6a2610cdfab3d63",
+          "Name": "geometry",
+          "Description": "Геометрия для экспорта в файл SAT.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "713e69f983044fe09170c55b30217554",
+          "Name": "filePath",
+          "Description": "Файл для экспорта геометрии.",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "712f5eaab6144a01952e4820a4f57a20",
+          "Name": "string",
+          "Description": "Путь к экспортированному файлу. Обратите внимание на то, что он может измениться в зависимости от наличия во входных данных символов, не относящихся к ASCII.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Экспорт выбранных объектов геометрии в указанный файл SAT."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "C:\\Users\\aprohorov\\Desktop\\1test.sat",
+      "Id": "6fcff344f42149cb97d3d310828eae6d",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "91d921f5b9394fe1b0ce72ec73edabad",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Autodesk.Dynamo.MeshToolkit.Mesh.ExportMeshes@string,Autodesk.Dynamo.MeshToolkit.Mesh[]",
+      "Id": "8f206cf798574257afbe3b17b1f65029",
+      "Inputs": [
+        {
+          "Id": "5532f9b9e4914fb4b5b445a69ce5e1a7",
+          "Name": "filename",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d7047dcc13674d9f8659b04219d27deb",
+          "Name": "meshes",
+          "Description": "Mesh[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9dec84cb1f2a4937b716eb0385426ea1",
+          "Name": "string",
+          "Description": "string",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Exports meshes to a format determined by file name: .mix -- Meshmixer .obj -- Wavefront .stl -- STL format .dae -- COLLADA .ply -- Polygon File Format This function returns the filename of the output file, which may need to be changed if it contains non-ascii characters\n\nMesh.ExportMeshes (filename: string, meshes: Mesh[]): string"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "1cc5f37b2b00460a90e600ac804e8ffb",
+      "End": "339ea434dcce49129bea6758bacc1bd6",
+      "Id": "cb46ce00764049b395c59b2193355bac"
+    },
+    {
+      "Start": "ff6a9ae4d80c40e7906b6de46fa6f158",
+      "End": "360cb3aeb4b54c0d985eb5c238844826",
+      "Id": "098a471d2416428a8226ac315a90f737"
+    },
+    {
+      "Start": "cf226297dca04c3fa4264985d5803c49",
+      "End": "38ba7f5222124e4f8f460453b166ec0c",
+      "Id": "2e9dbe2773784775bc76159ac95c14e9"
+    },
+    {
+      "Start": "cf226297dca04c3fa4264985d5803c49",
+      "End": "7404a9c1f5a5432eb200be87a5077261",
+      "Id": "d402bf775db94dec8ed1c6df0bd9a4f7"
+    },
+    {
+      "Start": "cf226297dca04c3fa4264985d5803c49",
+      "End": "86f84c36db4a4f4d90fa8bfb00da0492",
+      "Id": "0716539bc18741dc989401717c9a90b6"
+    },
+    {
+      "Start": "a29aeea276224134954845cac846e74b",
+      "End": "e5f4f3c0c2c54eeb865a5f5181f7bf4a",
+      "Id": "fce879f4f88f41f8a5e535e99ceff99f"
+    },
+    {
+      "Start": "a29aeea276224134954845cac846e74b",
+      "End": "03e73ae154d844cbb53869c3f76cfa91",
+      "Id": "3979b3071e6648fa9fda9e7870360329"
+    },
+    {
+      "Start": "a29aeea276224134954845cac846e74b",
+      "End": "cd4e167c08ab4621be8099c250475823",
+      "Id": "a17a2885f047449f8e415ecc3cc7c492"
+    },
+    {
+      "Start": "a29aeea276224134954845cac846e74b",
+      "End": "0f3b9f7d3e7940dcafec4f812de1b47f",
+      "Id": "19982082f46c4c2f9527cb98c94c4fdb"
+    },
+    {
+      "Start": "183d48f3d04c4a0bb66c898488c29f30",
+      "End": "36759608996c4286b9989b09572e101f",
+      "Id": "9cae571a51a448ceb7b5ec54fe0a00ab"
+    },
+    {
+      "Start": "fbbeadfce32e4794a04c25a70d8c5f7a",
+      "End": "c3aadd04a1b24868b2fdb43c22a827a4",
+      "Id": "9061e05c645d4101af5ae459c2643b8a"
+    },
+    {
+      "Start": "38b5090c793e40ca82632b919cfbb4e4",
+      "End": "a8089b4e448b44f2a3889a94c9c61436",
+      "Id": "d4ad089a738048f795d339db1e5a3191"
+    },
+    {
+      "Start": "b15522fce3fc4130b933758aa74ca4be",
+      "End": "bd7187d68b1046d3a176219c84a78166",
+      "Id": "40bf8a5de71e4bdebea7e6cbcb441014"
+    },
+    {
+      "Start": "8117c1b465994e049059d487bd84d469",
+      "End": "9fffe6d858df4b03adbf0b5b917d4a6e",
+      "Id": "6a8ef2b4d0c743c99bc3d8a0c76c5a02"
+    },
+    {
+      "Start": "23477df042ef4066bae4c59443d7e987",
+      "End": "f305e7e61894494ba1fae9b984b0ee8b",
+      "Id": "63ebe687038344a2a7cfefd702ef565d"
+    },
+    {
+      "Start": "23477df042ef4066bae4c59443d7e987",
+      "End": "23ddbbad62b84c97b45c1b44d51e8e01",
+      "Id": "d82a9473f93e463facbf488be9978f0d"
+    },
+    {
+      "Start": "cd470381323e4e33a191905f7e9d6431",
+      "End": "66b74223e5a74c658a70dd73c6987c7a",
+      "Id": "7126a0260ed24780992a2ce24cb52a5c"
+    },
+    {
+      "Start": "cd470381323e4e33a191905f7e9d6431",
+      "End": "58cfd9a986a440ce8c238a1499fa744a",
+      "Id": "c4856be25a694c27bf4c24675643437a"
+    },
+    {
+      "Start": "cd470381323e4e33a191905f7e9d6431",
+      "End": "d367ee6c8f714c0fa3533ceefcd2b00d",
+      "Id": "3e8b4c0ead5647928e18019749dc2fd2"
+    },
+    {
+      "Start": "e85cc5c40f27437fa353d950fbf2ec97",
+      "End": "0f4e5cae40fb40c8958fcf67c51e2fef",
+      "Id": "05f9cc3e87de425d8c64ae50c870ca3f"
+    },
+    {
+      "Start": "feac36c963c54c9fa4568c6dfd0d8cda",
+      "End": "f146d30042364014af61fbb13b74b9f8",
+      "Id": "e59a7fa21a424a3ea6281b057a6882ce"
+    },
+    {
+      "Start": "246daab437124498ac1c1270d1960f1e",
+      "End": "f1790700993c4f50b33f55856aef5500",
+      "Id": "7570de8a6efb43428825faa87735c09a"
+    },
+    {
+      "Start": "a499d29a48e343cfa427922357251d48",
+      "End": "bf02094d37d5402bbf32112863bcebad",
+      "Id": "ed43b891e6bc4853b78f9ecdb6ce217c"
+    },
+    {
+      "Start": "2e84e06b57684e158a74f8a620c24030",
+      "End": "fdb68b82e5194339b11b5c4388096ab6",
+      "Id": "62f4e21688864269b2ef3fbc51d45568"
+    },
+    {
+      "Start": "b5a9c2a8445040be855b63b9c2fdbac4",
+      "End": "efb771e3e32641aa90778ae9a3f490ff",
+      "Id": "4438c537f9b0417b83a94629700b943a"
+    },
+    {
+      "Start": "63c33a4b56174ee382eeed6f30f8ee38",
+      "End": "01fc6904750947d1a2fe58097483674e",
+      "Id": "fff78d050a5a4195bc65eb09d69eb6f3"
+    },
+    {
+      "Start": "0b1305913fe14d439e25ad49a41bf576",
+      "End": "200dca0ffa4a4bc29f4f38950f046d7c",
+      "Id": "6e77d96702c8432abcac839bde55e330"
+    },
+    {
+      "Start": "82f356e9cf264ff68ccc146bd4b315e5",
+      "End": "dc4df90d1a7544649fe8b202e681781d",
+      "Id": "4e38f29597024052b18d2cca20054e02"
+    },
+    {
+      "Start": "e920ec45aced490ab784b45ca8dc40e2",
+      "End": "93e02020a4404bb6a8cd3aa43cce8fb7",
+      "Id": "b7ce00b7f4e2487b9d33ee185ab9c963"
+    },
+    {
+      "Start": "4ee4250c071047a392559f31183ca665",
+      "End": "48b143842d104d97a6a2610cdfab3d63",
+      "Id": "95ba9570728a4cbfa4f6c5531bb9235a"
+    },
+    {
+      "Start": "91d921f5b9394fe1b0ce72ec73edabad",
+      "End": "713e69f983044fe09170c55b30217554",
+      "Id": "5e55c40407a643d194dbe2666a5d718d"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.6.2.15705",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": 134.72695191116003,
+      "EyeY": 4900.8892209685328,
+      "EyeZ": 834.30412648714719,
+      "LookX": -17.143831908127083,
+      "LookY": -783.31771638463761,
+      "LookZ": -1211.653494796521,
+      "UpX": -0.0049546306847582933,
+      "UpY": 0.93667218924843021,
+      "UpZ": -0.35017233117909147
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Select Model Element",
+        "Id": "e448a521a3c549b4927482e992f871db",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 197.0,
+        "Y": 331.0
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Element.Geometry",
+        "Id": "6d238cc813954b08a368b2b855e2328c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 458.0,
+        "Y": 317.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "80c0539e2cdb4f87b098dc0d6585f11b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 903.0,
+        "Y": 363.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Mesh.FaceIndices",
+        "Id": "2454609bf1a64565a6c9b21f1f0dbfe9",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1114.5,
+        "Y": 429.0
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Mesh.VertexPositions",
+        "Id": "754a2795c3b14f08919a3dd971aeeec2",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1857.6600021231534,
+        "Y": 57.840050955675281
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IndexGroup.A",
+        "Id": "6d6a97a5044146c9b427f0ced311f72b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1410.5,
+        "Y": 342.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IndexGroup.B",
+        "Id": "de43e409987f4a0da9e143922a8ff4b3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1412.5,
+        "Y": 427.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "IndexGroup.C",
+        "Id": "ea2b7903ade9488eb7f6b69ec642f311",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1413.5,
+        "Y": 512.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "71b89b591d1c40ab808c0cd6d579a20f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1659.0,
+        "Y": 437.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Transpose",
+        "Id": "2e22c09044e742c28963fc16f6870d3c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4117.4711720504865,
+        "Y": 426.38271955872858
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Mesh.VertexNormals",
+        "Id": "a0b78861126d4e848dd5c76e2cf7f00a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1856.5,
+        "Y": 242.0
+      },
+      {
+        "ShowGeometry": false,
+        "Name": "Geometry.Translate",
+        "Id": "f8f4a8151085449891486dac3e153a60",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3166.5409041035255,
+        "Y": 46.4586451298041
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "685413cbe55a46e281e35bf1bf8d00a1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2986.652881334564,
+        "Y": 293.93599140650878
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Vector.X",
+        "Id": "090d5f53e68b45ef890eee587df4b081",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2440.5,
+        "Y": 231.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Vector.Y",
+        "Id": "dc192c8c041344e3a38c8f71643997ea",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2439.5,
+        "Y": 316.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Vector.ByCoordinates",
+        "Id": "09269cd32167481293990cdd9d56f24a",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2749.5,
+        "Y": 250.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "30ff540f8e664f8897e88792e25ad671",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2551.0,
+        "Y": 404.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Point.ByCoordinates",
+        "Id": "b8c169b5ac33424db654b7782cce74ad",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4126.5443716121,
+        "Y": 13.331050231619486
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Point.X",
+        "Id": "6d28910931b246668aba4e597886f513",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3527.0409951230376,
+        "Y": 11.125925735528597
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Point.Y",
+        "Id": "d1b71349fe864f07b830f39227a3a2ee",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3523.646761427844,
+        "Y": 107.29588043269905
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Point.Z",
+        "Id": "d48b0918282f44e6b1974f8eba8db816",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3523.6467614278436,
+        "Y": 198.94019020294388
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "b059e22468fb491789ac9a81b5de78ab",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 3791.0162693824896,
+        "Y": 203.58275988623245
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Mesh.ByPointsFaceIndices",
+        "Id": "fefef20d9c364f75aa1cefe8c50f9635",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4525.3326226628806,
+        "Y": 155.81848707044855
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "ExportToSAT",
+        "Id": "fb749c5cb51d4f6c95c9ffe4121d8ed0",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 5139.51545261638,
+        "Y": 144.31572236051744
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "6fcff344f42149cb97d3d310828eae6d",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 4605.008390379955,
+        "Y": 327.13756062747177
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Mesh.ExportMeshes",
+        "Id": "8f206cf798574257afbe3b17b1f65029",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 5210.7777884241914,
+        "Y": 350.3873113872628
+      }
+    ],
+    "Annotations": [],
+    "X": -5099.1065077420362,
+    "Y": 57.929868279499544,
+    "Zoom": 1.1723906058806188
+  }
+}

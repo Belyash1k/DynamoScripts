@@ -1,0 +1,623 @@
+{
+  "Uuid": "0af11e15-bf9c-42ec-a31f-dbedc42bc147",
+  "IsCustomNode": true,
+  "Category": "GachiMan",
+  "Description": "Creates sublist including two points with index  order [[0,1],[1,2],[2,3],....]",
+  "Name": "SublistsByTwoValues",
+  "ElementResolver": {
+    "ResolutionMap": {
+      "List": {
+        "Key": "List",
+        "Value": "BuiltIn.ds"
+      },
+      "Solid": {
+        "Key": "Autodesk.DesignScript.Geometry.Solid",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Get": {
+        "Key": "DesignScript.Builtin.Get",
+        "Value": "DesignScriptBuiltin.dll"
+      },
+      "Autodesk.Curve": {
+        "Key": "Autodesk.DesignScript.Geometry.Curve",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Autodesk.DesignScript.Geometry.Curve": {
+        "Key": "Autodesk.DesignScript.Geometry.Curve",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Math": {
+        "Key": "DSCore.Math",
+        "Value": "DSCoreNodes.dll"
+      },
+      "Point": {
+        "Key": "Autodesk.DesignScript.Geometry.Point",
+        "Value": "ProtoGeometry.dll"
+      },
+      "Vector": {
+        "Key": "Autodesk.DesignScript.Geometry.Vector",
+        "Value": "ProtoGeometry.dll"
+      }
+    }
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.GetItemAtIndex@var[]..[],int",
+      "Id": "8cbe50c3c9a84e2696527d932e670af7",
+      "Inputs": [
+        {
+          "Id": "39364beac76b4d56a3dc4d8f1e20feb9",
+          "Name": "list",
+          "Description": "Список, из которого требуется извлечь элемент.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "880e15c2ad1b48febfcc6451f7e1b878",
+          "Name": "index",
+          "Description": "Индекс элемента для включения в выборку.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fe192ff8f50a42c5bc2a21f732a70dc3",
+          "Name": "item",
+          "Description": "Элемент в списке по заданному индексу.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение элемента из данного списка, расположенного по указанному индексу.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0;",
+      "Id": "18dea5d7ed974792b4e00cc4b84512a5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "05d9b1daa7dc4a55a302a4e27db960bf",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.DropItems@var[]..[],int",
+      "Id": "a016e00082c845129f227c9d6d03740f",
+      "Inputs": [
+        {
+          "Id": "8ad81f074a094564a1139ea3c28a361b",
+          "Name": "list",
+          "Description": "Список, из которого требуется удалить элементы.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "402abd708ac2459d8e22471172bb0cd3",
+          "Name": "amount",
+          "Description": "Количество элементов для удаления. Если значение отрицательное, элементы удаляются с конца списка.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "95d1b7e87e2749cfa5f6fba14ee93aa3",
+          "Name": "list",
+          "Description": "Список остальных элементов.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Удаление определенного количества элементов в начале списка. Если количество представляет собой отрицательное значение, элементы удаляются с конца списка.\n\nList.DropItems (list: var[]..[], amount: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.GetItemAtIndex@var[]..[],int",
+      "Id": "78f21cf066f74e8ea52098e8fd76d3aa",
+      "Inputs": [
+        {
+          "Id": "0debd1586f9b43c6b7d640e59d645c6e",
+          "Name": "list",
+          "Description": "Список, из которого требуется извлечь элемент.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": true,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "496d5a78531648ae9bc46bc7e16268b6",
+          "Name": "index",
+          "Description": "Индекс элемента для включения в выборку.\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e5f7d8a9be5445c8b331b5a0aab8e41c",
+          "Name": "item",
+          "Description": "Элемент в списке по заданному индексу.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение элемента из данного списка, расположенного по указанному индексу.\n\nList.GetItemAtIndex (list: var[]..[], index: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "1;",
+      "Id": "5a1dbbf37a4e443fa08d8702369039e8",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "863829cd07c64effb372c54eb7b76bad",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "-1;",
+      "Id": "2e4274551f19467889b0f66c2cb318a5",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "b43512f15c2a448b87cd729e7c0d258a",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "DSCore.List.Sublists@var[]..[],var[]..[],int",
+      "Id": "c9ad5bffe3724873abd21848db85f8db",
+      "Inputs": [
+        {
+          "Id": "3b5cebc1a7cc45608fa71dff9b2a283c",
+          "Name": "list",
+          "Description": "Список, в котором требуется создать подсписки.\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "34bd73cf94154442977bffc3428113ca",
+          "Name": "ranges",
+          "Description": "Диапазоны индексов элементов подсписка. Напр., \\\"{0..3,5,2}\\\"\n\nvar[]..[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "7612b2b0afb04ee08ca32963081ea586",
+          "Name": "offset",
+          "Description": "Значение смещения для применения к подсписку. Например, диапазон \\\"0..3\\\" со смещениям 2 даст в результате {0,1,2,3}{2,3,4,5}{4,5,6,7}...\n\nint",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "9ca239a637774e6994ca10079225b5d0",
+          "Name": "lists",
+          "Description": "Дополнительные списки данного списка.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Создание подсписков на основе списка с помощью синтаксиса диапазона DesignScript.\n\nList.Sublists (list: var[]..[], ranges: var[]..[], offset: int): var[]..[]"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "1;",
+      "Id": "5ab0a1f50eec421cab47d182336f6a2f",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "958c9ace84604ad5afe9cbfa7bec812d",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "0..1;",
+      "Id": "440e73cccdac483eb216763d27e2367b",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "d79ba0854f7b4609b6c8ae82683d500a",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "value1",
+      "Id": "48d3e97d20994180aa0f1cbfdcb97c4b",
+      "Inputs": [
+        {
+          "Id": "34399661fd854cbdbad76e848aa5d31c",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Результат функции, применять с пользовательскими узлами"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "value2",
+      "Id": "b3d6fed08a1d4845a394e92e6ce996cf",
+      "Inputs": [
+        {
+          "Id": "3c7d1b221a3943a9b4b9c2d496e2388e",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Результат функции, применять с пользовательскими узлами"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Symbol, DynamoCore",
+      "NodeType": "InputNode",
+      "Parameter": {
+        "Name": "ListOfValues",
+        "TypeName": "var",
+        "TypeRank": -1,
+        "DefaultValue": null,
+        "Description": ""
+      },
+      "Id": "f47deaab0d774069a6e6e1f3d72e07c4",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "e4849df843fe4616935f64c0635025ea",
+          "Name": "",
+          "Description": "Обозначение",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Параметр функции, использовать с пользовательскими узлами.\r\n\r\nМожно указать тип и значение параметра по умолчанию. Например,\r\n\r\nввод: var [], [].\r\nзначение: bool = false"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CustomNodes.Output, DynamoCore",
+      "NodeType": "OutputNode",
+      "ElementResolver": null,
+      "Symbol": "FullSublist",
+      "Id": "598010f62cf843e9b653d5753199eb4c",
+      "Inputs": [
+        {
+          "Id": "da91816bed324b4dbebf3fb2a74c24ee",
+          "Name": "",
+          "Description": "",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [],
+      "Replication": "Disabled",
+      "Description": "Результат функции, применять с пользовательскими узлами"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "fe192ff8f50a42c5bc2a21f732a70dc3",
+      "End": "34399661fd854cbdbad76e848aa5d31c",
+      "Id": "3996433b5f6f4479ae121fa7218882d4"
+    },
+    {
+      "Start": "05d9b1daa7dc4a55a302a4e27db960bf",
+      "End": "880e15c2ad1b48febfcc6451f7e1b878",
+      "Id": "b8fc1f87ec6c47c5ba5565a7ee86fe62"
+    },
+    {
+      "Start": "95d1b7e87e2749cfa5f6fba14ee93aa3",
+      "End": "39364beac76b4d56a3dc4d8f1e20feb9",
+      "Id": "df3aa86258c847b0af97b74d05aad888"
+    },
+    {
+      "Start": "95d1b7e87e2749cfa5f6fba14ee93aa3",
+      "End": "0debd1586f9b43c6b7d640e59d645c6e",
+      "Id": "a9b999444c534536bcd4480a0e8531a3"
+    },
+    {
+      "Start": "95d1b7e87e2749cfa5f6fba14ee93aa3",
+      "End": "da91816bed324b4dbebf3fb2a74c24ee",
+      "Id": "81d5083e984c4321ba2efb38ccf5b826"
+    },
+    {
+      "Start": "e5f7d8a9be5445c8b331b5a0aab8e41c",
+      "End": "3c7d1b221a3943a9b4b9c2d496e2388e",
+      "Id": "5d83e2b7e85e40b99d98d0602c8b8904"
+    },
+    {
+      "Start": "863829cd07c64effb372c54eb7b76bad",
+      "End": "496d5a78531648ae9bc46bc7e16268b6",
+      "Id": "a485b72de6df4439928e2a53320289e5"
+    },
+    {
+      "Start": "b43512f15c2a448b87cd729e7c0d258a",
+      "End": "402abd708ac2459d8e22471172bb0cd3",
+      "Id": "fcce7f81816040439494705d9e833707"
+    },
+    {
+      "Start": "9ca239a637774e6994ca10079225b5d0",
+      "End": "8ad81f074a094564a1139ea3c28a361b",
+      "Id": "04bb0b86cfca4213ae79016f826b6d3b"
+    },
+    {
+      "Start": "958c9ace84604ad5afe9cbfa7bec812d",
+      "End": "7612b2b0afb04ee08ca32963081ea586",
+      "Id": "7b9c9a7ca1064a26a99cc8ee6addcb38"
+    },
+    {
+      "Start": "d79ba0854f7b4609b6c8ae82683d500a",
+      "End": "34bd73cf94154442977bffc3428113ca",
+      "Id": "55b86905d01c4a409feb2d3918edf158"
+    },
+    {
+      "Start": "e4849df843fe4616935f64c0635025ea",
+      "End": "3b5cebc1a7cc45608fa71dff9b2a283c",
+      "Id": "70d44598b91d41eb8c2e920ac4551c87"
+    }
+  ],
+  "Dependencies": [],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": false,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.0.4.12684",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -986609.23213261389,
+      "EyeY": 208772.17549518665,
+      "EyeZ": 4602567.4514426021,
+      "LookX": 36136.7556461771,
+      "LookY": -5509.7726146540663,
+      "LookZ": -16705.662540886551,
+      "UpX": -0.071217292486469908,
+      "UpY": 0.99691733373332969,
+      "UpZ": 0.032923045930332726
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "List.GetItemAtIndex",
+        "Id": "8cbe50c3c9a84e2696527d932e670af7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1075.4798694497204,
+        "Y": 190.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "18dea5d7ed974792b4e00cc4b84512a5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 932.12824613158955,
+        "Y": 220.79464933939016
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.DropItems",
+        "Id": "a016e00082c845129f227c9d6d03740f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 645.50250199852053,
+        "Y": 124.76108634810998
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.GetItemAtIndex",
+        "Id": "78f21cf066f74e8ea52098e8fd76d3aa",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1067.6992115689391,
+        "Y": 386.73949212826028
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "5a1dbbf37a4e443fa08d8702369039e8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 928.8956531572494,
+        "Y": 416.1761980270594
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "2e4274551f19467889b0f66c2cb318a5",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 496.11140925545078,
+        "Y": 278.12531866582049
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "List.Sublists",
+        "Id": "c9ad5bffe3724873abd21848db85f8db",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 400.22907296029916,
+        "Y": 126.01083773102982
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "5ab0a1f50eec421cab47d182336f6a2f",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 288.39456390504893,
+        "Y": 260.85416675772012
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "440e73cccdac483eb216763d27e2367b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 262.0,
+        "Y": 195.80532528621006
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "48d3e97d20994180aa0f1cbfdcb97c4b",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1312.4798694497204,
+        "Y": 201.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "b3d6fed08a1d4845a394e92e6ce996cf",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1316.4798694497204,
+        "Y": 388.0
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Input",
+        "Id": "f47deaab0d774069a6e6e1f3d72e07c4",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 181.50169024629395,
+        "Y": 99.6176599233718
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Output",
+        "Id": "598010f62cf843e9b653d5753199eb4c",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1272.4798694497204,
+        "Y": 51.0
+      }
+    ],
+    "Annotations": [],
+    "X": 1.5231960998408596,
+    "Y": 214.42462821859453,
+    "Zoom": 0.40538795198124117
+  }
+}

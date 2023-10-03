@@ -1,0 +1,612 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>OrchidRE</name>
+    </assembly>
+    <members>
+        <member name="M:Orchid.E.Common.Print.PaperSize.PopulateItemsCore(System.String)">
+            <summary>
+            Reads the internal element to get all the family 
+            or instance parameters, and adds them to the Items collection.
+            
+            Items are sorted alphabetically by name. 
+            If the SelectedIndex is already set, it is set to zero.
+            </summary>
+        </member>
+        <member name="T:Orchid.E.Internals.GenericElementDropDown">
+            <summary>
+            Generic extensible Dropdown node baseclass for Revit Elements.
+            This class populates a dropdown with all Revit elements of the specified type.
+            It uses a filtered element collector filtering by class.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericElementDropDown.#ctor(System.String,System.Type)">
+            <summary>
+            Generic Revit Element Class Dropdown Node.
+            </summary>
+            <param name="name">Name of the Node.</param>
+            <param name="elementKind">Type of Revit Element to display.</param>
+        </member>
+        <member name="P:Orchid.E.Internals.GenericElementDropDown.ElementKind">
+            <summary>
+            Type of Element.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericElementDropDown.PopulateDropDownItems">
+            <summary>
+            Populate the Dropdown menu.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericElementDropDown.BuildOutputAst(System.Collections.Generic.List{ProtoCore.AST.AssociativeAST.AssociativeNode})">
+            <summary>
+            Cast the selected element to a dynamo node.
+            </summary>
+        </member>
+        <member name="T:Orchid.E.Internals.GenericEnumerationDropDown">
+            <summary>
+            Generic extensible Dropdown node baseclass for Enumerations.
+            This class populates a dropdown with all enumeration values of the specified type.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericEnumerationDropDown.#ctor(System.String,System.Type)">
+            <summary>
+            Generic Enumeration Dropdown.
+            </summary>
+            <param name="name">Node Name.</param>
+            <param name="enumerationType">Type of Enumeration to Display.</param>
+        </member>
+        <member name="P:Orchid.E.Internals.GenericEnumerationDropDown.EnumerationType">
+            <summary>
+            Type of Enumeration.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericEnumerationDropDown.PopulateDropDownItems">
+            <summary>
+            Populate Items in Dropdown menu.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericEnumerationDropDown.BuildOutputAst(System.Collections.Generic.List{ProtoCore.AST.AssociativeAST.AssociativeNode})">
+            <summary>
+            Assign the selected Enumeration value to the output.
+            </summary>
+        </member>
+        <member name="T:Orchid.E.Internals.GenericStringEnumerationDropDown">
+            <summary>
+            Generic extensible Dropdown node baseclass for customized string Enumerations.
+            This class populates a dropdown with all named values and enumeration values of the specified type.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericStringEnumerationDropDown.#ctor(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Customized Generic Enumeration Dropdown.
+            </summary>
+            <param name="name">Node Name.</param>
+            <param name="customEnum">Dictionary, with name and type of enumeration to Display.</param>
+        </member>
+        <member name="P:Orchid.E.Internals.GenericStringEnumerationDropDown.CustomEnum">
+            <summary>
+            Dictionary, with name and type of Enumeration.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericStringEnumerationDropDown.PopulateDropDownItems">
+            <summary>
+            Populate Items in Dropdown menu.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericStringEnumerationDropDown.BuildOutputAst(System.Collections.Generic.List{ProtoCore.AST.AssociativeAST.AssociativeNode})">
+            <summary>
+            Assign the selected Enumeration value to the output.
+            </summary>
+        </member>
+        <member name="T:Orchid.E.Internals.GenericIntEnumerationDropDown">
+            <summary>
+            Generic extensible Dropdown node baseclass for customized string Enumerations.
+            This class populates a dropdown with all named values and enumeration values of the specified type.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericIntEnumerationDropDown.#ctor(System.String,System.Collections.Generic.Dictionary{System.String,System.Object})">
+            <summary>
+            Customized Generic Enumeration Dropdown.
+            </summary>
+            <param name="name">Node Name.</param>
+            <param name="customEnum">Dictionary, with name and type of enumeration to Display.</param>
+        </member>
+        <member name="P:Orchid.E.Internals.GenericIntEnumerationDropDown.CustomEnum">
+            <summary>
+            Dictionary, with name and type of Enumeration.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericIntEnumerationDropDown.PopulateDropDownItems">
+            <summary>
+            Populate Items in Dropdown menu.
+            </summary>
+        </member>
+        <member name="M:Orchid.E.Internals.GenericIntEnumerationDropDown.BuildOutputAst(System.Collections.Generic.List{ProtoCore.AST.AssociativeAST.AssociativeNode})">
+            <summary>
+            Assign the selected Enumeration value to the output.
+            </summary>
+        </member>
+        <member name="T:Orchid.Notifications.DynamoExt">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.AllWarningsOfTypeDescription">
+            <summary>
+              Looks up a localized string similar to Returns a list of all instances of the selected warning type..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.BuiltInParameterGroupSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select a built-in parameter group..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.CategoriesDescription">
+            <summary>
+              Looks up a localized string similar to All built-in categories..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.DirectShapeRoomBoundingOptionSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select a Direct Shape Room Bounding Option..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.DropDownNoColumnType">
+            <summary>
+              Looks up a localized string similar to No structural column types available..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.DropDownNoFramingType">
+            <summary>
+              Looks up a localized string similar to No structural framing types available..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ElementById">
+            <summary>
+              Looks up a localized string similar to Gets the Element with the specified Id.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ElementsatLevelDescription">
+            <summary>
+              Looks up a localized string similar to Get all the elements at the specified Level from the model..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ElementsInActiveViewDescription">
+            <summary>
+              Looks up a localized string similar to Get all the elements which are visible in the active view..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ElementsofCategoryDescription">
+            <summary>
+              Looks up a localized string similar to Get all elements of the specified category from the model..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ElementsofCategoryInViewDescription">
+            <summary>
+              Looks up a localized string similar to Get all elements of the specified category in the specified view from the model..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ElementsofFamilyTypeDescription">
+            <summary>
+              Looks up a localized string similar to Get all elements of the specified family type from the model..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ElementsofTypeDescription">
+            <summary>
+              Looks up a localized string similar to All elements in the active document of a given type..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ElementTypesDescription">
+            <summary>
+              Looks up a localized string similar to All element subtypes..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ExportColumnHeadersDescription">
+            <summary>
+              Looks up a localized string similar to How to export column headers. Default is MultipleRows..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ExportTextQualifierDescription">
+            <summary>
+              Looks up a localized string similar to How to qualify text fields. Default is DoubleQuote..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.FamilyTypesDescription">
+            <summary>
+              Looks up a localized string similar to All family types available in the document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.FilledRegionTypeSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select an existing Filled Region Type from the active document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.FillPatternsDescription">
+            <summary>
+              Looks up a localized string similar to All available fill patterns..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.FillPatternTargetDescription">
+            <summary>
+              Looks up a localized string similar to The type of the fill pattern..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.FilterTypeSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Filter Types for Revit Filters.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.FloorTypesDescription">
+            <summary>
+              Looks up a localized string similar to All floor types available in the document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.GetFamilyParameterDescription">
+            <summary>
+              Looks up a localized string similar to Given a Family Instance or Type allows the user to select a parameter as a string..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.HorizontalTextAlignmentStyleSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select the horizontal text alignment style..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.LevelsDescription">
+            <summary>
+              Looks up a localized string similar to Select a level in the active document.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.LinePatternsDescription">
+            <summary>
+              Looks up a localized string similar to All available line patterns..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.NoActiveDocumentFound">
+            <summary>
+              Looks up a localized string similar to No active Revit document found..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.NoFamilyInstancesInDividedSurfaceWarning">
+            <summary>
+              Looks up a localized string similar to No family instances found in the divided surface..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.NoFloorTypesAvailable">
+            <summary>
+              Looks up a localized string similar to No floor types available..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.None">
+            <summary>
+              Looks up a localized string similar to None.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.NoTypesFound">
+            <summary>
+              Looks up a localized string similar to No types found..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.NoWallTypesAvailable">
+            <summary>
+              Looks up a localized string similar to No wall types available..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.NoWarningsInDocument">
+            <summary>
+              Looks up a localized string similar to No warnings in the current document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ParameterTypeSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select a parameter type..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PerformanceAdviserDescription">
+            <summary>
+              Looks up a localized string similar to All Performance Adviser rules..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PhaseSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select an existing Revit Phase from the active document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataALevelToolTip">
+            <summary>
+              Looks up a localized string similar to A Level.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataAllElementsInDocumentToolTip">
+            <summary>
+              Looks up a localized string similar to All elements in the active document of a given type..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataAllVisibleElementsToolTip">
+            <summary>
+              Looks up a localized string similar to All visible elements in the active view..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataByElementId">
+            <summary>
+              Looks up a localized string similar to Element Id as string, int or ElementId.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataCategoriesToolTip">
+            <summary>
+              Looks up a localized string similar to The selected Category..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataCategoryToolTip">
+            <summary>
+              Looks up a localized string similar to The Category.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataElementAtLevelToolTip">
+            <summary>
+              Looks up a localized string similar to Elements at the given level..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataElementsToolTip">
+            <summary>
+              Looks up a localized string similar to The list of elements matching the query..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataElementTypeToolTip">
+            <summary>
+              Looks up a localized string similar to An element type..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataFamilTypeToolTip">
+            <summary>
+              Looks up a localized string similar to The Family Type..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataFamilySymbolToolTip">
+            <summary>
+              Looks up a localized string similar to Family Type or Instance.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataLocationToolTip">
+            <summary>
+              Looks up a localized string similar to The location of the current Revit project..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataNotEnclosedRoomsToolTip">
+            <summary>
+              Looks up a localized string similar to Not Enclosed Rooms in the document.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataPlacedRoomsToolTip">
+            <summary>
+              Looks up a localized string similar to Placed Rooms in the document.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataRedundantRoomsToolTip">
+            <summary>
+              Looks up a localized string similar to Redundant Rooms in the document.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataSunSettingToolTip">
+            <summary>
+              Looks up a localized string similar to SunSettings element..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataUnplacedRoomsToolTip">
+            <summary>
+              Looks up a localized string similar to Unplaced Rooms in the document.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.PortDataViewToolTip">
+            <summary>
+              Looks up a localized string similar to The View.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.RevisionNumberingSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select an way to number the revisions..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.RevisionNumberTypeSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select a revision number type..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.RevisionSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select an existing Revit Revision from the active document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.RevisionVisibilitySelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select the revision visilibity type..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.RoofTypesDescription">
+            <summary>
+              Looks up a localized string similar to All roof types in the current document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.RoomsByStatusDescription">
+            <summary>
+              Looks up a localized string similar to Returns all rooms in the document grouped by status.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ScheduleFilterTypeDescription">
+            <summary>
+              Looks up a localized string similar to A View Schedule Filter Type..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ScheduleTypeSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select a Schedule Type..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectAnalysisResultsDescription">
+            <summary>
+              Looks up a localized string similar to Select analysis results from the document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectDividedSurfaceFamiliesDescription">
+            <summary>
+              Looks up a localized string similar to Select a divided surface and get its family instances..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectEdgeDescription">
+            <summary>
+              Looks up a localized string similar to Select an edge..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectEdgesDescription">
+            <summary>
+              Looks up a localized string similar to Select multiple edges..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectEdgesPrefix">
+            <summary>
+              Looks up a localized string similar to Edges.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectFaceDescription">
+            <summary>
+              Looks up a localized string similar to Select a face..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectFacesDescription">
+            <summary>
+              Looks up a localized string similar to Select multiple faces from the Revit document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectionIsDisabledDescription">
+            <summary>
+              Looks up a localized string similar to Selection is disabled when Dynamo run is disabled..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectModelElementByCategoryDescription">
+            <summary>
+              Looks up a localized string similar to Select a model element from the Revit document filtered by Category..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectModelElementDescription">
+            <summary>
+              Looks up a localized string similar to Select a model element from the document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectModelElementsByCategoryDescription">
+            <summary>
+              Looks up a localized string similar to Select multiple elements from the Revit document filtered by Category..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectModelElementsDescription">
+            <summary>
+              Looks up a localized string similar to Select multiple elements from the Revit document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectPointonFaceDescription">
+            <summary>
+              Looks up a localized string similar to Select a point on a face..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SelectUVonFaceDescription">
+            <summary>
+              Looks up a localized string similar to Select a UV on a face..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SheetsDescription">
+            <summary>
+              Looks up a localized string similar to All sheets available in the current document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SiteLocationDescription">
+            <summary>
+              Looks up a localized string similar to Returns the current Revit site location..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SiteLocationFamilyDocumentWarning">
+            <summary>
+              Looks up a localized string similar to Site Location is not available in a family document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SpacingRuleLayoutDescription">
+            <summary>
+              Looks up a localized string similar to A spacing rule layout for calculating divided paths..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.StructuralColumnTypesDescription">
+            <summary>
+              Looks up a localized string similar to Select a structural column type in the active document.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.StructuralFramingTypesDescription">
+            <summary>
+              Looks up a localized string similar to Select a structural framing type in the active document.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.SunSettingsCurrentDescription">
+            <summary>
+              Looks up a localized string similar to Returns the SunSettings of the current View..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.VerticalTextAlignmentStyleSelectorDescription">
+            <summary>
+              Looks up a localized string similar to Select the vertical text alignment style..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ViewDetailLevelDescription">
+            <summary>
+              Looks up a localized string similar to View Detail Level.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ViewFamilyTypesDescription">
+            <summary>
+              Looks up a localized string similar to All view family types in the current document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.ViewsDescription">
+            <summary>
+              Looks up a localized string similar to All views available in the current document..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.WallLocationLineDescription">
+            <summary>
+              Looks up a localized string similar to Wall locations..
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.DynamoExt.WallTypesDescription">
+            <summary>
+              Looks up a localized string similar to All wall types available in the document..
+            </summary>
+        </member>
+        <member name="T:Orchid.Notifications.OrchidExt">
+            <summary>
+              A strongly-typed resource class, for looking up localized strings, etc.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.OrchidExt.ResourceManager">
+            <summary>
+              Returns the cached ResourceManager instance used by this class.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.OrchidExt.Culture">
+            <summary>
+              Overrides the current thread's CurrentUICulture property for all
+              resource lookups using this strongly typed resource class.
+            </summary>
+        </member>
+        <member name="P:Orchid.Notifications.OrchidExt.None">
+            <summary>
+              Looks up a localized string similar to None.
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,59 @@
+<Workspace Version="0.8.2.2392" X="136.939158280285" Y="-240.964614783365" zoom="0.738947470664793" Name="Home" Description="" RunType="Manual" RunPeriod="1000" HasRunWithoutCrash="True">
+  <NamespaceResolutionMap />
+  <Elements>
+    <DSIronPythonNode.PythonNode guid="fb4f6ff1-001d-4524-97f0-05ee577a143b" type="DSIronPythonNode.PythonNode" nickname="Python Script" x="347.610544808793" y="578.727532806369" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False" inputcount="1">
+      <Script>import clr
+clr.AddReference('RevitAPI')
+from Autodesk.Revit.DB import *
+from Autodesk.Revit.DB import ElementTransformUtils, ElementId
+
+clr.AddReference("System")
+from System.Collections.Generic import List
+
+clr.AddReference("RevitNodes")
+import Revit
+clr.ImportExtensions(Revit.Elements)
+
+clr.AddReference("RevitServices")
+import RevitServices
+from RevitServices.Persistence import DocumentManager
+from RevitServices.Transactions import TransactionManager
+
+doc = DocumentManager.Instance.CurrentDBDocument
+
+Ids=List[ElementId]()
+for i in IN[0]:
+	Ids.Add(UnwrapElement(i).Id)
+
+TransactionManager.Instance.EnsureInTransaction(doc)
+doc.Create.NewGroup(Ids)
+TransactionManager.Instance.TransactionTaskDone()
+OUT=Ids</Script>
+    </DSIronPythonNode.PythonNode>
+    <Dynamo.Nodes.Function guid="403df4a2-dd37-4541-85d9-bab81e6e4832" type="Dynamo.Nodes.Function" nickname="Turn Into List" x="209.508473507631" y="582.763984851566" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="False">
+      <ID value="cd09ad33-8c34-4850-ac26-24448d92c38f" />
+      <Name value="Turn Into List" />
+      <Description value="Turns an element (or a nested list) into a flat list" />
+      <Inputs>
+        <Input value="item" />
+      </Inputs>
+      <Outputs>
+        <Output value="" />
+      </Outputs>
+    </Dynamo.Nodes.Function>
+    <Dynamo.Nodes.DSModelElementsSelection guid="93dc53db-9d7f-4068-ad75-f303413b0170" type="Dynamo.Nodes.DSModelElementsSelection" nickname="Select Model Elements" x="-49.2093277436898" y="585.228888967702" isVisible="true" isUpstreamVisible="true" lacing="Disabled" isSelectedInput="True">
+      <instance id="1b47db9d-e9e6-4797-8ec1-273b565ca565-0003411b" />
+      <instance id="1b47db9d-e9e6-4797-8ec1-273b565ca565-0003414c" />
+    </Dynamo.Nodes.DSModelElementsSelection>
+  </Elements>
+  <Connectors>
+    <Dynamo.Models.ConnectorModel start="403df4a2-dd37-4541-85d9-bab81e6e4832" start_index="0" end="fb4f6ff1-001d-4524-97f0-05ee577a143b" end_index="0" portType="0" />
+    <Dynamo.Models.ConnectorModel start="93dc53db-9d7f-4068-ad75-f303413b0170" start_index="0" end="403df4a2-dd37-4541-85d9-bab81e6e4832" end_index="0" portType="0" />
+  </Connectors>
+  <Notes />
+  <Annotations />
+  <Presets />
+  <Cameras>
+    <Camera Name="background_preview" eyeX="10" eyeY="15" eyeZ="10" lookX="-10" lookY="-10" lookZ="-10" />
+  </Cameras>
+</Workspace>

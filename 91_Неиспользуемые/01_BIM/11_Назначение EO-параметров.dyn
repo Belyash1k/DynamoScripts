@@ -1,0 +1,378 @@
+{
+  "Uuid": "1805c0f8-8f08-4461-b723-c8daca995d85",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "11_Назначение EO-параметров",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\"EO_Кодификатор_V0\",\n\"EO_Номер тома\",\n\"EO_Подраздел проекта\",\n\"EO_Раздел проекта\",\n\"EO_Шифр тома\",\n\"EO_Местоположение\",\n\"EO_Наименование документа\"];",
+      "Id": "c643c547a68f4dc0b969bff643892042",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "9aeeec67646b491fac8832bc69fa4101",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Orchid.RevitProject.Parameters.SharedParameter.Add@string[],string,var,bool,bool,Revit.Elements.Category[],bool",
+      "Id": "3492bb32a21c4964bc03df3b4edefcd7",
+      "Inputs": [
+        {
+          "Id": "94abebb525954b1aa5b0c902e6994f73",
+          "Name": "parameterName",
+          "Description": "The name of the parameter to add.\n\nstring[]",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "36c7906dd58448ceba9af5c8267e4ebd",
+          "Name": "groupName",
+          "Description": "The name of the group where the parameter belong to.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "b3e94806109e40f483457930fc397073",
+          "Name": "group",
+          "Description": "BuiltIn Parameter Group.\n\nvar",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e43a60aa25b54ef09a674e9c62f4f970",
+          "Name": "instance",
+          "Description": "Is instance parameter? Otherwise it's a type parameter!\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "cf14dd040da6486ebd5e6c322b08a7bc",
+          "Name": "vary",
+          "Description": "Vary parameter between groups?\n\nbool\nЗначение по умолчанию : false",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "9776bf114a034e1d88f25f0d93cacf52",
+          "Name": "category",
+          "Description": "Category(ies) the parameter applies to. If no category is supplied, all possible categories are selected.\n\nCategory[]\nЗначение по умолчанию : null",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "e02e6d3d7fe44eedb9d4fdb933df7d14",
+          "Name": "condense",
+          "Description": "Condense to shortest feasible output?\n\nbool\nЗначение по умолчанию : true",
+          "UsingDefaultValue": true,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "e5289e87c8bb4533a88de884bb73e69b",
+          "Name": "ParameterElement",
+          "Description": "Shared parameter element.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Add shared parameter by name, from current loaded shared parameter file. No new parameters will be created! Note: If the parameter exists is the category binding and tooltip being added!\n\nSharedParameter.Add (parameterName: string[], groupName: string, group: var, instance: bool = false, vary: bool = false, category: Category[] = null, condense: bool = true): var[]..[]"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.StringInput, CoreNodeModels",
+      "NodeType": "StringInputNode",
+      "InputValue": "12 Идентификация",
+      "Id": "2e524d4710dc4cc7bf8871e465700d19",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "15c57283519141b2a1e553424abdefd1",
+          "Name": "",
+          "Description": "String",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Создание строки."
+    },
+    {
+      "ConcreteType": "archilabUI.ParameterGroupUi, archilabUI2021",
+      "SelectedIndex": 106,
+      "SelectedString": "PG_TEXT",
+      "NodeType": "ExtensionNode",
+      "Id": "66594aaf48a249ff9ef33815a825b0ed",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "29fb0e81897f46928f62b6ead1d9e876",
+          "Name": "parameterGroup",
+          "Description": "Выбрано parameterGroup",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Retrieve all available Parameter Groups."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "c59cd30dc1824651a1a933cb9047abd3",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "75a0da996d1c410087a84df026410abc",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.CodeBlockNodeModel, DynamoCore",
+      "NodeType": "CodeBlockNode",
+      "Code": "[\"Антураж\",\n\"Арматура воздуховодов\",\n\"Арматура трубопроводов\",\n\"Арматурная сетка несущей конструкции\",\n\"Арматурная сетка несущей конструкции - Проволочная арматура\",\n\"Арматурные пучки несущих конструкций\",\n\"Армирование по площади несущей конструкции\",\n\"Армирование по траектории несущей конструкции\",\n\"Балочные системы\",\n\"Ванты моста\",\n\"Витражные системы\",\n\"Водяные контуры\",\n\"Воздуховоды\",\n\"Воздуховоды по осевой\",\n\"Воздухораспределители\",\n\"Выключатели\",\n\"Генплан\",\n\"Гибкие воздуховоды\",\n\"Гибкие трубы\",\n\"Датчики\",\n\"Двери\",\n\"Дорожки\",\n\"Импосты витража\",\n\"Кабельные лотки\",\n\"Каркас моста\",\n\"Каркас моста - Арки\",\n\"Каркас моста - Главные балки\",\n\"Каркас моста - Диафрагмы\",\n\"Каркас моста - Перекрестный раскос\",\n\"Каркас моста - Фермы\",\n\"Каркас несущий\",\n\"Колонны\",\n\"Комплекты мебели\",\n\"Короба\",\n\"Крыши\",\n\"Крыши - Желоба\",\n\"Крыши - Лобовые доски\",\n\"Крыши - Подшивные доски\",\n\"Лестницы\",\n\"Лестницы - Марши\",\n\"Лестницы - Опоры\",\n\"Лестницы - Площадки\",\n\"Мебель\",\n\"Наборы оборудования\",\n\"Настилы моста\",\n\"Несущая арматура\",\n\"Несущие колонны\",\n\"Обобщенные модели\",\n\"Оборудование\",\n\"Оборудование зоны\",\n\"Ограждение\",\n\"Ограждение - Опоры\",\n\"Ограждение - Верхние поручни\",\n\"Ограждение - Перила\",\n\"Озеленение\",\n\"Окна\",\n\"Опоры\",\n\"Опоры - Башни опор\",\n\"Опоры - Сваи опор\",\n\"Опоры - Стены опор\",\n\"Опоры - Стойки опор\",\n\"Опоры - Оголовки опор\",\n\"Опоры - Фундаменты опор\",\n\"Осветительные приборы\",\n\"Охранная сигнализация\",\n\"Пандус\",\n\"Панели витража\",\n\"Парковка\",\n\"Перекрытия\",\n\"Перекрытия - Ребра плит\",\n\"Пожарная сигнализация\",\n\"Помещения\",\n\"Потолки\",\n\"Провода\",\n\"Пространства\",\n\"Ребра жесткости несущей конструкции\",\n\"Сантехнические приборы\",\n\"Система коммутации\",\n\"Системы воздуховодов\",\n\"Системы воздухоснабжения\",\n\"Соединения несущих конструкций\",\n\"Соединения несущих конструкций - Анкеры\",\n\"Соединения несущих конструкций - Болты\",\n\"Соединения несущих конструкций - Гибкие упоры\",\n\"Соединения несущих конструкций - Другие\",\n\"Соединения несущих конструкций - Пластины\",\n\"Соединители несущей арматуры\",\n\"Соединительные детали воздуховодов\",\n\"Соединительные детали кабельных лотков\",\n\"Соединительные детали коробов\",\n\"Соединительные детали трубопроводов\",\n\"Специальное оборудование\",\n\"Спринклеры\",\n\"Стены\",\n\"Стены - Выступающие профили\",\n\"Телефонные устройства\",\n\"Топография\",\n\"Трассы\",\n\"Трубопровод по осевой\",\n\"Трубопроводные системы\",\n\"Трубы\",\n\"Устройства вызова и оповещения\",\n\"Устройства связи\",\n\"Участки кабельного лотка\",\n\"Фундамент несущей конструкции\",\n\"Части\",\n\"Шкафы\",\n\"Электрические приборы\",\n\"Электрооборудование\"\n];",
+      "Id": "e5ad031cde78452e92fedc7a4d779a2e",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "f86b6e23da824d728f2ddeca2b15cc7e",
+          "Name": "",
+          "Description": "Значение выражения в строке 1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Обеспечивает возможность непосредственного авторства кода DesignScript"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Category.ByName@string",
+      "Id": "59765c54e8bc47708b4250ca9e5d39eb",
+      "Inputs": [
+        {
+          "Id": "daffa5456e7c431a84defe915d858cbb",
+          "Name": "name",
+          "Description": "Предопределенное имя категории.\n\nstring",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "7c1ed1219e1b44de8c022dbea0b7d455",
+          "Name": "Category",
+          "Description": "Category",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение категории Revit по предустановленному имени категории.\n\nCategory.ByName (name: string): Category"
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "9aeeec67646b491fac8832bc69fa4101",
+      "End": "94abebb525954b1aa5b0c902e6994f73",
+      "Id": "2abccaa288b54432b356cdc3c7f053d5"
+    },
+    {
+      "Start": "15c57283519141b2a1e553424abdefd1",
+      "End": "36c7906dd58448ceba9af5c8267e4ebd",
+      "Id": "71a927bcd49d44ba88e90cb9f2340a73"
+    },
+    {
+      "Start": "29fb0e81897f46928f62b6ead1d9e876",
+      "End": "b3e94806109e40f483457930fc397073",
+      "Id": "c6ef7f3c6b654869b2a806e99ae379c7"
+    },
+    {
+      "Start": "75a0da996d1c410087a84df026410abc",
+      "End": "e43a60aa25b54ef09a674e9c62f4f970",
+      "Id": "7230a68052634799895fc006c1df90a5"
+    },
+    {
+      "Start": "f86b6e23da824d728f2ddeca2b15cc7e",
+      "End": "daffa5456e7c431a84defe915d858cbb",
+      "Id": "b7441d9f39c1410b8206061d07c3e4f5"
+    },
+    {
+      "Start": "7c1ed1219e1b44de8c022dbea0b7d455",
+      "End": "9776bf114a034e1d88f25f0d93cacf52",
+      "Id": "b4284888a82e4380896e4b1c92755b02"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Orchid",
+      "Version": "206.6.0.5797",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "3492bb32a21c4964bc03df3b4edefcd7"
+      ]
+    },
+    {
+      "Name": "archi-lab.net",
+      "Version": "2021.25.2721",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "66594aaf48a249ff9ef33815a825b0ed"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.6.2.15705",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "c643c547a68f4dc0b969bff643892042",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1923.1080167099774,
+        "Y": 170.59986618144933
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "o|SharedParameter.Add",
+        "Id": "3492bb32a21c4964bc03df3b4edefcd7",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2940.5357430125014,
+        "Y": 320.61860529198566
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "String",
+        "Id": "2e524d4710dc4cc7bf8871e465700d19",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2069.9427781011432,
+        "Y": 363.97677064729919
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Parameter Groups",
+        "Id": "66594aaf48a249ff9ef33815a825b0ed",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2013.9150625221214,
+        "Y": 433.35110391719593
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Boolean",
+        "Id": "c59cd30dc1824651a1a933cb9047abd3",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 2049.6385828247471,
+        "Y": 536.12913029594063
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Code Block",
+        "Id": "e5ad031cde78452e92fedc7a4d779a2e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": -771.803024543093,
+        "Y": -1855.64514691943
+      },
+      {
+        "ShowGeometry": true,
+        "Name": "Category.ByName",
+        "Id": "59765c54e8bc47708b4250ca9e5d39eb",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Excluded": false,
+        "X": 1430.5777317855454,
+        "Y": -702.59971037804235
+      }
+    ],
+    "Annotations": [],
+    "X": -1712.9853623838644,
+    "Y": 78.72179517091115,
+    "Zoom": 0.90461067144295892
+  }
+}

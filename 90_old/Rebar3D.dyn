@@ -1,0 +1,593 @@
+{
+  "Uuid": "8f6df475-618e-49e4-98b5-471dd0ea36d2",
+  "IsCustomNode": false,
+  "Description": null,
+  "Name": "Rebar3D",
+  "ElementResolver": {
+    "ResolutionMap": {}
+  },
+  "Inputs": [
+    {
+      "Id": "9ba64bde9b9d4a84bb8d2d049ac2d83a",
+      "Name": "Рамка - True, единичный - False",
+      "Type": "boolean",
+      "Value": "false",
+      "Description": "Выбор между значениями true и false."
+    }
+  ],
+  "Outputs": [],
+  "Nodes": [
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementsSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "13d3c292-4790-461e-9f31-f1d68eed4ab4-0038618e",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003866f5",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-0038671c",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386789",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-0038680d",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386bb8",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386bef",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386cb6",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386cb7",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386cc9",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386cca",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386ccf",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386cd0",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386cf2",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d12",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d13",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d14",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d15",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d16",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d17",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d18",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d19",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d4a",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d4b",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d4c",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d4d",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d4e",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d4f",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d50",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d51",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386d52",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386db2",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386db3",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386db4",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386db5",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386db6",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386db7",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386db8",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386db9",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e0d",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e0e",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e0f",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e10",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e11",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e12",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e13",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e14",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e15",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e16",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e17",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e18",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e19",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e1a",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e1b",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e1c",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e1d",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e2b",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e2c",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e2d",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e2e",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e2f",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e30",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e31",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e32",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e34",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e35",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e36",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e37",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e38",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e39",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e3a",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386e3b",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386ea3",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386ea4",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386ea5",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386ea6",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386ea7",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386ea8",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386ea9",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386eaa",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386eac",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386ead",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386eae",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386eaf",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386eb0",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386eb1",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386eb2",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00386eb3",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-0038704d",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870b4",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870b5",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870b6",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870b7",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870b8",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870b9",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870ba",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870bb",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870bc",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870bd",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870be",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870bf",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870c0",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870c1",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870c2",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870c3",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003870c4",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00387188",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003871aa",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-00387241",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-0038724e",
+        "af71df82-6b7d-4ce2-80b0-3f0bc7574e4e-003873b3",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003874f4",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387536",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387573",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387579",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875c0",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875c1",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875c2",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875c3",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875c4",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875c5",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875c6",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875c7",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875c8",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875c9",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875ca",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875cb",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875cc",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875cd",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875ce",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003875cf",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387b4d",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387d7e",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387e59",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387e74",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387eef",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387ef4",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387f73",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387ff2",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00387ffb",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388128",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388129",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038812a",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038812b",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038812c",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038812d",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038812e",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038812f",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388130",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388131",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388132",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388133",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388134",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388135",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388279",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003882fb",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388339",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038833a",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038833b",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038833c",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038833d",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038833e",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038833f",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388340",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388341",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388342",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388343",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388344",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388345",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388398",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388399",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038839a",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038839b",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038839c",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038839d",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038839e",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-0038839f",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003883a0",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003883a1",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003883a2",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003883a3",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003883a4",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003883a5",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003883a6",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003883a7",
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-003883a8"
+      ],
+      "Id": "f79cdad0a091472cb02f3fafe3a1fc94",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "a610114fd866479da7ecf14aa94799c1",
+          "Name": "Elements",
+          "Description": "Выбранные элементы.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Elements.Rebar.SetSolidInView@Revit.Elements.Element,Revit.Elements.Views.View3D,bool",
+      "Id": "551931b44be341d09dd754cd8b84d7a8",
+      "Inputs": [
+        {
+          "Id": "7c44516ca27a461d8c7814d92e6cb64a",
+          "Name": "rebar",
+          "Description": "Element",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "5cf1e55ff7da41759b72e6040e86208b",
+          "Name": "view",
+          "Description": "View3D",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "73e1b7051f524f45bcad2eb22434078a",
+          "Name": "solid",
+          "Description": "bool",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "2f49438670bf4599a775cf6d563b56b1",
+          "Name": "void",
+          "Description": "void",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Rebar.SetSolidInView (rebar: Element, view: View3D, solid: bool): void"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Application.Document.ActiveView",
+      "Id": "50de258cd56f4b77889abc0faf9f702e",
+      "Inputs": [
+        {
+          "Id": "9b779c6363ee4b23897da48a7a646599",
+          "Name": "document",
+          "Description": "Revit.Application.Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "fd160aa8410d4d05b9801e9307c4c459",
+          "Name": "View",
+          "Description": "View",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение текущего вида документа\n\nDocument.ActiveView: View"
+    },
+    {
+      "ConcreteType": "Dynamo.Graph.Nodes.ZeroTouch.DSFunction, DynamoCore",
+      "NodeType": "FunctionNode",
+      "FunctionSignature": "Revit.Application.Document.Current",
+      "Id": "3ffea52685db48e383831a9e2e96c8d1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "8805ad6788ba4309a390e78bbc157239",
+          "Name": "Document",
+          "Description": "Document",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Auto",
+      "Description": "Получение текущего документа\n\nDocument.Current: Document"
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": true,
+      "Id": "7686ab1756db4146ac887f2d18a5e596",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "5c150e4d1d314af092f819e1b5de0a2c",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    },
+    {
+      "ConcreteType": "Dynamo.Nodes.DSModelElementSelection, DSRevitNodesUI",
+      "NodeType": "ExtensionNode",
+      "InstanceId": [
+        "4a9bd65d-c136-4b00-99a2-8f3b12b62865-00388458"
+      ],
+      "Id": "7d22ae88980d430f97ae81238200a2d1",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "cd4c3dc539a347c58781f49490d74c68",
+          "Name": "Element",
+          "Description": "Выбранные элементы.",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled"
+    },
+    {
+      "ConcreteType": "PythonNodeModels.PythonNode, PythonNodeModels",
+      "NodeType": "PythonScriptNode",
+      "Code": "# Загрузить стандартную библиотеку Python и библиотеку DesignScript\r\nimport sys\r\nimport clr\r\nclr.AddReference('ProtoGeometry')\r\nfrom Autodesk.DesignScript.Geometry import *\r\nclr.AddReference('RevitAPIUI')\r\nfrom Autodesk.Revit.UI import *\r\n\r\n# Введенные в этом узле данные сохраняется в виде списка в переменных IN.\r\na, b, bl = IN[0], [IN[1]], IN[2]\r\nif bl == True:\r\n\ttry:\r\n\t\tlb = len(a)\r\n\t\tOUT = a\r\n\texcept:\r\n\t\tTaskDialog.Show(\"Rebar3D\", \"Ни одного элемента не выбрано!\")\r\nelif bl == False:\r\n\ttry:\r\n\t\tlb = len(b)\r\n\t\tOUT = b\r\n\texcept:\r\n\t\tTaskDialog.Show(\"Rebar3D\", \"Ни одного элемента не выбрано!\")",
+      "Engine": "IronPython2",
+      "VariableInputPorts": true,
+      "Id": "d9ff1013b344402288f647a6a2170264",
+      "Inputs": [
+        {
+          "Id": "c5630585234e406f936bd18e2dc480c7",
+          "Name": "IN[0]",
+          "Description": "Input #0",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "333918a17a024798a6794b6d513b28b4",
+          "Name": "IN[1]",
+          "Description": "Input #1",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        },
+        {
+          "Id": "d98d512aae0d43bebbb59fd57cf36ba4",
+          "Name": "IN[2]",
+          "Description": "Input #2",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Outputs": [
+        {
+          "Id": "4dba1cb12a9a4b618a6f86b48312849b",
+          "Name": "OUT",
+          "Description": "Результат сценария Python",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выполнение встроенного сценария Python."
+    },
+    {
+      "ConcreteType": "CoreNodeModels.Input.BoolSelector, CoreNodeModels",
+      "NodeType": "BooleanInputNode",
+      "InputValue": false,
+      "Id": "9ba64bde9b9d4a84bb8d2d049ac2d83a",
+      "Inputs": [],
+      "Outputs": [
+        {
+          "Id": "012cc143f78a40a895d46549dd80974a",
+          "Name": "",
+          "Description": "Boolean",
+          "UsingDefaultValue": false,
+          "Level": 2,
+          "UseLevels": false,
+          "KeepListStructure": false
+        }
+      ],
+      "Replication": "Disabled",
+      "Description": "Выбор между значениями true и false."
+    }
+  ],
+  "Connectors": [
+    {
+      "Start": "a610114fd866479da7ecf14aa94799c1",
+      "End": "c5630585234e406f936bd18e2dc480c7",
+      "Id": "50d09ddd3c1844d5b7cec1867fa3e150"
+    },
+    {
+      "Start": "fd160aa8410d4d05b9801e9307c4c459",
+      "End": "5cf1e55ff7da41759b72e6040e86208b",
+      "Id": "9aeea5f8bd384a088e9bef7a27c95686"
+    },
+    {
+      "Start": "8805ad6788ba4309a390e78bbc157239",
+      "End": "9b779c6363ee4b23897da48a7a646599",
+      "Id": "357efdfc68224ea4b987e446e1bee59f"
+    },
+    {
+      "Start": "5c150e4d1d314af092f819e1b5de0a2c",
+      "End": "73e1b7051f524f45bcad2eb22434078a",
+      "Id": "de2b641e68e242c791464fc6e3a1c549"
+    },
+    {
+      "Start": "cd4c3dc539a347c58781f49490d74c68",
+      "End": "333918a17a024798a6794b6d513b28b4",
+      "Id": "2a7455ce57d14c7f96093b06c2f37b44"
+    },
+    {
+      "Start": "4dba1cb12a9a4b618a6f86b48312849b",
+      "End": "7c44516ca27a461d8c7814d92e6cb64a",
+      "Id": "e6e46bbae4974ed7a4a4471f5b8390ca"
+    },
+    {
+      "Start": "012cc143f78a40a895d46549dd80974a",
+      "End": "d98d512aae0d43bebbb59fd57cf36ba4",
+      "Id": "ef540b4c1364416db3c66695652125f9"
+    }
+  ],
+  "Dependencies": [],
+  "NodeLibraryDependencies": [
+    {
+      "Name": "Dynamo for Rebar",
+      "Version": "2.0.2",
+      "ReferenceType": "Package",
+      "Nodes": [
+        "551931b44be341d09dd754cd8b84d7a8"
+      ]
+    }
+  ],
+  "Bindings": [],
+  "View": {
+    "Dynamo": {
+      "ScaleFactor": 1.0,
+      "HasRunWithoutCrash": true,
+      "IsVisibleInDynamoLibrary": true,
+      "Version": "2.10.1.3976",
+      "RunType": "Manual",
+      "RunPeriod": "1000"
+    },
+    "Camera": {
+      "Name": "Фоновый просмотр",
+      "EyeX": -17.0,
+      "EyeY": 24.0,
+      "EyeZ": 50.0,
+      "LookX": 12.0,
+      "LookY": -13.0,
+      "LookZ": -58.0,
+      "UpX": 0.0,
+      "UpY": 1.0,
+      "UpZ": 0.0
+    },
+    "NodeViews": [
+      {
+        "Id": "f79cdad0a091472cb02f3fafe3a1fc94",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Выбрать арматуру (рамкой)",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -105.6919456570223,
+        "Y": -113.86609155073154
+      },
+      {
+        "Id": "551931b44be341d09dd754cd8b84d7a8",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Rebar.SetSolidInView",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 789.5,
+        "Y": 490.0
+      },
+      {
+        "Id": "50de258cd56f4b77889abc0faf9f702e",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Document.ActiveView",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 408.0,
+        "Y": 562.0
+      },
+      {
+        "Id": "3ffea52685db48e383831a9e2e96c8d1",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Document.Current",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 212.0,
+        "Y": 570.0
+      },
+      {
+        "Id": "7686ab1756db4146ac887f2d18a5e596",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Boolean",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 499.0,
+        "Y": 685.0
+      },
+      {
+        "Id": "7d22ae88980d430f97ae81238200a2d1",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Выбрать арматуру (единичный выбор)",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": -135.55063404914335,
+        "Y": 131.43076848612662
+      },
+      {
+        "Id": "d9ff1013b344402288f647a6a2170264",
+        "IsSetAsInput": false,
+        "IsSetAsOutput": false,
+        "Name": "Python Script",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 400.42390148790207,
+        "Y": 153.08688734593949
+      },
+      {
+        "Id": "9ba64bde9b9d4a84bb8d2d049ac2d83a",
+        "IsSetAsInput": true,
+        "IsSetAsOutput": false,
+        "Name": "Рамка - True, единичный - False",
+        "ShowGeometry": true,
+        "Excluded": false,
+        "X": 15.891319023632434,
+        "Y": 259.056934060185
+      }
+    ],
+    "Annotations": [],
+    "X": 111.79119808279563,
+    "Y": 254.74136417955492,
+    "Zoom": 0.89416808331207653
+  }
+}
